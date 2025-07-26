@@ -50,27 +50,35 @@
 </a>
 
 <style>
+    /* Добавляем стили для кнопки с оранжевым стилем GTA */
     #download-modloader-btn {
         background-color: #FF5722; /* Оранжевый фон */
         color: white; /* Белый текст */
-        padding: 15px 32px; /* Отступы */
-        font-size: 16px; /* Размер шрифта */
-        border: none; /* Без рамки */
+        font-family: 'Roboto', sans-serif; /* Шрифт, похожий на стиль GTA */
+        font-weight: bold; /* Полужирный текст */
+        text-transform: uppercase; /* Заглавные буквы */
+        padding: 15px 40px; /* Отступы */
+        font-size: 18px; /* Размер шрифта */
+        border: 3px solid #F44336; /* Рамка красного цвета, как в GTA */
         border-radius: 8px; /* Скругленные углы */
         cursor: pointer; /* Курсор как указатель */
-        transition: background-color 0.3s, transform 0.2s; /* Плавные переходы */
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Тень для кнопки */
+        transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s; /* Плавные переходы */
     }
 
     #download-modloader-btn:hover {
         background-color: #FF784E; /* Более светлый оранжевый при наведении */
         transform: scale(1.05); /* Немного увеличиваем кнопку при наведении */
+        box-shadow: 0 6px 10px rgba(0, 0, 0, 0.4); /* Больше тени */
     }
 
     #download-modloader-btn:active {
         background-color: #FF3D00; /* Более темный оранжевый при клике */
         transform: scale(1); /* Возвращаем размер кнопки */
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* Уменьшаем тень при нажатии */
     }
 </style>
+
 
     </main>
 
