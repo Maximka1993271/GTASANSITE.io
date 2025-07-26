@@ -290,3 +290,26 @@ ul {
     padding: 5px 10px;
     border-radius: 5px;
 }
+
+/* Стили для кнопки скачивания ModloaderPriorityEditor */
+#download-modloader-btn {
+    background-color: #FF5722; /* Оранжевый фон */
+    color: white; /* Белый текст */
+    padding: 15px 32px; /* Отступы */
+    font-size: 16px; /* Размер шрифта */
+    border: none; /* Без рамки */
+    border-radius: 8px; /* Скругленные углы */
+    cursor: pointer; /* Курсор как указатель */
+    transition: background-color 0.3s, transform 0.2s; /* Плавные переходы */
+}
+
+#download-modloader-btn:hover {
+    background-color: #FF784E; /* Более светлый оранжевый при наведении */
+    transform: scale(1.05); /* Немного увеличиваем кнопку при наведении */
+}
+
+#download-modloader-btn:active {
+    background-color: #FF3D00; /* Более темный оранжевый при клике */
+    transform: scale(1); /* Возвращаем размер кнопки */
+}
+
