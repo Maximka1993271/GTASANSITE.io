@@ -290,3 +290,43 @@ ul {
     padding: 5px 10px;
     border-radius: 5px;
 }
+
+/* Стили для кнопки */
+#download-modloader-btn {
+    background-color: #FF8C00; /* Оранжевый цвет */
+    color: white;              /* Белый текст */
+    border: none;              /* Без рамки */
+    padding: 15px 30px;        /* Увеличенные отступы внутри кнопки */
+    font-size: 18px;           /* Размер шрифта */
+    font-weight: 600;          /* Толщина шрифта */
+    border-radius: 50px;       /* Скругленные углы для более стильного вида */
+    cursor: pointer;          /* Курсор в виде указателя */
+    transition: all 0.3s ease; /* Плавный переход всех свойств */
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* Тень для глубины */
+    text-transform: uppercase; /* Заглавные буквы для кнопки */
+    letter-spacing: 1px;       /* Небольшое расстояние между буквами */
+}
+
+/* Эффект при наведении */
+#download-modloader-btn:hover {
+    background-color: #FFA500; /* Более яркий оранжевый при наведении */
+    transform: translateY(-4px); /* Эффект "подъема" кнопки */
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3); /* Увеличенная тень при наведении */
+}
+
+/* Эффект при клике */
+#download-modloader-btn:active {
+    background-color: #FF4500; /* Темный оранжевый при нажатии */
+    transform: translateY(2px); /* Эффект "погружения" кнопки */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Меньшая тень при нажатии */
+}
+
+/* Адаптивность кнопки для маленьких экранов */
+@media (max-width: 600px) {
+    #download-modloader-btn {
+        width: 100%;               /* Кнопка растягивается на всю ширину экрана */
+        padding: 20px 0;           /* Увеличиваем высоту кнопки для мобильных устройств */
+        font-size: 20px;           /* Увеличиваем размер шрифта для мобильных */
+    }
+}
+
