@@ -1,37 +1,40 @@
-/* Общие стили для html и body */
+/* Переменные для темной и светлой схемы */
 :root {
-    --main-color: #FFD700; /* Золотой */
-    --background-color: rgba(0, 0, 0, 0.7); /* Полупрозрачный черный */
-    --button-bg: #FF8C00; /* Оранжевый */
-    --button-hover-bg: #FFA500; /* Яркий оранжевый */
-    --border-color: #FFD700; /* Золотой */
-    --text-color-light: #fff; /* Белый */
-    --text-color-dark: #333; /* Темно-серый */
-    --shadow-color: rgba(0, 0, 0, 0.3); /* Тень */
-    --font-family: 'Verdana', sans-serif;
+    --primary-color: #0077b6; /* Темно-синий */
+    --secondary-color: #00b4d8; /* Голубой */
+    --accent-color: #ff5722; /* Оранжевый */
+    --background-color: #f1f5f8; /* Светлый фон */
+    --header-bg: #2a3d66; /* Темный фон для шапки */
+    --text-color-dark: #1c1c1c; /* Темный текст */
+    --text-color-light: #ffffff; /* Белый текст */
+    --button-bg: #ff5722; /* Оранжевая кнопка */
+    --button-hover-bg: #f44336; /* Ярко-оранжевая кнопка при наведении */
+    --border-radius: 10px;
+    --font-family: 'Roboto', sans-serif;
+    --transition-speed: 0.3s;
+    --box-shadow: rgba(0, 0, 0, 0.15) 0px 4px 16px;
 }
 
+/* Основные стили для HTML и body */
 html, body {
     height: 100%;
     margin: 0;
     font-family: var(--font-family);
-    background: url('https://media-rockstargames-com.akamaized.net/mfe6/prod/__common/img/4bddd183ad5bce1fa0efdc5cbd958743.jpg') no-repeat center center fixed;
-    background-size: cover;
-    background-attachment: fixed; /* Эффект параллакса */
+    background-color: var(--background-color);
+    color: var(--text-color-dark);
     display: flex;
     flex-direction: column;
-    scroll-behavior: smooth; /* Плавное прокручивание */
+    scroll-behavior: smooth;
 }
 
-/* Стили для шапки */
+/* Шапка */
 header {
-    background-color: var(--background-color);
-    color: var(--main-color);
-    padding: 20px;
+    background-color: var(--header-bg);
+    color: var(--text-color-light);
+    padding: 20px 0;
     text-align: center;
-    font-size: 28px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
-    position: relative;
+    font-size: 30px;
+    box-shadow: 0 2px 10px var(--box-shadow);
 }
 
 /* Навигация */
@@ -44,6 +47,7 @@ nav ul {
     padding: 0;
     display: flex;
     justify-content: center;
+    margin: 0;
 }
 
 nav ul li {
@@ -51,206 +55,94 @@ nav ul li {
 }
 
 nav ul li a {
-    color: var(--main-color);
+    color: var(--text-color-light);
     text-decoration: none;
     font-size: 18px;
-    padding: 10px 15px;
-    transition: background-color 0.3s, color 0.3s;
-    border-radius: 5px;
+    padding: 12px 20px;
+    border-radius: var(--border-radius);
+    background-color: var(--primary-color);
+    transition: background-color var(--transition-speed), transform var(--transition-speed);
 }
 
 nav ul li a:hover {
-    background-color: rgba(255, 255, 255, 0.2);
-    color: var(--text-color-light);
+    background-color: var(--secondary-color);
+    transform: translateY(-5px);
 }
 
-nav ul li a {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: rgba(0, 0, 0, 0.8);
-    color: var(--main-color);
-    text-decoration: none;
-    border: 2px solid var(--main-color);
-    border-radius: 5px;
-    transition: background-color 0.3s, transform 0.2s;
-}
-
-nav ul li a:hover {
-    background-color: rgba(0, 0, 0, 1);
-    transform: translateY(-2px);
-}
-
-/* Основная часть страницы */
+/* Основной контент */
 main {
     flex: 1;
     padding: 20px;
-}
-
-/* Контейнер для материалов */
-.container {
-    padding: 30px;
-    background-color: rgba(255, 255, 255, 0.8);
-    border: 2px solid var(--main-color);
-    border-radius: 15px;
-    box-shadow: 0 4px 20px var(--shadow-color);
-    max-width: 5000px;
-    margin: 20px auto;
-    transition: transform 0.3s, box-shadow 0.3s;
     display: flex;
     flex-direction: column;
     align-items: center;
-    text-align: center;
-    overflow: hidden;
+    justify-content: center;
+}
+
+/* Контейнер с материалами */
+.container {
+    background-color: var(--text-color-light);
+    padding: 30px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    width: 100%;
+    max-width: 800px;
+    margin: 20px 0;
+    transition: transform var(--transition-speed), box-shadow var(--transition-speed);
 }
 
 .container:hover {
-    transform: scale(1.05);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+    transform: translateY(-10px);
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 4px 24px;
 }
 
 .container h2 {
     font-size: 24px;
     color: var(--text-color-dark);
-    margin-bottom: 15px;
+    margin-bottom: 20px;
 }
 
 .container p {
     font-size: 16px;
-    color: #555;
-    line-height: 1.5;
+    color: #333;
+    line-height: 1.6;
 }
 
-.container .button {
-    margin-top: 20px;
-    background-color: #ff9933;
-    color: var(--text-color-light);
-    padding: 12px 20px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.2s;
-}
-
-.container .button:hover {
-    background-color: #e68a00;
-    transform: translateY(-2px);
-}
-
-/* Кнопки */
-.download-btn {
+/* Кнопка */
+.button {
     background-color: var(--button-bg);
     color: var(--text-color-light);
-    border: none;
     padding: 12px 24px;
     font-size: 16px;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-.download-btn:hover {
-    background-color: var(--button-hover-bg);
-    transform: scale(1.05);
-}
-
-.download-btn:active {
-    background-color: #FF4500;
-}
-
-/* Медиа-запросы для адаптивности */
-@media (max-width: 600px) {
-    header {
-        font-size: 1.5em;
-        padding: 10px;
-    }
-
-    nav ul li {
-        margin: 0 5px;
-    }
-
-    nav ul li a {
-        padding: 8px 12px;
-        font-size: 0.9em;
-    }
-
-    #download-btn, .download-btn {
-        font-size: 1em;
-        padding: 10px 15px;
-        width: calc(100% - 20px);
-    }
-
-    .container {
-        padding: 15px;
-        margin: 10px;
-    }
-
-    .social-icons a {
-        font-size: 24px;
-    }
-
-    .video-container {
-        padding-bottom: 75%;
-    }
-}
-
-/* Стиль для блока с датой и временем */
-#datetime {
-    position: absolute;
-    right: 20px;
-    top: 20px;
-    font-size: 16px;
-    font-family: Arial, sans-serif;
-    color: var(--main-color);
-    background-color: rgba(0, 0, 0, 0.5);
-    padding: 5px 10px;
-    border-radius: 5px;
-}
-
-/* Кнопка для скролла вверх */
-#scroll-btn {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    display: none;
-    background-color: #ff9933;
-    color: black;
     border: none;
-    padding: 10px 15px;
-    border-radius: 5px;
+    border-radius: var(--border-radius);
     cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s;
+    transition: background-color var(--transition-speed), transform var(--transition-speed);
 }
 
-#scroll-btn:hover {
-    background-color: var(--button-bg);
+.button:hover {
+    background-color: var(--button-hover-bg);
+    transform: translateY(-3px);
 }
 
-/* Контейнер для кнопок */
-.button-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 20px 0;
-}
-
-/* Контейнер для видео */
+/* Стили для видеоконтейнера */
 .video-container {
-    margin: 20px auto;
-    max-width: 1000px;
-    width: 100%;
     position: relative;
-    padding-bottom: 56.25%;
-    overflow: hidden;
+    width: 100%;
+    max-width: 1000px;
+    height: 0;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    margin: 20px 0;
     background-color: rgba(255, 255, 255, 0.8);
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s, box-shadow 0.3s;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    overflow: hidden;
+    transition: transform var(--transition-speed), box-shadow var(--transition-speed);
 }
 
 .video-container:hover {
     transform: translateY(-5px);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 6px 30px;
 }
 
 .video-container iframe {
@@ -259,16 +151,72 @@ main {
     left: 0;
     width: 100%;
     height: 100%;
-    border-radius: 10px;
-    transition: transform 0.2s;
+    border: none;
+    border-radius: var(--border-radius);
 }
 
-.video-container iframe:hover {
-    transform: scale(1.02);
+/* Кнопка скролла вверх */
+#scroll-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: none;
+    background-color: var(--secondary-color);
+    color: var(--text-color-light);
+    border: none;
+    padding: 12px 20px;
+    border-radius: 50%;
+    font-size: 20px;
+    cursor: pointer;
+    transition: background-color var(--transition-speed);
 }
 
-ul {
-    list-style-type: none;
-    padding: 0;
+#scroll-btn:hover {
+    background-color: var(--primary-color);
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 768px) {
+    header {
+        font-size: 24px;
+        padding: 15px 0;
+    }
+
+    nav ul {
+        flex-direction: column;
+    }
+
+    nav ul li {
+        margin: 10px 0;
+    }
+
+    nav ul li a {
+        padding: 12px 20px;
+        font-size: 16px;
+    }
+
+    .container {
+        padding: 20px;
+    }
+
+    .button {
+        width: 100%;
+        padding: 14px;
+        font-size: 18px;
+    }
+
+    .video-container {
+        width: 100%;
+        padding-bottom: 75%; /* Aspect ratio for smaller screens */
+    }
+}
+
+/* Стили для футера */
+footer {
+    background-color: var(--header-bg);
+    color: var(--text-color-light);
     text-align: center;
+    padding: 20px;
+    font-size: 14px;
+    box-shadow: 0 -2px 10px var(--box-shadow);
 }
