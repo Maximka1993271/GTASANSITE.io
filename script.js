@@ -7,7 +7,7 @@
     'use strict';
 
     // API Key для Gemini (в Canvas подставляется автоматически, для GitHub можно оставить пустым или вставить свой)
-    const apiKey = ""; 
+    const apiKey = "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"; 
 
     const GTA_APP = {
         // Инициализация всех модулей
