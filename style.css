@@ -56,11 +56,15 @@ header h1 {
     text-align: center;
 }
 
-/* Навигация */
-nav ul {
+/* Навигация и списки (убираем маркеры везде) */
+nav ul, ul {
     list-style: none;
+    list-style-type: none;
     padding: 0;
     margin: 0;
+}
+
+nav ul {
     display: flex;
     justify-content: center; 
     align-items: center;
