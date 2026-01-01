@@ -15,11 +15,7 @@
 </head>
 <body>
     <header>
-        <div class="header-status-bar">
-            <span id="date">--.--.----</span>
-            <span id="header-clock">00:00:00</span>
-        </div>
-        
+   
         <h1>Priority GTA: San Andreas</h1>
         <nav>
             <ul>
@@ -82,31 +78,8 @@
      <!-- Кнопка прокрутки вверх -->
     <button id="scroll-btn">⬆</button>
 
-  <script src="script.js"></script>
-    <script>
-        // Функция для обновления текущей даты и времени
-        function updateTime() {
-            var now = new Date();
-            var hours = String(now.getHours()).padStart(2, '0');
-            var minutes = String(now.getMinutes()).padStart(2, '0');
-            var seconds = String(now.getSeconds()).padStart(2, '0');
-            var day = String(now.getDate()).padStart(2, '0');
-            var month = String(now.getMonth() + 1).padStart(2, '0'); 
-            var year = now.getFullYear();
-
-            // Форматируем строку: ДД.ММ.ГГГГ ЧЧ:ММ:СС
-            var datetimeString = day + '.' + month + '.' + year + ' ' + hours + ':' + minutes + ':' + seconds;
-
-            // Находим элемент и обновляем текст
-            var dtElement = document.getElementById('datetime');
-            if (dtElement) {
-                dtElement.textContent = datetimeString;
-            }
-        }
-
-        // Запуск обновления каждую секунду
-        setInterval(updateTime, 1000);
-        updateTime(); // Начальный вызов
+	<script src="script.js"></script>
+  
     </script>
 </body>
 </html>
