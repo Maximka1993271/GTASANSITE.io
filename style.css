@@ -29,6 +29,77 @@ html, body {
     line-height: 1.5;
 }
 
+/* ... (Здесь должен быть ваш существующий код style.css) ... */
+
+/* --- СТИЛИ ДЛЯ СТРАНИЦЫ 404 (WASTED) --- */
+.wasted-content {
+    padding: 80px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 70vh;
+    text-align: center;
+}
+
+.wasted-container {
+    position: relative;
+    margin-bottom: 60px;
+}
+
+.wasted-bg-text {
+    font-size: clamp(5rem, 25vw, 12rem);
+    color: rgba(255, 255, 255, 0.03);
+    font-weight: 900;
+    line-height: 1;
+    user-select: none;
+}
+
+.wasted-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-2deg);
+    background: rgba(0, 0, 0, 0.9);
+    color: #ff3333;
+    padding: 15px 50px;
+    border: 6px solid #ff3333;
+    font-size: clamp(2rem, 12vw, 5rem);
+    font-weight: bold;
+    box-shadow: 0 0 50px rgba(255, 0, 0, 0.6);
+    text-shadow: 3px 3px 0px #000;
+    white-space: nowrap;
+}
+
+.error-msg {
+    background: rgba(0, 0, 0, 0.75);
+    padding: 25px;
+    border-radius: 10px;
+    border-left: 5px solid var(--primary-color);
+    max-width: 600px;
+    margin-bottom: 30px;
+}
+
+.error-msg p {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.error-code {
+    font-family: 'Courier New', Courier, monospace;
+    color: var(--primary-color);
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+}
+
+/* Адаптация под мобильные устройства */
+@media (max-width: 768px) {
+    .wasted-overlay {
+        padding: 10px 30px;
+        border-width: 4px;
+    }
+}
+
 /* Сброс маркеров */
 ul, li, nav ul {
     list-style: none !important;
