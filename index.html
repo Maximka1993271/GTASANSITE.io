@@ -18,7 +18,7 @@
         <h1>Grand Theft Auto: San Andreas</h1>
         <nav>
             <ul>
-                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html" class="active">Home</a></li>
                 <li><a href="urbanize.html">[SA] Urbanize</a></li>
                 <li><a href="mods.html">List Mods</a></li>
                 <li><a href="Cheats.html">Cheats</a></li>
@@ -34,7 +34,7 @@
                 </li>
             </ul>
         </nav>
-        <!-- Блок для отображения даты и времени -->
+        <!-- Блок для отображения даты и времени через script.js -->
         <div id="datetime">Загрузка времени...</div>
     </header>
 
@@ -68,7 +68,7 @@
             <h2>Grand Theft Auto: San Andreas + Essentials Pack</h2>
             <p>Версия с набором необходимых исправлений для новых систем.</p>
             <div class="button-container">
-                <a href="https://mega.nz/file/vBFBEaTa#s6y6zTS8KtGJ-AUZGRp3ou_wm8ZKUJTNl3d1t2KGS8Q" target="_blank" class="download-btn">Download (MEGA)</a>
+                <a href="https://mega.nz/file/vBFBEaTa#s6y6zTS8KtGJ-AUZGRp3ou_wm8ZKUJTNl3d1t2KGS8Q" target="_blank" class="download-btn" style="background-color: #ff9933;">Download (MEGA)</a>
             </div>
         </div>
     </main>
@@ -77,30 +77,5 @@
     <button id="scroll-btn">⬆</button>
 
     <script src="script.js"></script>
-    <script>
-        // Функция для обновления текущей даты и времени
-        function updateTime() {
-            var now = new Date();
-            var hours = String(now.getHours()).padStart(2, '0');
-            var minutes = String(now.getMinutes()).padStart(2, '0');
-            var seconds = String(now.getSeconds()).padStart(2, '0');
-            var day = String(now.getDate()).padStart(2, '0');
-            var month = String(now.getMonth() + 1).padStart(2, '0'); 
-            var year = now.getFullYear();
-
-            // Форматируем строку: ДД.ММ.ГГГГ ЧЧ:ММ:СС
-            var datetimeString = day + '.' + month + '.' + year + ' ' + hours + ':' + minutes + ':' + seconds;
-
-            // Находим элемент и обновляем текст
-            var dtElement = document.getElementById('datetime');
-            if (dtElement) {
-                dtElement.textContent = datetimeString;
-            }
-        }
-
-        // Запуск обновления каждую секунду
-        setInterval(updateTime, 1000);
-        updateTime(); // Начальный вызов
-    </script>
 </body>
 </html>
