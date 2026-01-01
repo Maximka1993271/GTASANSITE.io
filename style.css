@@ -29,74 +29,121 @@ html, body {
     line-height: 1.5;
 }
 
-/* ... (Здесь должен быть ваш существующий код style.css) ... */
+/* --- УЛУЧШЕННЫЕ СТИЛИ ДЛЯ СТРАНИЦЫ 404 (WASTED EFFECT) --- */
 
-/* --- СТИЛИ ДЛЯ СТРАНИЦЫ 404 (WASTED) --- */
 .wasted-content {
-    padding: 80px 20px;
+    padding: 100px 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-height: 70vh;
+    min-height: 75vh;
     text-align: center;
+    position: relative;
+    overflow: hidden;
 }
 
+/* Контейнер для эффектов */
 .wasted-container {
     position: relative;
-    margin-bottom: 60px;
+    margin-bottom: 70px;
+    filter: drop-shadow(0 0 15px rgba(255, 0, 0, 0.2));
 }
 
+/* Фоновый глитч-текст 404 */
 .wasted-bg-text {
-    font-size: clamp(5rem, 25vw, 12rem);
-    color: rgba(255, 255, 255, 0.03);
+    font-size: clamp(6rem, 30vw, 15rem);
+    color: rgba(255, 255, 255, 0.05);
     font-weight: 900;
-    line-height: 1;
+    line-height: 0.8;
     user-select: none;
+    position: relative;
+    animation: glitch 3s infinite alternate;
 }
 
+/* Основной баннер ПОТРАЧЕНО */
 .wasted-overlay {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%) rotate(-2deg);
-    background: rgba(0, 0, 0, 0.9);
+    background: linear-gradient(180deg, rgba(20, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.95) 100%);
     color: #ff3333;
-    padding: 15px 50px;
-    border: 6px solid #ff3333;
-    font-size: clamp(2rem, 12vw, 5rem);
-    font-weight: bold;
-    box-shadow: 0 0 50px rgba(255, 0, 0, 0.6);
-    text-shadow: 3px 3px 0px #000;
+    padding: 20px 70px;
+    border: 5px solid #ff3333;
+    font-size: clamp(2.5rem, 15vw, 6rem);
+    font-weight: 800;
+    box-shadow: 
+        0 0 60px rgba(255, 0, 0, 0.5),
+        inset 0 0 20px rgba(255, 0, 0, 0.2);
+    text-shadow: 4px 4px 0px #000;
     white-space: nowrap;
+    animation: wasted-shake 0.2s ease-in-out infinite alternate;
+    z-index: 10;
 }
 
+/* Сообщение об ошибке */
 .error-msg {
-    background: rgba(0, 0, 0, 0.75);
-    padding: 25px;
-    border-radius: 10px;
-    border-left: 5px solid var(--primary-color);
-    max-width: 600px;
-    margin-bottom: 30px;
+    background: rgba(0, 0, 0, 0.85);
+    padding: 30px;
+    border-radius: 4px; /* Более острые углы в стиле интерфейса GTA */
+    border-top: 3px solid #ff3333;
+    border-bottom: 3px solid #ff3333;
+    max-width: 650px;
+    margin-bottom: 40px;
+    backdrop-filter: blur(5px);
+    box-shadow: var(--shadow);
 }
 
 .error-msg p {
-    font-size: 1.2rem;
-    margin-bottom: 10px;
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+    font-weight: 400;
+    color: #eee;
 }
 
 .error-code {
     font-family: 'Courier New', Courier, monospace;
-    color: var(--primary-color);
-    font-size: 0.9rem;
-    letter-spacing: 1px;
+    color: #ff3333;
+    font-size: 1rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 5px 15px;
+    display: inline-block;
+}
+
+/* АНИМАЦИИ */
+
+/* Эффект дрожания баннера */
+@keyframes wasted-shake {
+    0% { transform: translate(-50%, -50%) rotate(-2deg) scale(1); }
+    100% { transform: translate(-50.5%, -49.5%) rotate(-2.5deg) scale(1.02); }
+}
+
+/* Эффект глитча для цифр 404 */
+@keyframes glitch {
+    0% { transform: skew(0deg); opacity: 0.1; }
+    20% { transform: skew(2deg); opacity: 0.3; }
+    21% { transform: skew(-10deg); opacity: 0.05; }
+    25% { transform: skew(0deg); opacity: 0.1; }
+    70% { transform: skew(-1deg); opacity: 0.2; }
+    80% { transform: skew(5deg); opacity: 0.1; }
+    100% { transform: skew(0deg); opacity: 0.1; }
 }
 
 /* Адаптация под мобильные устройства */
 @media (max-width: 768px) {
+    .wasted-content {
+        padding: 60px 15px;
+    }
     .wasted-overlay {
         padding: 10px 30px;
         border-width: 4px;
+        box-shadow: 0 0 30px rgba(255, 0, 0, 0.4);
+    }
+    .error-msg {
+        padding: 20px;
     }
 }
 
