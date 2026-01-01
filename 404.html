@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Ошибка 404 — Страница не найдена. Вы заехали не в тот район, Си-Джей!">
+    <title>404 — ПОТРАЧЕНО</title>
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    
+    <!-- Подключение основных стилей сайта -->
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <style>
+        /* Специфические стили для эффекта Wasted (ПОТРАЧЕНО) */
+        .wasted-content {
+            padding: 60px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 60vh;
+            text-align: center;
+        }
+
+        .wasted-container {
+            position: relative;
+            margin-bottom: 50px;
+            display: inline-block;
+        }
+
+        .wasted-text-bg {
+            font-size: clamp(4rem, 20vw, 10rem);
+            color: rgba(255, 255, 255, 0.05);
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 15px;
+            line-height: 1;
+            user-select: none;
+        }
+
+        .wasted-banner {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-3deg);
+            background: rgba(0, 0, 0, 0.9);
+            color: #ff3333;
+            padding: 15px 60px;
+            border: 6px solid #ff3333;
+            font-size: clamp(2rem, 10vw, 4.5rem);
+            font-weight: bold;
+            white-space: nowrap;
+            box-shadow: 0 0 40px rgba(255, 0, 0, 0.5);
+            text-shadow: 3px 3px 0px #000;
+            z-index: 2;
+        }
+
+        .error-description {
+            margin-top: 20px;
+            font-size: 1.3rem;
+            color: var(--text-light);
+            max-width: 600px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+            background: rgba(0,0,0,0.6);
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .error-code-small {
+            display: block;
+            margin-top: 10px;
+            font-family: 'Courier New', Courier, monospace;
+            color: var(--primary-color);
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* Адаптация под мобильные устройства */
+        @media (max-width: 768px) {
+            .wasted-banner {
+                padding: 10px 30px;
+                border-width: 4px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Grand Theft Auto: San Andreas</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="urbanize.html">Урбанизация</a></li>
+                <li><a href="mods.html">Список модов</a></li>
+                <li><a href="Cheats.html">Читы</a></li>
+                <li><a href="Priority.html">Приоритеты</a></li>
+                <li><a href="install.html">Установка</a></li>
+                <li><a href="FAQ.html">FAQ</a></li>
+            </ul>
+        </nav>
+        <div id="datetime">Загрузка времени...</div>
+    </header>
+
+    <main class="container">
+        <div class="wasted-content">
+            <div class="wasted-container">
+                <div class="wasted-text-bg">404</div>
+                <div class="wasted-banner">ПОТРАЧЕНО</div>
+            </div>
+            
+            <div class="error-description">
+                <p>Вы заехали не в тот район, Си-Джей! Эта страница была захвачена Балласами или просто никогда не существовала.</p>
+                <span class="error-code-small">ERR_LOCATION: GROVE_STREET_NOT_FOUND</span>
+            </div>
+
+            <div class="button-container" style="margin-top: 40px;">
+                <a href="index.html" class="download-btn">Вернуться на Гроув-Стрит</a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Кнопка прокрутки вверх -->
+    <button id="scroll-btn">⬆</button>
+
+    <!-- Подключаем основной JS -->
+    <script src="script.js"></script>
+    <script>
+        // Резервный скрипт времени, если основной script.js не сработал
+        function updateFallbackTime() {
+            const dt = document.getElementById('datetime');
+            if (dt && dt.textContent.includes('Загрузка')) {
+                const now = new Date();
+                dt.textContent = now.toLocaleString('ru-RU');
+            }
+        }
+        setInterval(updateFallbackTime, 1000);
+        updateFallbackTime();
+    </script>
+</body>
+</html>
