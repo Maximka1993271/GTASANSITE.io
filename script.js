@@ -1,6 +1,6 @@
 /**
- * Оптимизированный скрипт для Priority GTA: SA
- * Обеспечивает плавную работу интерфейса и динамическое обновление данных
+ * Оптимизированный скрипт для GTA: SA Portal
+ * Обеспечивает работу скроллинга, времени и модального окна FAQ
  */
 
 (function() {
@@ -14,9 +14,11 @@
             this.initScrollTop();
             this.initImageFallback();
             this.initSmoothNavigation();
+            this.initFAQModal(); // Инициализация окна FAQ
+            this.initCheatAccordeon(); // Логика для страницы читов
         },
 
-        // Кэширование DOM-элементов для экономии ресурсов
+        // Кэширование DOM-элементов
         cacheElements() {
             this.elements = {
                 clock: document.getElementById('header-clock'),
@@ -24,97 +26,109 @@
                 dateTime: document.getElementById('datetime'),
                 scrollBtn: document.getElementById('scroll-btn'),
                 images: document.querySelectorAll('img'),
-                navLinks: document.querySelectorAll('nav a[href^="#"]')
+                // Элементы для FAQ
+                faqBtn: document.getElementById('faqBtn'),
+                faqModal: document.getElementById('faqModal'),
+                closeModal: document.querySelector('.close-modal')
             };
+        },
+
+        // --- МОДУЛЬ FAQ (МОДАЛЬНОЕ ОКНО) ---
+        initFAQModal() {
+            const { faqBtn, faqModal, closeModal } = this.elements;
+
+            if (faqBtn && faqModal) {
+                // Открытие окна
+                faqBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    faqModal.style.display = 'block';
+                    document.body.style.overflow = 'hidden'; // Запрет скролла фона
+                });
+
+                // Закрытие по крестику
+                if (closeModal) {
+                    closeModal.addEventListener('click', () => {
+                        faqModal.style.display = 'none';
+                        document.body.style.overflow = '';
+                    });
+                }
+
+                // Закрытие по клику вне окна
+                window.addEventListener('click', (event) => {
+                    if (event.target === faqModal) {
+                        faqModal.style.display = 'none';
+                        document.body.style.overflow = '';
+                    }
+                });
+            }
+        },
+
+        // --- МОДУЛЬ ЧИТОВ (АККОРДЕОН) ---
+        initCheatAccordeon() {
+            document.querySelectorAll('.cheat-category h3').forEach(header => {
+                header.addEventListener('click', () => {
+                    header.parentElement.classList.toggle('active');
+                });
+            });
         },
 
         // --- МОДУЛЬ ВРЕМЕНИ ---
         initDateTime() {
             const update = () => {
                 const now = new Date();
-                // Используем Intl.DateTimeFormat для гибкости локализации
                 const timeStr = now.toLocaleTimeString('ru-RU', { hour12: false });
                 const dateStr = now.toLocaleDateString('ru-RU');
 
                 if (this.elements.clock) this.elements.clock.textContent = timeStr;
                 if (this.elements.date) this.elements.date.textContent = dateStr;
+                
                 if (this.elements.dateTime) {
                     this.elements.dateTime.textContent = `${dateStr} ${timeStr}`;
                 }
             };
-
             update();
             setInterval(update, 1000);
         },
 
-        // --- МОДУЛЬ ПЛАВНОЙ ПРОКРУТКИ ---
+        // --- МОДУЛЬ СКРОЛЛИНГА (НАВЕРХ) ---
         initScrollTop() {
             const btn = this.elements.scrollBtn;
             if (!btn) return;
 
-            // Настройка стилей через JS для чистоты HTML
-            Object.assign(btn.style, {
-                transition: "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
-                opacity: "0",
-                visibility: "hidden",
-                transform: "translateY(20px)",
-                display: "flex"
-            });
-
-            let isTicking = false;
-
-            const onScroll = () => {
-                const scrolled = window.pageYOffset || document.documentElement.scrollTop;
-                const threshold = 400;
-
-                if (scrolled > threshold) {
-                    btn.style.visibility = "visible";
-                    btn.style.opacity = "1";
-                    btn.style.transform = "translateY(0)";
-                } else {
-                    btn.style.opacity = "0";
-                    btn.style.transform = "translateY(20px)";
-                    btn.style.visibility = "hidden";
-                }
-                isTicking = false;
-            };
-
             window.addEventListener('scroll', () => {
-                if (!isTicking) {
-                    window.requestAnimationFrame(onScroll);
-                    isTicking = true;
+                if (window.scrollY > 300) {
+                    btn.style.display = 'block';
+                } else {
+                    btn.style.display = 'none';
                 }
-            }, { passive: true });
+            });
 
             btn.addEventListener('click', () => {
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             });
         },
 
-        // --- МОДУЛЬ ЗАЩИТЫ ИЗОБРАЖЕНИЙ (С ЛЕНИВОЙ ЗАГРУЗКОЙ) ---
+        // --- ОБРАБОТКА ОШИБОК ИЗОБРАЖЕНИЙ ---
         initImageFallback() {
-            const fallbackUrl = 'https://via.placeholder.com/800x450/1a1a1a/FFD700?text=GTA+SA+IMAGE+ERROR';
+            const fallbackUrl = 'https://via.placeholder.com/800x450?text=GTA+San+Andreas';
             
             this.elements.images.forEach(img => {
-                // Добавляем нативную ленивую загрузку, если она не задана
                 if (!img.hasAttribute('loading')) {
                     img.setAttribute('loading', 'lazy');
                 }
 
                 img.addEventListener('error', function() {
                     this.src = fallbackUrl;
-                    this.classList.add('img-error');
                     this.style.filter = 'sepia(0.5) contrast(1.2)';
                 }, { once: true });
             });
         },
 
-        // --- ПЛАВНАЯ НАВИГАЦИЯ ПО ЯКОРЯМ ---
+        // --- ПЛАВНАЯ НАВИГАЦИЯ ---
         initSmoothNavigation() {
-            // Используем делегирование событий для эффективности
             document.addEventListener('click', (e) => {
                 const target = e.target.closest('a[href^="#"]');
-                if (!target) return;
+                if (!target || target.id === 'faqBtn') return; 
 
                 const targetId = target.getAttribute('href');
                 if (targetId === '#') return;
@@ -122,21 +136,20 @@
                 const targetElement = document.querySelector(targetId);
                 if (targetElement) {
                     e.preventDefault();
-                    targetElement.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
+                    targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    // Если это категория читов, открываем её
+                    if (targetElement.classList.contains('cheat-category')) {
+                        targetElement.classList.add('active');
+                    }
                 }
             });
         }
     };
 
-    // Безопасный запуск приложения
-    const run = () => GTA_APP.init();
-
+    // Запуск
     if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', run);
+        document.addEventListener('DOMContentLoaded', () => GTA_APP.init());
     } else {
-        run();
+        GTA_APP.init();
     }
 })();
