@@ -80,11 +80,17 @@ nav ul li a, .dropbtn {
     text-transform: uppercase;
     display: block;
     text-align: center;
+    /* Убираем стандартные стили кнопки для dropbtn */
+    background: none;
+    cursor: pointer;
+    font-family: inherit;
+    border: none;
 }
 
 nav ul li a:hover, nav ul li a.active, .dropdown:hover .dropbtn {
     background: rgba(255, 215, 0, 0.2);
-    border-color: var(--primary-color);
+    /* Добавляем рамку при наведении для всех элементов навигации */
+    outline: 1px solid var(--primary-color);
     color: var(--primary-color);
 }
 
