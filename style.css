@@ -6,6 +6,7 @@
     --text-light: #f4f4f4;
     --shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
     --transition: all 0.3s ease;
+    --ai-chat-bg: rgba(15, 15, 15, 0.98);
 }
 
 /* Глобальный сброс и предотвращение вылета контента */
@@ -161,79 +162,161 @@ nav ul li a:hover, nav ul li a.active, .dropdown:hover .dropbtn {
     overflow-wrap: anywhere; /* Чтобы длинные ссылки не ломали верстку */
 }
 
-/* --- УНИКАЛЬНЫЕ СТИЛИ ДЛЯ СТРАНИЦЫ URBANIZE --- */
+/* --- ТЕХНИЧЕСКАЯ ПОСЛЕДОВАТЕЛЬНОСТЬ МОДОВ --- */
 
-/* Контейнер страницы Urbanize */
-.urbanize-page {
-    background: rgba(10, 10, 10, 0.95) !important;
-    border: 2px solid var(--primary-color) !important;
-    width: 95% !important;
-    max-width: 1100px !important;
-}
-
-/* Специфический заголовок */
-.urbanize-title {
-    color: var(--primary-color);
-    text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
-    border-bottom: 2px solid var(--accent-color);
-    padding-bottom: 8px;
-    margin-bottom: 15px;
+/* Контейнер списка модов делаем Flex, чтобы работал порядок */
+.mod-list {
+    display: flex !important;
+    flex-direction: column !important;
     width: 100%;
-    font-size: clamp(1.2rem, 4vw, 1.8rem); /* Немного уменьшен заголовок */
 }
 
-/* Уникальное описание мода */
-.urbanize-info {
-    text-align: left !important;
-    background: rgba(255, 255, 255, 0.05);
-    padding: clamp(10px, 3vw, 20px); /* Уменьшены внутренние отступы */
-    border-left: 4px solid var(--primary-color);
+/* 1. Сначала NoCD */
+.mod-item-nocd, 
+[href*="NoCD"] { 
+    order: 1 !important; 
+}
+
+/* 2. Потом Pack */
+.mod-item-pack, 
+[href*="Pack"] { 
+    order: 2 !important; 
+}
+
+/* 3. Остальные моды идут следом */
+.mod-item-cleo, 
+[href*="Cleo"] { 
+    order: 3 !important; 
+}
+
+.mod-item-silent, 
+[href*="SilentPatch"] { 
+    order: 4 !important; 
+}
+
+.mod-item-sound, 
+[href*="Sound"] { 
+    order: 5 !important; 
+}
+
+/* --- КОНЕЦ ЛОГИКИ ОЧЕРЕДНОСТИ --- */
+
+/* --- ИНТЕРФЕЙС ИИ ЧАТА --- */
+
+#ai-chat-widget {
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    width: 350px;
+    max-width: 90vw;
+    height: 450px;
+    background: var(--ai-chat-bg);
+    border: 1px solid var(--primary-color);
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    display: none; /* Скрыт по умолчанию */
+    flex-direction: column;
+    z-index: 2000;
+    overflow: hidden;
+    animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.ai-chat-header {
+    background: var(--primary-color);
+    color: #000;
+    padding: 12px;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#ai-chat-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.message {
+    padding: 8px 12px;
+    border-radius: 8px;
+    max-width: 80%;
+    font-size: 0.9rem;
+}
+
+.user-message {
+    align-self: flex-end;
+    background: var(--accent-color);
+    color: #fff;
+}
+
+.ai-message {
+    align-self: flex-start;
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-light);
+    border: 1px solid rgba(255, 215, 0, 0.3);
+}
+
+.ai-chat-input-area {
+    padding: 10px;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    gap: 5px;
+    border-top: 1px solid rgba(255, 215, 0, 0.2);
+}
+
+#ai-user-input {
+    flex: 1;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,215,0,0.2);
+    color: #fff;
+    padding: 8px;
     border-radius: 4px;
-    margin: 15px 0 !important;
-    color: #ddd !important; /* Чуть менее яркий текст для компактности восприятия */
-    width: 100%;
-    box-sizing: border-box;
-    font-size: clamp(0.85rem, 2.5vw, 0.95rem); /* Уменьшен размер шрифта текста */
-    line-height: 1.4; /* Уплотнен межстрочный интервал */
+    outline: none;
 }
 
-/* Улучшенная кнопка скачивания только для Urbanize */
-.urbanize-dl-btn {
-    background: linear-gradient(135deg, #ff9933 0%, #ff4500 100%) !important;
-    padding: 12px 30px !important; /* Уменьшены паддинги кнопки */
-    font-size: clamp(0.9rem, 3.5vw, 1.1rem) !important; /* Уменьшен шрифт кнопки */
-    letter-spacing: 0.5px;
-    box-shadow: 0 6px 15px rgba(255, 69, 0, 0.3) !important;
-    border-radius: 6px !important;
-    display: inline-block;
-    width: auto;
-    max-width: 100%;
+#ai-send-btn {
+    background: var(--primary-color);
+    border: none;
+    padding: 5px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
 }
 
-/* Специфические медиа-запросы для Urbanize */
-@media (max-width: 768px) {
-    .urbanize-page {
-        width: 100% !important;
-        margin: 5px 0 !important;
-        padding: 12px !important;
-        border-radius: 0 !important;
-        border-left: none !important;
-        border-right: none !important;
-    }
-
-    .urbanize-info {
-        font-size: 0.85rem;
-        line-height: 1.4;
-        margin: 10px 0 !important;
-    }
-
-    .urbanize-dl-btn {
-        width: 100% !important;
-        padding: 12px 15px !important;
-    }
+/* Кнопка вызова ИИ */
+#ai-toggle-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 80px;
+    width: 45px;
+    height: 45px;
+    background: var(--primary-color);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 1001;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
 }
 
-/* --- КОНЕЦ СТИЛЕЙ URBANIZE --- */
+#ai-toggle-btn:hover {
+    transform: scale(1.1);
+    background: var(--accent-color);
+}
+
+/* --- КОНЕЦ СТИЛЕЙ ИИ --- */
 
 /* Таблицы и списки (Аккордеон) */
 .cheat-category {
@@ -258,7 +341,7 @@ nav ul li a:hover, nav ul li a.active, .dropdown:hover .dropbtn {
 
 .table-wrapper {
     display: none;
-    overflow-x: auto; /* Позволяет таблице скроллиться внутри контейнера */
+    overflow-x: auto; 
     width: 100%;
     background: rgba(0, 0, 0, 0.5);
     -webkit-overflow-scrolling: touch;
@@ -278,10 +361,9 @@ nav ul li a:hover, nav ul li a.active, .dropdown:hover .dropbtn {
     text-align: left;
     border-bottom: 1px solid rgba(255, 215, 0, 0.1);
     font-size: 0.9rem;
-    word-break: break-word; /* Перенос слов, если не помещаются */
+    word-break: break-word;
 }
 
-/* Коды оружия/читы (второй столбец) */
 .cheats-table td:nth-child(2) {
     color: var(--accent-color);
     font-weight: bold;
@@ -289,17 +371,15 @@ nav ul li a:hover, nav ul li a.active, .dropdown:hover .dropbtn {
     min-width: 120px;
 }
 
-/* Изображения - Исправлено для предотвращения вылета и учета размеров 576x565 */
 img {
     display: block;
-    max-width: 100%; /* Картинка не может быть шире контейнера */
-    height: auto;   /* Пропорции сохраняются */
+    max-width: 100%; 
+    height: auto;   
     border-radius: 8px;
-    margin: 15px auto; /* Центрирование */
+    margin: 15px auto; 
     box-shadow: 0 4px 10px rgba(0,0,0,0.3);
 }
 
-/* РАЗМЕР ВИДЕО */
 .video-container {
     width: 100%;
     max-width: 900px; 
@@ -322,15 +402,8 @@ img {
     border: none;
 }
 
-/* Кнопки */
-.button-container {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    margin: 20px 0;
-}
-
-.download-btn, button[style*="background-color: #ff9933"] {
+.download-btn {
+    display: inline-block !important; /* Исправлено: блочное отображение для предотвращения наложения */
     background: linear-gradient(135deg, var(--accent-color), #ff4500) !important;
     color: white !important;
     padding: 14px 28px !important;
@@ -342,93 +415,9 @@ img {
     text-transform: uppercase !important;
     border: none !important;
     cursor: pointer !important;
-    max-width: 100%;
+    max-width: fit-content; /* Кнопка под размер текста */
+    margin: 15px auto !important; /* Центрирование */
     text-align: center;
-}
-
-/* Сетки для списков модов */
-.mod-list, .content-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
-    gap: 20px;
-    width: 100%;
-    margin-top: 20px;
-}
-
-/* Адаптивность для мобильных */
-@media (max-width: 768px) {
-    nav ul {
-        display: grid;
-        grid-template-columns: 1fr 1fr; /* По две кнопки в ряд */
-        width: 100%;
-        padding: 0 10px;
-    }
-
-    nav ul li {
-        width: 100%;
-    }
-
-    nav ul li a, .dropbtn {
-        width: 100%;
-        font-size: 11px;
-        padding: 10px 5px;
-    }
-
-    .dropdown {
-        width: 100%;
-    }
-
-    .dropdown-content {
-        position: fixed; /* На мобилках лучше центрировать */
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 80%;
-    }
-
-    .container {
-        width: 100%;
-        margin: 10px 0;
-        padding: 10px; /* Уменьшил паддинг, чтобы видео было шире */
-        border-radius: 0;
-        border-left: none;
-        border-right: none;
-    }
-    
-    .cheats-table td {
-        font-size: 0.8rem; /* Уменьшаем шрифт таблицы для мобильных */
-        padding: 10px 5px;
-    }
-
-    .cheats-table td:nth-child(2) {
-        min-width: 90px;
-        font-size: 0.85rem;
-    }
-    
-    /* Дополнительно убираем внешние отступы у видео на мобилках */
-    .video-container {
-        margin: 10px 0;
-    }
-
-    /* Дополнительная проверка для картинок на очень узких экранах */
-    img {
-        width: 100% !important; /* На узких экранах картинка занимает всю доступную ширину */
-        max-width: 576px; /* Но не больше своего реального размера */
-    }
-}
-
-@media (max-width: 480px) {
-    nav ul {
-        grid-template-columns: 1fr; /* По одной кнопке в ряд на совсем маленьких экранах */
-    }
-
-    header {
-        padding: 15px 5px;
-    }
-    
-    .cheats-table td {
-        font-size: 0.75rem;
-    }
 }
 
 /* Кнопка наверх */
