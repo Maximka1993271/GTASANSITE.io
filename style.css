@@ -17,7 +17,7 @@
 
 html, body {
     width: 100%;
-    overflow-x: hidden; /* Запрет горизонтального скролла */
+    overflow-x: hidden;
     min-height: 100vh;
     font-family: 'Roboto', sans-serif;
     background: url('https://media-rockstargames-com.akamaized.net/mfe6/prod/__common/img/4bddd183ad5bce1fa0efdc5cbd958743.jpg') no-repeat center center fixed;
@@ -29,7 +29,6 @@ html, body {
     line-height: 1.5;
 }
 
-/* Сброс маркеров */
 ul, li, nav ul {
     list-style: none !important;
 }
@@ -67,7 +66,7 @@ header h1 {
     border: 1px solid rgba(255, 215, 0, 0.3);
 }
 
-/* Навигация */
+/* Навигация (Ваш дизайн кнопок) */
 nav {
     width: 100%;
     max-width: 1100px;
@@ -96,8 +95,6 @@ nav ul li a, .dropbtn {
     border: 1px solid transparent;
     cursor: pointer;
     font-family: inherit;
-    display: flex;
-    align-items: center;
 }
 
 nav ul li a:hover, nav ul li a.active, .dropdown:hover .dropbtn {
@@ -106,7 +103,7 @@ nav ul li a:hover, nav ul li a.active, .dropdown:hover .dropbtn {
     color: var(--primary-color);
 }
 
-/* Выпадающее меню (Radio-выпадающее) */
+/* Выпадающее меню */
 .dropdown {
     position: relative;
     display: flex;
@@ -134,10 +131,7 @@ nav ul li a:hover, nav ul li a.active, .dropdown:hover .dropbtn {
     display: block;
     text-align: center;
     font-size: 13px;
-    border-bottom: 1px solid rgba(255, 215, 0, 0.1);
 }
-
-.dropdown-content a:last-child { border-bottom: none; }
 
 .dropdown-content a:hover {
     background-color: var(--primary-color);
@@ -165,14 +159,13 @@ nav ul li a:hover, nav ul li a.active, .dropdown:hover .dropbtn {
     overflow-wrap: anywhere;
 }
 
-/* --- АНИМАЦИЯ ОТКРЫВАЮЩИХСЯ ОКОН (WIKI/CHEATS) --- */
+/* --- АНИМАЦИЯ ОКРЫВАЮЩИХСЯ ОКОН (CHEATS) --- */
 .cheat-category {
     width: 100%;
     margin-bottom: 15px;
     border: 1px solid rgba(255, 215, 0, 0.3);
     border-radius: 8px;
     overflow: hidden;
-    transition: var(--transition);
 }
 
 .cheat-category h3 {
@@ -185,39 +178,32 @@ nav ul li a:hover, nav ul li a.active, .dropdown:hover .dropbtn {
     justify-content: space-between;
     align-items: center;
     font-size: clamp(0.9rem, 3vw, 1.1rem);
-    transition: background 0.3s;
 }
 
-.cheat-category h3:hover {
-    background: rgba(255, 215, 0, 0.1);
-}
-
-/* Обертка таблицы с анимацией */
+/* Скрытая область с плавной анимацией */
 .table-wrapper {
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.5s cubic-bezier(0, 1, 0, 1); /* Трюк для плавной анимации высоты */
+    transition: max-height 0.4s ease-out; /* Плавное открытие */
     width: 100%;
     background: rgba(0, 0, 0, 0.5);
 }
 
+/* Состояние при открытии */
 .cheat-category.active .table-wrapper {
-    max-height: 2000px; /* Достаточно для контента */
-    transition: max-height 0.8s ease-in-out;
+    max-height: 2000px; /* Высота подстраивается под контент */
+    transition: max-height 0.6s ease-in;
 }
 
-.cheat-category h3::after {
-    content: '▼';
-    font-size: 0.8rem;
+/* Поворот стрелочки в заголовке, если она там будет (иконка i или ::after) */
+.cheat-category h3 i {
     transition: transform 0.3s ease;
-    margin-left: 10px;
 }
-
-.cheat-category.active h3::after {
+.cheat-category.active h3 i {
     transform: rotate(180deg);
 }
 
-/* Стили таблиц внутри */
+/* Таблицы */
 .cheats-table {
     width: 100%;
     border-collapse: collapse;
@@ -238,37 +224,31 @@ nav ul li a:hover, nav ul li a.active, .dropdown:hover .dropbtn {
     min-width: 120px;
 }
 
-/* --- УНИКАЛЬНЫЕ СТИЛИ ДЛЯ СТРАНИЦЫ URBANIZE --- */
-.urbanize-page {
-    background: rgba(10, 10, 10, 0.95) !important;
-    border: 2px solid var(--primary-color) !important;
-    width: 95% !important;
-    max-width: 1100px !important;
-}
-
-.urbanize-title {
-    color: var(--primary-color);
-    text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
-    border-bottom: 2px solid var(--accent-color);
-    padding-bottom: 8px;
-    margin-bottom: 15px;
+/* Кнопки скачивания (Ваш оригинальный дизайн) */
+.button-container {
+    display: flex;
+    justify-content: center;
     width: 100%;
-    font-size: clamp(1.2rem, 4vw, 1.8rem);
+    margin: 20px 0;
 }
 
-.urbanize-info {
-    text-align: left !important;
-    background: rgba(255, 255, 255, 0.05);
-    padding: clamp(10px, 3vw, 20px);
-    border-left: 4px solid var(--primary-color);
-    border-radius: 4px;
-    margin: 15px 0 !important;
-    color: #ddd !important;
-    width: 100%;
-    font-size: clamp(0.85rem, 2.5vw, 0.95rem);
-    line-height: 1.4;
+.download-btn, button[style*="background-color: #ff9933"] {
+    background: linear-gradient(135deg, var(--accent-color), #ff4500) !important;
+    color: white !important;
+    padding: 14px 28px !important;
+    font-size: clamp(0.9rem, 2vw, 1rem) !important;
+    font-weight: bold !important;
+    border-radius: 50px !important;
+    transition: var(--transition) !important;
+    text-decoration: none !important;
+    text-transform: uppercase !important;
+    border: none !important;
+    cursor: pointer !important;
+    max-width: 100%;
+    text-align: center;
 }
 
+/* Urbanize специфика */
 .urbanize-dl-btn {
     background: linear-gradient(135deg, #ff9933 0%, #ff4500 100%) !important;
     padding: 12px 30px !important;
@@ -277,10 +257,9 @@ nav ul li a:hover, nav ul li a.active, .dropdown:hover .dropbtn {
     box-shadow: 0 6px 15px rgba(255, 69, 0, 0.3) !important;
     border-radius: 6px !important;
     display: inline-block;
-    width: auto;
 }
 
-/* Изображения */
+/* Изображения и видео */
 img {
     display: block;
     max-width: 100%;
@@ -290,7 +269,6 @@ img {
     box-shadow: 0 4px 10px rgba(0,0,0,0.3);
 }
 
-/* Видео */
 .video-container {
     width: 100%;
     max-width: 900px;
@@ -300,8 +278,6 @@ img {
     height: 0;
     overflow: hidden;
     border-radius: 8px;
-    box-shadow: var(--shadow);
-    background: #000;
 }
 
 .video-container iframe {
@@ -311,50 +287,26 @@ img {
     border: none;
 }
 
-/* Адаптивность для мобильных */
+/* Адаптивность */
 @media (max-width: 768px) {
     nav ul {
         display: grid;
         grid-template-columns: 1fr 1fr;
         width: 100%;
-        padding: 0 10px;
     }
-
     nav ul li a, .dropbtn {
+        width: 100%;
         font-size: 11px;
         padding: 10px 5px;
-        justify-content: center;
+        text-align: center;
     }
-
-    .dropdown-content {
-        position: fixed;
-        top: 50%; left: 50%;
-        transform: translate(-50%, -50%);
-        width: 80%;
-    }
-
-    .container {
-        width: 100%;
-        margin: 10px 0;
-        padding: 10px;
-        border-radius: 0;
-        border-left: none;
-        border-right: none;
-    }
-    
-    .cheats-table td {
-        font-size: 0.8rem;
-        padding: 10px 5px;
-    }
+    .container { width: 100%; margin: 10px 0; border-radius: 0; }
 }
 
 @media (max-width: 480px) {
     nav ul { grid-template-columns: 1fr; }
-    header { padding: 15px 5px; }
-    .cheats-table td { font-size: 0.75rem; }
 }
 
-/* Кнопка наверх */
 #scroll-btn {
     position: fixed;
     bottom: 20px;
@@ -365,11 +317,8 @@ img {
     color: white;
     border: none;
     border-radius: 50%;
-    font-size: 18px;
-    cursor: pointer;
-    z-index: 1001;
     display: none;
     align-items: center;
     justify-content: center;
-    box-shadow: var(--shadow);
+    z-index: 1001;
 }
