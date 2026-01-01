@@ -1,100 +1,118 @@
 /**
- * Основной скрипт сайта Grand Theft Auto: San Andreas
- * Обрабатывает динамическое время и интерактивные элементы интерфейса
+ * Оптимизированный скрипт для Priority GTA: SA
+ * Обеспечивает плавную работу интерфейса и динамическое обновление данных
  */
 
-document.addEventListener('DOMContentLoaded', () => {
-    // === 1. УПРАВЛЕНИЕ ВРЕМЕНЕМ И ДАТОЙ ===
-    const clockElement = document.getElementById('header-clock');
-    const dateElement = document.getElementById('date');
-    const dtElement = document.getElementById('datetime');
+(function() {
+    'use strict';
 
-    /**
-     * Обновляет текстовое содержимое элементов времени
-     */
-    const updateTime = () => {
-        const now = new Date();
-        
-        // Опции для форматирования (локаль ru-RU)
-        const timeOptions = { hour: '2-digit', minute: '2-digit', second: '2-digit' };
-        const dateOptions = { day: '2-digit', month: '2-digit', year: 'numeric' };
+    const GTA_APP = {
+        // Инициализация всех модулей
+        init() {
+            this.cacheElements();
+            this.initDateTime();
+            this.initScrollTop();
+            this.initImageFallback();
+        },
 
-        const currentTime = now.toLocaleTimeString('ru-RU', timeOptions);
-        const currentDate = now.toLocaleDateString('ru-RU', dateOptions);
+        // Кэширование DOM-элементов для экономии ресурсов
+        cacheElements() {
+            this.elements = {
+                clock: document.getElementById('header-clock'),
+                date: document.getElementById('date'),
+                dateTime: document.getElementById('datetime'),
+                scrollBtn: document.getElementById('scroll-btn'),
+                images: document.querySelectorAll('img')
+            };
+        },
 
-        // Приоритет раздельным блокам, если они есть в HTML
-        if (clockElement && dateElement) {
-            clockElement.textContent = currentTime;
-            dateElement.textContent = currentDate;
-        } 
-        // Fallback на общий блок
-        else if (dtElement) {
-            dtElement.textContent = `${currentDate} | ${currentTime}`;
+        // --- МОДУЛЬ ВРЕМЕНИ ---
+        initDateTime() {
+            const update = () => {
+                const now = new Date();
+                const timeStr = now.toLocaleTimeString('ru-RU', { hour12: false });
+                const dateStr = now.toLocaleDateString('ru-RU');
+
+                if (this.elements.clock) this.elements.clock.textContent = timeStr;
+                if (this.elements.date) this.elements.date.textContent = dateStr;
+                if (this.elements.dateTime) {
+                    this.elements.dateTime.textContent = `${dateStr} ${timeStr}`;
+                }
+            };
+
+            // Запуск с интервалом в 1 секунду
+            update();
+            setInterval(update, 1000);
+        },
+
+        // --- МОДУЛЬ ПЛАВНОЙ ПРОКРУТКИ ---
+        initScrollTop() {
+            const btn = this.elements.scrollBtn;
+            if (!btn) return;
+
+            // Настройка стилей для максимальной плавности через CSS-transition
+            Object.assign(btn.style, {
+                transition: "all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275)",
+                opacity: "0",
+                visibility: "hidden",
+                transform: "translateY(40px) scale(0.7)",
+                display: "flex"
+            });
+
+            let isTicking = false;
+
+            const onScroll = () => {
+                const scrolled = window.pageYOffset || document.documentElement.scrollTop;
+                const threshold = 350;
+
+                if (scrolled > threshold) {
+                    btn.style.visibility = "visible";
+                    btn.style.opacity = "1";
+                    btn.style.transform = "translateY(0) scale(1)";
+                } else {
+                    btn.style.opacity = "0";
+                    btn.style.transform = "translateY(40px) scale(0.7)";
+                    btn.style.visibility = "hidden";
+                }
+                isTicking = false;
+            };
+
+            // Оптимизация производительности скролла через requestAnimationFrame
+            window.addEventListener('scroll', () => {
+                if (!isTicking) {
+                    window.requestAnimationFrame(onScroll);
+                    isTicking = true;
+                }
+            }, { passive: true });
+
+            // Плавный возврат наверх
+            btn.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+
+            // Проверка состояния при загрузке
+            onScroll();
+        },
+
+        // --- МОДУЛЬ ЗАЩИТЫ ИЗОБРАЖЕНИЙ ---
+        initImageFallback() {
+            this.elements.images.forEach(img => {
+                img.addEventListener('error', function() {
+                    this.src = 'https://via.placeholder.com/800x450/1a1a1a/FFD700?text=GTA+SA+IMAGE+ERROR';
+                    this.style.border = '2px solid #FFD700';
+                    this.style.filter = 'grayscale(1)';
+                }, { once: true });
+            });
         }
     };
 
-    // Запуск таймера обновления
-    const timeInterval = setInterval(updateTime, 1000);
-    updateTime(); // Мгновенное отображение при загрузке
-
-    // === 2. КНОПКА "ВВЕРХ" (SCROLL TO TOP) ===
-    const scrollBtn = document.getElementById('scroll-btn');
-    
-    if (scrollBtn) {
-        // Устанавливаем начальные стили для плавности через JS, если их нет в CSS
-        scrollBtn.style.transition = "opacity 0.4s ease, transform 0.3s ease, visibility 0.4s";
-        scrollBtn.style.opacity = "0";
-        scrollBtn.style.visibility = "hidden";
-        scrollBtn.style.display = "flex"; // Оставляем flex для центрирования иконки
-
-        /**
-         * Переключает видимость кнопки в зависимости от прокрутки
-         */
-        const handleScroll = () => {
-            const scrollThreshold = 300;
-            const isVisible = window.scrollY > scrollThreshold;
-            
-            if (isVisible) {
-                scrollBtn.style.visibility = "visible";
-                scrollBtn.style.opacity = "1";
-                scrollBtn.style.transform = "translateY(0)";
-            } else {
-                scrollBtn.style.opacity = "0";
-                scrollBtn.style.visibility = "hidden";
-                scrollBtn.style.transform = "translateY(20px)";
-            }
-        };
-
-        // Оптимизация: используем passive event listener для лучшей производительности скролла
-        window.addEventListener('scroll', handleScroll, { passive: true });
-
-        /**
-         * Плавный скролл к началу страницы
-         */
-        scrollBtn.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-
-        // Начальная проверка положения
-        handleScroll();
+    // Запуск приложения после загрузки DOM
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', () => GTA_APP.init());
+    } else {
+        GTA_APP.init();
     }
-
-    // === 3. ОБРАБОТКА ОШИБОК ИЗОБРАЖЕНИЙ ===
-    // Если картинка не загрузилась, подставляем заглушку
-    document.querySelectorAll('img').forEach(img => {
-        img.onerror = function() {
-            this.src = 'https://via.placeholder.com/700x400?text=GTA+San+Andreas';
-            this.onerror = null;
-        };
-    });
-});
-
-/**
- * Очистка ресурсов при выгрузке страницы
- */
-window.addEventListener('unload', () => {
-    if (typeof timeInterval !== 'undefined') clearInterval(timeInterval);
-});
+})();
