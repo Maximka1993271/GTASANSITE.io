@@ -161,6 +161,80 @@ nav ul li a:hover, nav ul li a.active, .dropdown:hover .dropbtn {
     overflow-wrap: anywhere; /* Чтобы длинные ссылки не ломали верстку */
 }
 
+/* --- УНИКАЛЬНЫЕ СТИЛИ ДЛЯ СТРАНИЦЫ URBANIZE --- */
+
+/* Контейнер страницы Urbanize */
+.urbanize-page {
+    background: rgba(10, 10, 10, 0.95) !important;
+    border: 2px solid var(--primary-color) !important;
+    width: 95% !important;
+    max-width: 1100px !important;
+}
+
+/* Специфический заголовок */
+.urbanize-title {
+    color: var(--primary-color);
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+    border-bottom: 2px solid var(--accent-color);
+    padding-bottom: 8px;
+    margin-bottom: 15px;
+    width: 100%;
+    font-size: clamp(1.2rem, 4vw, 1.8rem); /* Немного уменьшен заголовок */
+}
+
+/* Уникальное описание мода */
+.urbanize-info {
+    text-align: left !important;
+    background: rgba(255, 255, 255, 0.05);
+    padding: clamp(10px, 3vw, 20px); /* Уменьшены внутренние отступы */
+    border-left: 4px solid var(--primary-color);
+    border-radius: 4px;
+    margin: 15px 0 !important;
+    color: #ddd !important; /* Чуть менее яркий текст для компактности восприятия */
+    width: 100%;
+    box-sizing: border-box;
+    font-size: clamp(0.85rem, 2.5vw, 0.95rem); /* Уменьшен размер шрифта текста */
+    line-height: 1.4; /* Уплотнен межстрочный интервал */
+}
+
+/* Улучшенная кнопка скачивания только для Urbanize */
+.urbanize-dl-btn {
+    background: linear-gradient(135deg, #ff9933 0%, #ff4500 100%) !important;
+    padding: 12px 30px !important; /* Уменьшены паддинги кнопки */
+    font-size: clamp(0.9rem, 3.5vw, 1.1rem) !important; /* Уменьшен шрифт кнопки */
+    letter-spacing: 0.5px;
+    box-shadow: 0 6px 15px rgba(255, 69, 0, 0.3) !important;
+    border-radius: 6px !important;
+    display: inline-block;
+    width: auto;
+    max-width: 100%;
+}
+
+/* Специфические медиа-запросы для Urbanize */
+@media (max-width: 768px) {
+    .urbanize-page {
+        width: 100% !important;
+        margin: 5px 0 !important;
+        padding: 12px !important;
+        border-radius: 0 !important;
+        border-left: none !important;
+        border-right: none !important;
+    }
+
+    .urbanize-info {
+        font-size: 0.85rem;
+        line-height: 1.4;
+        margin: 10px 0 !important;
+    }
+
+    .urbanize-dl-btn {
+        width: 100% !important;
+        padding: 12px 15px !important;
+    }
+}
+
+/* --- КОНЕЦ СТИЛЕЙ URBANIZE --- */
+
 /* Таблицы и списки (Аккордеон) */
 .cheat-category {
     width: 100%;
@@ -197,7 +271,6 @@ nav ul li a:hover, nav ul li a.active, .dropdown:hover .dropbtn {
 .cheats-table {
     width: 100%;
     border-collapse: collapse;
-    /* Убрали min-width, чтобы таблица могла сжиматься */
 }
 
 .cheats-table td {
@@ -216,11 +289,14 @@ nav ul li a:hover, nav ul li a.active, .dropdown:hover .dropbtn {
     min-width: 120px;
 }
 
-/* Изображения и видео */
+/* Изображения - Исправлено для предотвращения вылета и учета размеров 576x565 */
 img {
-    max-width: 100%;
-    height: auto;
+    display: block;
+    max-width: 100%; /* Картинка не может быть шире контейнера */
+    height: auto;   /* Пропорции сохраняются */
     border-radius: 8px;
+    margin: 15px auto; /* Центрирование */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
 }
 
 /* РАЗМЕР ВИДЕО */
@@ -332,6 +408,12 @@ img {
     /* Дополнительно убираем внешние отступы у видео на мобилках */
     .video-container {
         margin: 10px 0;
+    }
+
+    /* Дополнительная проверка для картинок на очень узких экранах */
+    img {
+        width: 100% !important; /* На узких экранах картинка занимает всю доступную ширину */
+        max-width: 576px; /* Но не больше своего реального размера */
     }
 }
 
