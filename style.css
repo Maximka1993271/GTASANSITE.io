@@ -85,7 +85,6 @@ nav ul li a, .dropbtn {
     text-transform: uppercase;
     display: block;
     text-align: center;
-    /* Исправление белого фона кнопки */
     background: transparent;
     border: none;
     cursor: pointer;
@@ -157,44 +156,71 @@ nav ul li a:hover, nav ul li a.active, .dropdown:hover .dropbtn {
     box-sizing: border-box;
 }
 
-/* Таблицы читов */
-.table-wrapper {
-    overflow-x: auto;
-    margin: 20px 0;
-    border-radius: 8px;
+/* Стили для раскрывающихся таблиц (Аккордеон) */
+.cheat-category {
     width: 100%;
+    margin-bottom: 10px;
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.cheat-category h3 {
+    margin: 0;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--primary-color);
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: var(--transition);
+}
+
+.cheat-category h3:hover {
+    background: rgba(255, 215, 0, 0.1);
+}
+
+.cheat-category h3::after {
+    content: '▼';
+    font-size: 0.8rem;
+    transition: transform 0.3s;
+}
+
+.cheat-category.active h3::after {
+    transform: rotate(180deg);
+}
+
+.table-wrapper {
+    display: none; /* Скрыто по умолчанию */
+    overflow-x: auto;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+}
+
+.cheat-category.active .table-wrapper {
+    display: block;
 }
 
 .cheats-table {
     width: 100%;
     border-collapse: collapse;
     min-width: 500px;
-    background: rgba(255, 255, 255, 0.05);
-    margin: 0 auto;
 }
 
-.cheats-table th, .cheats-table td {
+.cheats-table td {
     padding: 12px;
-    text-align: center;
-    border-bottom: 1px solid rgba(255, 215, 0, 0.2);
+    text-align: left;
+    border-bottom: 1px solid rgba(255, 215, 0, 0.1);
+    font-size: 0.95rem;
 }
 
-.cheats-table th {
-    background: rgba(255, 215, 0, 0.1);
-    color: var(--primary-color);
-    text-transform: uppercase;
-    font-size: 0.9rem;
-}
-
-.code-badge {
-    background: var(--accent-color);
-    color: #fff;
-    padding: 4px 8px;
-    border-radius: 4px;
-    font-family: monospace;
+.cheats-table td:nth-child(2) {
+    color: var(--accent-color);
     font-weight: bold;
-    letter-spacing: 1px;
-    display: inline-block;
+    font-family: monospace;
+    font-size: 1.1rem;
 }
 
 /* Кнопки */
