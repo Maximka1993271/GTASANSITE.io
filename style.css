@@ -158,46 +158,12 @@ nav ul li a:hover, nav ul li a.active, .dropdown:hover .dropbtn {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    overflow-wrap: anywhere; 
-}
-
-/* Красивые кнопки скачивания (как в index.html) */
-.download-btn {
-    display: inline-block;
-    background: linear-gradient(135deg, #ff9933 0%, #ff4500 100%);
-    color: white !important;
-    padding: 12px 30px;
-    font-size: 1.1rem;
-    font-weight: bold;
-    text-decoration: none !important;
-    text-transform: uppercase;
-    border-radius: 6px;
-    box-shadow: 0 6px 15px rgba(255, 69, 0, 0.3);
-    transition: all 0.3s ease;
-    border: none;
-    cursor: pointer;
-    margin: 10px 0;
-}
-
-.download-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(255, 69, 0, 0.5);
-    filter: brightness(1.1);
-}
-
-/* Настройка Текста в контейнере */
-.container p {
-    max-width: 850px;
-    width: 100%;
-    margin-bottom: 20px;
-    font-size: 1.05rem;
-    text-align: center;
-    line-height: 1.7;
-    color: #e0e0e0;
+    overflow-wrap: anywhere; /* Чтобы длинные ссылки не ломали верстку */
 }
 
 /* --- УНИКАЛЬНЫЕ СТИЛИ ДЛЯ СТРАНИЦЫ URBANIZE --- */
 
+/* Контейнер страницы Urbanize */
 .urbanize-page {
     background: rgba(10, 10, 10, 0.95) !important;
     border: 2px solid var(--primary-color) !important;
@@ -205,6 +171,7 @@ nav ul li a:hover, nav ul li a.active, .dropdown:hover .dropbtn {
     max-width: 1100px !important;
 }
 
+/* Специфический заголовок */
 .urbanize-title {
     color: var(--primary-color);
     text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
@@ -212,46 +179,69 @@ nav ul li a:hover, nav ul li a.active, .dropdown:hover .dropbtn {
     padding-bottom: 8px;
     margin-bottom: 15px;
     width: 100%;
-    font-size: clamp(1.2rem, 4vw, 1.8rem);
+    font-size: clamp(1.2rem, 4vw, 1.8rem); /* Немного уменьшен заголовок */
 }
 
-/* Центрирование текста в Urbanize Info и фикс вылетов */
+/* Уникальное описание мода */
 .urbanize-info {
-    text-align: center !important; 
+    text-align: left !important;
     background: rgba(255, 255, 255, 0.05);
-    padding: clamp(15px, 4vw, 25px); 
-    border-top: 2px solid var(--primary-color);
-    border-bottom: 2px solid var(--primary-color);
-    border-radius: 8px;
-    margin: 20px auto !important;
-    color: #ddd !important;
+    padding: clamp(10px, 3vw, 20px); /* Уменьшены внутренние отступы */
+    border-left: 4px solid var(--primary-color);
+    border-radius: 4px;
+    margin: 15px 0 !important;
+    color: #ddd !important; /* Чуть менее яркий текст для компактности восприятия */
     width: 100%;
-    max-width: 900px;
     box-sizing: border-box;
-    font-size: clamp(0.9rem, 2.5vw, 1.05rem);
-    line-height: 1.6;
-    overflow-wrap: break-word; /* Чтоб текст точно не вылазил */
+    font-size: clamp(0.85rem, 2.5vw, 0.95rem); /* Уменьшен размер шрифта текста */
+    line-height: 1.4; /* Уплотнен межстрочный интервал */
 }
 
-/* Кнопка специально для Urbanize (наследует красоту) */
+/* Улучшенная кнопка скачивания только для Urbanize */
 .urbanize-dl-btn {
-    composes: download-btn; /* Логическое наследование */
     background: linear-gradient(135deg, #ff9933 0%, #ff4500 100%) !important;
-    padding: 12px 40px !important;
-    font-size: clamp(0.9rem, 3.5vw, 1.1rem) !important;
+    padding: 12px 30px !important; /* Уменьшены паддинги кнопки */
+    font-size: clamp(0.9rem, 3.5vw, 1.1rem) !important; /* Уменьшен шрифт кнопки */
+    letter-spacing: 0.5px;
+    box-shadow: 0 6px 15px rgba(255, 69, 0, 0.3) !important;
+    border-radius: 6px !important;
+    display: inline-block;
+    width: auto;
+    max-width: 100%;
+}
+
+/* Специфические медиа-запросы для Urbanize */
+@media (max-width: 768px) {
+    .urbanize-page {
+        width: 100% !important;
+        margin: 5px 0 !important;
+        padding: 12px !important;
+        border-radius: 0 !important;
+        border-left: none !important;
+        border-right: none !important;
+    }
+
+    .urbanize-info {
+        font-size: 0.85rem;
+        line-height: 1.4;
+        margin: 10px 0 !important;
+    }
+
+    .urbanize-dl-btn {
+        width: 100% !important;
+        padding: 12px 15px !important;
+    }
 }
 
 /* --- КОНЕЦ СТИЛЕЙ URBANIZE --- */
 
-/* --- СТИЛИ ДЛЯ СТРАНИЦЫ ЧИТОВ (CHEATS) --- */
-
+/* Таблицы и списки (Аккордеон) */
 .cheat-category {
     width: 100%;
     margin-bottom: 15px;
     border: 1px solid rgba(255, 215, 0, 0.3);
     border-radius: 8px;
     overflow: hidden;
-    background: rgba(0, 0, 0, 0.3);
 }
 
 .cheat-category h3 {
@@ -264,12 +254,11 @@ nav ul li a:hover, nav ul li a.active, .dropdown:hover .dropbtn {
     justify-content: space-between;
     align-items: center;
     font-size: clamp(0.9rem, 3vw, 1.1rem);
-    transition: var(--transition);
 }
 
 .table-wrapper {
     display: none;
-    overflow-x: auto;
+    overflow-x: auto; /* Позволяет таблице скроллиться внутри контейнера */
     width: 100%;
     background: rgba(0, 0, 0, 0.5);
     -webkit-overflow-scrolling: touch;
@@ -285,64 +274,32 @@ nav ul li a:hover, nav ul li a.active, .dropdown:hover .dropbtn {
 }
 
 .cheats-table td {
-    padding: 12px 15px;
+    padding: 12px 8px;
     text-align: left;
     border-bottom: 1px solid rgba(255, 215, 0, 0.1);
-    font-size: 0.95rem;
-    word-break: break-word;
-    color: #f4f4f4;
+    font-size: 0.9rem;
+    word-break: break-word; /* Перенос слов, если не помещаются */
 }
 
+/* Коды оружия/читы (второй столбец) */
 .cheats-table td:nth-child(2) {
     color: var(--accent-color);
     font-weight: bold;
     font-family: 'Courier New', monospace;
-    min-width: 140px;
-    text-transform: uppercase;
+    min-width: 120px;
 }
 
-.wiki-toc {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid var(--primary-color);
-    border-radius: 8px;
-    padding: 20px;
-    margin-bottom: 30px;
-    text-align: left;
-    width: 100%;
-    box-sizing: border-box;
-}
-
-.wiki-toc h2 {
-    font-size: 1.2rem;
-    color: var(--primary-color);
-    margin-bottom: 15px;
-    text-transform: uppercase;
-}
-
-.wiki-toc ol {
-    padding-left: 20px;
-    column-count: 2;
-    list-style: decimal inside;
-}
-
-.wiki-toc a {
-    color: var(--text-light);
-    text-decoration: none;
-    line-height: 2;
-    transition: var(--transition);
-}
-
-/* --- КОНЕЦ СТИЛЕЙ ДЛЯ ЧИТОВ --- */
-
+/* Изображения - Исправлено для предотвращения вылета и учета размеров 576x565 */
 img {
     display: block;
-    max-width: 100%; 
-    height: auto;
+    max-width: 100%; /* Картинка не может быть шире контейнера */
+    height: auto;   /* Пропорции сохраняются */
     border-radius: 8px;
-    margin: 15px auto;
+    margin: 15px auto; /* Центрирование */
     box-shadow: 0 4px 10px rgba(0,0,0,0.3);
 }
 
+/* РАЗМЕР ВИДЕО */
 .video-container {
     width: 100%;
     max-width: 900px; 
@@ -365,6 +322,116 @@ img {
     border: none;
 }
 
+/* Кнопки */
+.button-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin: 20px 0;
+}
+
+.download-btn, button[style*="background-color: #ff9933"] {
+    background: linear-gradient(135deg, var(--accent-color), #ff4500) !important;
+    color: white !important;
+    padding: 14px 28px !important;
+    font-size: clamp(0.9rem, 2vw, 1rem) !important;
+    font-weight: bold !important;
+    border-radius: 50px !important;
+    transition: var(--transition) !important;
+    text-decoration: none !important;
+    text-transform: uppercase !important;
+    border: none !important;
+    cursor: pointer !important;
+    max-width: 100%;
+    text-align: center;
+}
+
+/* Сетки для списков модов */
+.mod-list, .content-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+    gap: 20px;
+    width: 100%;
+    margin-top: 20px;
+}
+
+/* Адаптивность для мобильных */
+@media (max-width: 768px) {
+    nav ul {
+        display: grid;
+        grid-template-columns: 1fr 1fr; /* По две кнопки в ряд */
+        width: 100%;
+        padding: 0 10px;
+    }
+
+    nav ul li {
+        width: 100%;
+    }
+
+    nav ul li a, .dropbtn {
+        width: 100%;
+        font-size: 11px;
+        padding: 10px 5px;
+    }
+
+    .dropdown {
+        width: 100%;
+    }
+
+    .dropdown-content {
+        position: fixed; /* На мобилках лучше центрировать */
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 80%;
+    }
+
+    .container {
+        width: 100%;
+        margin: 10px 0;
+        padding: 10px; /* Уменьшил паддинг, чтобы видео было шире */
+        border-radius: 0;
+        border-left: none;
+        border-right: none;
+    }
+    
+    .cheats-table td {
+        font-size: 0.8rem; /* Уменьшаем шрифт таблицы для мобильных */
+        padding: 10px 5px;
+    }
+
+    .cheats-table td:nth-child(2) {
+        min-width: 90px;
+        font-size: 0.85rem;
+    }
+    
+    /* Дополнительно убираем внешние отступы у видео на мобилках */
+    .video-container {
+        margin: 10px 0;
+    }
+
+    /* Дополнительная проверка для картинок на очень узких экранах */
+    img {
+        width: 100% !important; /* На узких экранах картинка занимает всю доступную ширину */
+        max-width: 576px; /* Но не больше своего реального размера */
+    }
+}
+
+@media (max-width: 480px) {
+    nav ul {
+        grid-template-columns: 1fr; /* По одной кнопке в ряд на совсем маленьких экранах */
+    }
+
+    header {
+        padding: 15px 5px;
+    }
+    
+    .cheats-table td {
+        font-size: 0.75rem;
+    }
+}
+
+/* Кнопка наверх */
 #scroll-btn {
     position: fixed;
     bottom: 20px;
@@ -382,41 +449,4 @@ img {
     align-items: center;
     justify-content: center;
     box-shadow: var(--shadow);
-}
-
-@media (max-width: 768px) {
-    nav ul {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        width: 100%;
-    }
-
-    .container {
-        width: 100%;
-        margin: 10px 0;
-        padding: 15px; 
-        border-radius: 0;
-    }
-    
-    img {
-        max-width: 85% !important; 
-    }
-
-    .urbanize-info {
-        font-size: 0.9rem;
-        padding: 15px;
-        margin: 15px 0 !important;
-        text-align: center !important;
-    }
-
-    .urbanize-page {
-        width: 100% !important;
-        padding: 10px !important;
-    }
-}
-
-@media (max-width: 480px) {
-    nav ul {
-        grid-template-columns: 1fr;
-    }
 }
