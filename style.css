@@ -43,14 +43,12 @@ html, body {
     overflow: hidden;
 }
 
-/* Контейнер для эффектов */
 .wasted-container {
     position: relative;
     margin-bottom: 70px;
     filter: drop-shadow(0 0 15px rgba(255, 0, 0, 0.2));
 }
 
-/* Фоновый глитч-текст 404 */
 .wasted-bg-text {
     font-size: clamp(6rem, 30vw, 15rem);
     color: rgba(255, 255, 255, 0.05);
@@ -61,7 +59,6 @@ html, body {
     animation: glitch 3s infinite alternate;
 }
 
-/* Основной баннер ПОТРАЧЕНО */
 .wasted-overlay {
     position: absolute;
     top: 50%;
@@ -82,11 +79,10 @@ html, body {
     z-index: 10;
 }
 
-/* Сообщение об ошибке */
 .error-msg {
     background: rgba(0, 0, 0, 0.85);
     padding: 30px;
-    border-radius: 4px; /* Более острые углы в стиле интерфейса GTA */
+    border-radius: 4px;
     border-top: 3px solid #ff3333;
     border-bottom: 3px solid #ff3333;
     max-width: 650px;
@@ -98,7 +94,6 @@ html, body {
 .error-msg p {
     font-size: 1.3rem;
     margin-bottom: 15px;
-    font-weight: 400;
     color: #eee;
 }
 
@@ -115,13 +110,11 @@ html, body {
 
 /* АНИМАЦИИ */
 
-/* Эффект дрожания баннера */
 @keyframes wasted-shake {
     0% { transform: translate(-50%, -50%) rotate(-2deg) scale(1); }
     100% { transform: translate(-50.5%, -49.5%) rotate(-2.5deg) scale(1.02); }
 }
 
-/* Эффект глитча для цифр 404 */
 @keyframes glitch {
     0% { transform: skew(0deg); opacity: 0.1; }
     20% { transform: skew(2deg); opacity: 0.3; }
@@ -132,19 +125,13 @@ html, body {
     100% { transform: skew(0deg); opacity: 0.1; }
 }
 
-/* Адаптация под мобильные устройства */
 @media (max-width: 768px) {
-    .wasted-content {
-        padding: 60px 15px;
-    }
+    .wasted-content { padding: 60px 15px; }
     .wasted-overlay {
         padding: 10px 30px;
         border-width: 4px;
-        box-shadow: 0 0 30px rgba(255, 0, 0, 0.4);
     }
-    .error-msg {
-        padding: 20px;
-    }
+    .error-msg { padding: 20px; }
 }
 
 /* Сброс маркеров */
