@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-	
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Grand Theft Auto: San Andreas — игра, в которой Карл Джонсон возвращается в родной город и начинает борьбу за семью и свою честь. Скачать игру и узнать секреты.»">
     <meta property="og:title" content="Grand Theft Auto: San Andreas">
@@ -10,7 +9,7 @@
     <meta property="og:image" content="https://media-rockstargames-com.akamaized.net/mfe6/prod/__common/img/bbcbd2a2bb65ddad76e831c91c17b421.jpg">
     <meta property="og:url" content="https://yourwebsite.com">
     <meta property="og:type" content="website">
-    <title>Grand Theft Auto: San Andreas</title>
+    <title>List Mods Grand Theft Auto: San Andreas</title>
     <link rel="icon" href="images/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
@@ -22,14 +21,19 @@
         <nav>
             <ul>
                 <li><a href="index.html">Home</a></li>
-				<li><a href="urbanize.html">[SA] Urbanize</a></li>
-				<li><a href="mods.html">List Mods</a></li>
-				<li><a href="Cheats.html">Cheats</a></li>
-				<li><a href="Priority.html">Priority</a></li>
-				<li><a href="install.html">install</a></li>
-                		<li><a href="https://gtaradio.net/ru/sa/">Sa Radio</a></li>
-				<li><a href="https://gtaradio.net/ru/vc/">VC Radio</a></li>
-				<li><a href="https://gtaradio.net/ru/3/">GTA III Radio</a></li>
+                <li><a href="urbanize.html">[SA] Urbanize</a></li>
+                <li><a href="mods.html">List Mods</a></li>
+                <li><a href="Cheats.html">Cheats</a></li>
+                <li><a href="Priority.html">Priority</a></li>
+                <li><a href="install.html">Install</a></li>
+                <li class="dropdown">
+                    <button class="dropbtn">Radios ▾</button>
+                    <div class="dropdown-content">
+                        <a href="https://gtaradio.net/ru/sa/" target="_blank">Sa Radio</a>
+                        <a href="https://gtaradio.net/ru/vc/" target="_blank">VC Radio</a>
+                        <a href="https://gtaradio.net/ru/3/" target="_blank">GTA III Radio</a>
+                    </div>
+                </li>
             </ul>
         </nav>
 		<!-- Новый блок для даты и времени -->
@@ -2485,32 +2489,35 @@
         </div>
     </main>
 
+     <!-- Кнопка прокрутки вверх -->
     <button id="scroll-btn">⬆</button>
-	
-	<script src="script.js"></script>
+
+    <script src="script.js"></script>
     <script>
-        // Функция для обновления времени и даты
+        // Функция для обновления текущей даты и времени
         function updateTime() {
             var now = new Date();
             var hours = String(now.getHours()).padStart(2, '0');
             var minutes = String(now.getMinutes()).padStart(2, '0');
             var seconds = String(now.getSeconds()).padStart(2, '0');
-            var day = now.getDate();
-            var month = now.getMonth() + 1; // Месяцы начинаются с 0
+            var day = String(now.getDate()).padStart(2, '0');
+            var month = String(now.getMonth() + 1).padStart(2, '0'); 
             var year = now.getFullYear();
 
-            // Форматируем дату и время
-            var datetime = day + '.' + month + '.' + year + ' ' + hours + ':' + minutes + ':' + seconds;
+            // Форматируем строку: ДД.ММ.ГГГГ ЧЧ:ММ:СС
+            var datetimeString = day + '.' + month + '.' + year + ' ' + hours + ':' + minutes + ':' + seconds;
 
-            // Отображаем в блоке с id="datetime"
-            document.getElementById('datetime').textContent = datetime;
+            // Находим элемент и обновляем текст
+            var dtElement = document.getElementById('datetime');
+            if (dtElement) {
+                dtElement.textContent = datetimeString;
+            }
         }
 
-        // Обновляем время каждую секунду
+        // Запуск обновления каждую секунду
         setInterval(updateTime, 1000);
+        updateTime(); // Начальный вызов
     </script>
-
-    <script src="script.js"></script>
 </body>
 </html>
 

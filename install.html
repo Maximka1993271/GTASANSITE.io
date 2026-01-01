@@ -1,17 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Installation guide for the Rosa project for GTA: San Andreas.">
-    <meta property="og:title" content="Installation of Rosa Project for GTA: San Andreas">
-    <meta property="og:description" content="A detailed guide for installing Rosa Project for GTA: San Andreas.">
+    <meta name="description" content="Инструкция по установке Rosa Project Evolved для GTA: San Andreas. Пошаговое руководство.">
+    <meta property="og:title" content="Установка Rosa Project - GTA: San Andreas">
+    <meta property="og:description" content="Подробный гайд по установке графического мода RoSA Project Evolved.">
     <meta property="og:image" content="https://yourimageurl.com/rosa_project_image.jpg">
-    <meta property="og:url" content="https://yourwebsite.com">
-    <meta property="og:type" content="website">
-    <title>Installation of Rosa Project</title>
+    <title>install - GTA San Andreas</title>
     <link rel="icon" href="images/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="style.css"> <!-- Your external CSS file -->
+    <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
@@ -25,62 +23,94 @@
                 <li><a href="mods.html">List Mods</a></li>
                 <li><a href="Cheats.html">Cheats</a></li>
                 <li><a href="Priority.html">Priority</a></li>
-                <li><a href="install.html">Install</a></li>
-                <li><a href="https://gtaradio.net/ru/sa/">SA Radio</a></li>
-                <li><a href="https://gtaradio.net/ru/vc/">VC Radio</a></li>
-                <li><a href="https://gtaradio.net/ru/3/">GTA III Radio</a></li>
+                <li><a href="install.html" class="active">Install</a></li>
+                <li class="dropdown">
+                    <button class="dropbtn">Radios ▾</button>
+                    <div class="dropdown-content">
+                        <a href="https://gtaradio.net/ru/sa/" target="_blank">Sa Radio</a>
+                        <a href="https://gtaradio.net/ru/vc/" target="_blank">VC Radio</a>
+                        <a href="https://gtaradio.net/ru/3/" target="_blank">GTA III Radio</a>
+                    </div>
+                </li>
             </ul>
         </nav>
-        <!-- New block for date and time -->
+		<!-- Новый блок для даты и времени -->
         <div id="datetime"></div>
     </header>
 
     <main>
         <div class="container">
-            <h2>Steps to Install RoSA Project Evolved</h2>
-            <p>Follow these simple steps to install Rosa Project on your GTA: San Andreas game:</p>
-            <ol>
-                <li><strong>Step 1:</strong> Download the archive with the RoSA Project Evolved.</li>
-                <li><strong>Step 2:</strong> Create a RoSA Project Evolved folder in the modloader folder.</li>
-                <li><strong>Step 3:</strong> Extract the files to the RoSA Project Evolved folder.</li>
-                <li><strong>Step 4:</strong> Run the installer and follow the on-screen instructions.</li>
-                <li><strong>Step 5:</strong> After installation, restart the game and enjoy the new textures and improvements.</li>
-            </ol>
-            <h3>What RoSA Project Evolved includes:</h3>
-            <ul>
-                <li>New enhanced textures for in-game objects.</li>
-                <li>Graphics optimization for higher quality.</li>
-                <li>Support for new mods and improvements for GTA: San Andreas.</li>
+            <h2>Инструкция по установке RoSA Project Evolved</h2>
+            <p>Следуйте этим простым шагам, чтобы правильно установить модификацию в вашу игру:</p>
+            
+            <div class="install-steps-wrapper">
+                <ol class="step-list">
+                    <li>
+                        <i class="fas fa-download"></i>
+                        <span><strong>Шаг 1:</strong> Скачайте архив с модификацией RoSA Project Evolved.</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-folder-plus"></i>
+                        <span><strong>Шаг 2:</strong> Создайте папку <code>RoSA Project Evolved</code> внутри вашей папки <code>modloader</code>.</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-file-archive"></i>
+                        <span><strong>Шаг 3:</strong> Распакуйте содержимое архива в созданную папку.</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-cog"></i>
+                        <span><strong>Шаг 4:</strong> Убедитесь, что в игре в меню Mod Configuration включен данный мод.</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-gamepad"></i>
+                        <span><strong>Шаг 5:</strong> Наслаждайтесь обновленными текстурами высокого качества!</span>
+                    </li>
+                </ol>
+            </div>
+
+            <h3>Особенности RoSA Project Evolved:</h3>
+            <ul class="features-list">
+                <li><i class="fas fa-check-circle"></i> Полное обновление текстур мира (дороги, здания, природа).</li>
+                <li><i class="fas fa-check-circle"></i> Оптимизация для современных систем.</li>
+                <li><i class="fas fa-check-circle"></i> Совместимость с большинством геймплейных модов.</li>
             </ul>
 
             <!-- Video Embed -->
-            <h3>Watch the installation guide video:</h3>
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/W-o357heIWc" title="Mod Overview [SA] Urbanize" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="border-radius: 8px; border: none;"></iframe>
+            <div class="video-container">
+                <h3>Видео-гайд по установке:</h3>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/W-o357heIWc" title="Mod Overview [SA] Urbanize" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
         </div>
     </main>
-    <button id="scroll-btn">⬆</button>
 
-    <script src="script.js"></script>
+    <!-- Кнопка прокрутки -->
+    <button id="scroll-btn" title="Наверх">⬆</button>
+
+   <script src="script.js"></script>
     <script>
-        // Function to update time and date
+        // Функция для обновления текущей даты и времени
         function updateTime() {
             var now = new Date();
             var hours = String(now.getHours()).padStart(2, '0');
             var minutes = String(now.getMinutes()).padStart(2, '0');
             var seconds = String(now.getSeconds()).padStart(2, '0');
-            var day = now.getDate();
-            var month = now.getMonth() + 1; // Months are zero-indexed
+            var day = String(now.getDate()).padStart(2, '0');
+            var month = String(now.getMonth() + 1).padStart(2, '0'); 
             var year = now.getFullYear();
 
-            // Format date and time
-            var datetime = day + '.' + month + '.' + year + ' ' + hours + ':' + minutes + ':' + seconds;
+            // Форматируем строку: ДД.ММ.ГГГГ ЧЧ:ММ:СС
+            var datetimeString = day + '.' + month + '.' + year + ' ' + hours + ':' + minutes + ':' + seconds;
 
-            // Display in the element with id="datetime"
-            document.getElementById('datetime').textContent = datetime;
+            // Находим элемент и обновляем текст
+            var dtElement = document.getElementById('datetime');
+            if (dtElement) {
+                dtElement.textContent = datetimeString;
+            }
         }
 
-        // Update time every second
+        // Запуск обновления каждую секунду
         setInterval(updateTime, 1000);
+        updateTime(); // Начальный вызов
     </script>
 </body>
 </html>

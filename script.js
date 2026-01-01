@@ -1,55 +1,100 @@
-const scrollBtn = document.getElementById('scroll-btn');
+/**
+ * Основной скрипт сайта Grand Theft Auto: San Andreas
+ * Обрабатывает динамическое время и интерактивные элементы интерфейса
+ */
 
-// Проверим, существует ли кнопка, прежде чем добавлять обработчики событий
-if (scrollBtn) {
-    // Функция, которая будет проверять положение прокрутки
-    function toggleScrollButton() {
-        // Проверяем, прокручен ли экран больше чем на 20px
-        if (window.scrollY > 20) {
-            scrollBtn.style.display = "block";
-        } else {
-            scrollBtn.style.display = "none";
-        }
-    }
+document.addEventListener('DOMContentLoaded', () => {
+    // === 1. УПРАВЛЕНИЕ ВРЕМЕНЕМ И ДАТОЙ ===
+    const clockElement = document.getElementById('header-clock');
+    const dateElement = document.getElementById('date');
+    const dtElement = document.getElementById('datetime');
 
-    // Используем `addEventListener` для прокрутки и проверки
-    window.addEventListener('scroll', toggleScrollButton);
-
-    // Прокрутка вверх при нажатии на кнопку
-    scrollBtn.addEventListener('click', function() {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-
-    // Сначала проверим состояние при загрузке страницы
-    toggleScrollButton();
-}
-
-<script>
-    function updateTime() {
+    /**
+     * Обновляет текстовое содержимое элементов времени
+     */
+    const updateTime = () => {
         const now = new Date();
-        // Форматируем время (часы:минуты:секунды)
-        const hours = String(now.getHours()).padStart(2, '0');
-        const minutes = String(now.getMinutes()).padStart(2, '0');
-        const seconds = String(now.getSeconds()).padStart(2, '0');
-        const timeString = `${hours}:${minutes}:${seconds}`;
+        
+        // Опции для форматирования (локаль ru-RU)
+        const timeOptions = { hour: '2-digit', minute: '2-digit', second: '2-digit' };
+        const dateOptions = { day: '2-digit', month: '2-digit', year: 'numeric' };
 
-        // Форматируем дату (день.месяц.год)
-        const day = String(now.getDate()).padStart(2, '0');
-        const month = String(now.getMonth() + 1).padStart(2, '0');
-        const year = now.getFullYear();
-        const dateString = `${day}.${month}.${year}`;
+        const currentTime = now.toLocaleTimeString('ru-RU', timeOptions);
+        const currentDate = now.toLocaleDateString('ru-RU', dateOptions);
 
-        // Обновляем блоки с временем и датой
-        document.getElementById('header-clock').textContent = timeString;
-        document.getElementById('date').textContent = dateString;
+        // Приоритет раздельным блокам, если они есть в HTML
+        if (clockElement && dateElement) {
+            clockElement.textContent = currentTime;
+            dateElement.textContent = currentDate;
+        } 
+        // Fallback на общий блок
+        else if (dtElement) {
+            dtElement.textContent = `${currentDate} | ${currentTime}`;
+        }
+    };
+
+    // Запуск таймера обновления
+    const timeInterval = setInterval(updateTime, 1000);
+    updateTime(); // Мгновенное отображение при загрузке
+
+    // === 2. КНОПКА "ВВЕРХ" (SCROLL TO TOP) ===
+    const scrollBtn = document.getElementById('scroll-btn');
+    
+    if (scrollBtn) {
+        // Устанавливаем начальные стили для плавности через JS, если их нет в CSS
+        scrollBtn.style.transition = "opacity 0.4s ease, transform 0.3s ease, visibility 0.4s";
+        scrollBtn.style.opacity = "0";
+        scrollBtn.style.visibility = "hidden";
+        scrollBtn.style.display = "flex"; // Оставляем flex для центрирования иконки
+
+        /**
+         * Переключает видимость кнопки в зависимости от прокрутки
+         */
+        const handleScroll = () => {
+            const scrollThreshold = 300;
+            const isVisible = window.scrollY > scrollThreshold;
+            
+            if (isVisible) {
+                scrollBtn.style.visibility = "visible";
+                scrollBtn.style.opacity = "1";
+                scrollBtn.style.transform = "translateY(0)";
+            } else {
+                scrollBtn.style.opacity = "0";
+                scrollBtn.style.visibility = "hidden";
+                scrollBtn.style.transform = "translateY(20px)";
+            }
+        };
+
+        // Оптимизация: используем passive event listener для лучшей производительности скролла
+        window.addEventListener('scroll', handleScroll, { passive: true });
+
+        /**
+         * Плавный скролл к началу страницы
+         */
+        scrollBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Начальная проверка положения
+        handleScroll();
     }
 
-    // Обновляем время каждую секунду
-    setInterval(updateTime, 1000);
+    // === 3. ОБРАБОТКА ОШИБОК ИЗОБРАЖЕНИЙ ===
+    // Если картинка не загрузилась, подставляем заглушку
+    document.querySelectorAll('img').forEach(img => {
+        img.onerror = function() {
+            this.src = 'https://via.placeholder.com/700x400?text=GTA+San+Andreas';
+            this.onerror = null;
+        };
+    });
+});
 
-    // Первоначальный вызов для отображения времени сразу при загрузке страницы
-    updateTime();
-</script>
-
-
-
+/**
+ * Очистка ресурсов при выгрузке страницы
+ */
+window.addEventListener('unload', () => {
+    if (typeof timeInterval !== 'undefined') clearInterval(timeInterval);
+});
