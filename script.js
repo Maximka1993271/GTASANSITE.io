@@ -1,16 +1,18 @@
 /**
- * Оптимизированный скрипт для Priority GTA: SA с интеграцией ИИ (Gemini/ChatGPT)
+ * Оптимизированный скрипт для Priority GTA: SA с интеграцией ИИ (CJ Assistant)
+ * Объединяет управление временем, скроллом, картинками и чатом.
  */
 
 (function() {
     'use strict';
 
-    // API Key предоставляется средой выполнения
+    // API Key для Gemini (в Canvas подставляется автоматически, для GitHub можно оставить пустым или вставить свой)
     const apiKey = ""; 
 
     const GTA_APP = {
+        // Инициализация всех модулей
         init() {
-            this.ensureUIElements(); 
+            this.ensureUIElements(); // Создаем элементы интерфейса ИИ
             this.cacheElements();
             this.initDateTime();
             this.initScrollTop();
@@ -19,34 +21,28 @@
             this.initSmoothNavigation();
         },
 
+        // Создаем кнопки и окна, если их нет в HTML
         ensureUIElements() {
-            // Кнопка ИИ
+            // Кнопка вызова ИИ
             if (!document.getElementById('ai-toggle-btn')) {
                 const toggleBtn = document.createElement('button');
                 toggleBtn.id = 'ai-toggle-btn';
                 toggleBtn.innerHTML = '🤖';
+                toggleBtn.title = "Спросить Си-Джея";
                 document.body.appendChild(toggleBtn);
             }
 
-            // Кнопка скроллинга
-            if (!document.getElementById('scroll-btn')) {
-                const scrollBtn = document.createElement('button');
-                scrollBtn.id = 'scroll-btn';
-                scrollBtn.innerHTML = '⬆';
-                document.body.appendChild(scrollBtn);
-            }
-
-            // Окно виджета
+            // Виджет чата
             if (!document.getElementById('ai-chat-widget')) {
                 const widget = document.createElement('div');
                 widget.id = 'ai-chat-widget';
                 widget.innerHTML = `
                     <div class="ai-chat-header">
                         <span>CJ AI Assistant</span>
-                        <button id="ai-close-btn" style="background:none; border:none; color:#000; cursor:pointer; font-weight:bold; font-size:1.2rem;">✕</button>
+                        <button id="ai-close-btn">✕</button>
                     </div>
                     <div id="ai-chat-messages">
-                        <div class="message ai-message">Эй, Си-Джей! Я на связи. Нужна помощь с модами или хочешь узнать, как навести порядок на Гроув-Стрит? Спрашивай!</div>
+                        <div class="message ai-message">Эй, Си-Джей! Гроув-Стрит на связи. Нужна помощь с установкой модов или хочешь узнать, какой патч лучше? Спрашивай!</div>
                     </div>
                     <div class="ai-chat-input-area">
                         <input type="text" id="ai-user-input" placeholder="Напиши что-нибудь, бро...">
@@ -57,6 +53,7 @@
             }
         },
 
+        // Кэширование DOM-элементов для экономии ресурсов
         cacheElements() {
             this.elements = {
                 clock: document.getElementById('header-clock'),
@@ -73,6 +70,7 @@
             };
         },
 
+        // --- МОДУЛЬ ВРЕМЕНИ ---
         initDateTime() {
             const update = () => {
                 const now = new Date();
@@ -82,12 +80,12 @@
                 if (this.elements.clock) this.elements.clock.textContent = timeStr;
                 if (this.elements.date) this.elements.date.textContent = dateStr;
                 
-                // Формат для моб. версии или универсального блока
-                const options = { 
-                    day: '2-digit', month: '2-digit', year: 'numeric',
-                    hour: '2-digit', minute: '2-digit', second: '2-digit' 
-                };
+                // Для блока datetime в подвале или мобильной версии
                 if (this.elements.dateTime) {
+                    const options = { 
+                        day: '2-digit', month: '2-digit', year: 'numeric',
+                        hour: '2-digit', minute: '2-digit', second: '2-digit' 
+                    };
                     this.elements.dateTime.textContent = now.toLocaleString('ru-RU', options);
                 }
             };
@@ -95,26 +93,37 @@
             update();
         },
 
+        // --- МОДУЛЬ СКРОЛЛА ---
         initScrollTop() {
             const btn = this.elements.scrollBtn;
             if (!btn) return;
+
             window.addEventListener('scroll', () => {
                 btn.style.display = window.scrollY > 300 ? 'flex' : 'none';
             });
-            btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+            btn.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
         },
 
+        // --- ЛОГИКА ИИ-ЧАТА ---
         initAIChat() {
             const { aiWidget, aiToggle, aiClose, aiSend, aiInput } = this.elements;
             if (!aiWidget || !aiToggle) return;
 
+            // Переключатель видимости
             aiToggle.addEventListener('click', () => {
                 const isVisible = window.getComputedStyle(aiWidget).display === 'flex';
                 aiWidget.style.display = isVisible ? 'none' : 'flex';
                 if (!isVisible) aiInput.focus();
             });
 
-            aiClose.addEventListener('click', () => aiWidget.style.display = 'none');
+            if (aiClose) {
+                aiClose.addEventListener('click', () => {
+                    aiWidget.style.display = 'none';
+                });
+            }
 
             const sendMessage = async () => {
                 const text = aiInput.value.trim();
@@ -132,7 +141,6 @@
                     if (loader) loader.remove();
                     this.addChatMessage(response, 'ai');
                 } catch (error) {
-                    console.error("AI Error:", error);
                     const loader = document.getElementById(loadingId);
                     if (loader) loader.remove();
                     this.addChatMessage('Черт, Си-Джей, копы обрубили связь. Попробуй еще раз через минуту.', 'ai');
@@ -141,7 +149,9 @@
 
             if (aiSend) aiSend.addEventListener('click', sendMessage);
             if (aiInput) {
-                aiInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') sendMessage(); });
+                aiInput.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter') sendMessage();
+                });
             }
         },
 
@@ -152,13 +162,16 @@
             if (id) div.id = id;
             if (this.elements.aiMessages) {
                 this.elements.aiMessages.appendChild(div);
-                this.elements.aiMessages.scrollTo({ top: this.elements.aiMessages.scrollHeight, behavior: 'smooth' });
+                this.elements.aiMessages.scrollTo({
+                    top: this.elements.aiMessages.scrollHeight,
+                    behavior: 'smooth'
+                });
             }
             return div;
         },
 
         async fetchAIResponse(userQuery) {
-            const systemPrompt = "Ты - CJ (Карл Джонсон) из GTA San Andreas. Ты помогаешь пользователям на сайте модов Priority GTA. Твой стиль общения: 'эй, бро', 'послушай сюда', 'Гроув Стрит навсегда'. Если спрашивают про скачивание самой игры, отвечай четко: ты эксперт по модам, а игру нужно искать самостоятельно в проверенных местах. Сразу переводи тему на то, что для модов нужна версия 1.0 US, которая есть у нас. Если про моды - советуй ставить сначала SilentPatch и No-CD v1.0 US. Отвечай кратко и по делу.";
+            const systemPrompt = "Ты - CJ (Карл Джонсон) из GTA San Andreas. Ты помогаешь пользователям на сайте Priority GTA. Твой стиль: 'эй, бро', 'послушай', 'Гроув-Стрит навсегда'. Ты эксперт по модам (No-CD, SilentPatch, CLEO). Если спрашивают 'как скачать игру', отвечай: 'Слушай, Си-Джей, я здесь по модам. Саму игру ищи в проверенных местах, а когда достанешь чистую версию 1.0 US — возвращайся сюда, мы её прокачаем!'. Если про моды — советуй смотреть карточки на этой странице. Отвечай коротко.";
             
             let retries = 0;
             const delays = [1000, 2000, 4000];
@@ -173,16 +186,9 @@
                     })
                 });
 
-                if (!response.ok) {
-                    const errorText = await response.text();
-                    throw new Error(`API Error ${response.status}: ${errorText}`);
-                }
-                
+                if (!response.ok) throw new Error('API Error');
                 const data = await response.json();
-                const result = data.candidates?.[0]?.content?.parts?.[0]?.text;
-                
-                if (!result) throw new Error('Empty response content');
-                return result;
+                return data.candidates?.[0]?.content?.parts?.[0]?.text || "Что-то я затупил, бро. Повтори?";
             };
 
             while (retries < 3) {
@@ -196,6 +202,7 @@
             }
         },
 
+        // --- МОДУЛЬ КАРТИНОК ---
         initImageFallback() {
             const fallbackUrl = 'https://media-rockstargames-com.akamaized.net/mfe6/prod/__common/img/bbcbd2a2bb65ddad76e831c91c17b421.jpg';
             
@@ -212,6 +219,7 @@
             });
         },
 
+        // --- ПЛАВНАЯ НАВИГАЦИЯ ---
         initSmoothNavigation() {
             document.addEventListener('click', (e) => {
                 const target = e.target.closest('a[href^="#"]');
