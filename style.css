@@ -1,7 +1,7 @@
 :root {
     --primary-color: #FFD700;
     --accent-color: #FF8C00;
-    --bg-dark: rgba(0, 0, 0, 0.85);
+    --bg-dark: rgba(0, 0, 0, 0.9);
     --text-light: #f4f4f4;
     --shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
     --transition: all 0.3s ease;
@@ -18,15 +18,18 @@ html, body {
     color: var(--text-light);
     display: flex;
     flex-direction: column;
+    align-items: center; /* Центрирование контента по горизонтали */
 }
 
 /* Шапка сайта */
 header {
     background-color: var(--bg-dark);
-    padding: 20px 10px;
+    padding: 20px 15px;
     text-align: center;
     border-bottom: 3px solid var(--primary-color);
     box-shadow: var(--shadow);
+    width: 100%; /* Шапка на всю ширину, но контент внутри центрирован */
+    box-sizing: border-box;
 }
 
 header h1 {
@@ -34,61 +37,52 @@ header h1 {
     color: var(--primary-color);
     text-transform: uppercase;
     letter-spacing: 2px;
+    font-size: 1.8rem;
+    text-align: center;
 }
 
 /* Дата и время */
-#datetime, .time-container {
+#datetime {
     margin-top: 15px;
-    font-size: 1.1rem;
+    font-size: 1rem;
     color: var(--accent-color);
     font-weight: bold;
     text-shadow: 1px 1px 2px #000;
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-}
-
-#header-clock, #date {
     background: rgba(0, 0, 0, 0.5);
     padding: 5px 15px;
     border-radius: 20px;
+    display: inline-block;
     border: 1px solid rgba(255, 215, 0, 0.3);
+    text-align: center;
 }
 
 /* Навигация */
-nav ul, .container ul {
+nav ul {
     list-style: none;
     padding: 0;
     margin: 0;
-}
-
-nav ul {
     display: flex;
     justify-content: center; 
+    align-items: center;
     flex-wrap: wrap;
-    gap: 10px;
-}
-
-nav ul li {
-    display: inline-block;
+    gap: 8px;
 }
 
 nav ul li a, .dropbtn {
     color: #fff;
     text-decoration: none;
-    padding: 10px 20px;
+    padding: 8px 15px;
     border: 1px solid transparent;
     border-radius: 4px;
     transition: var(--transition);
-    background: none;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: bold;
-    cursor: pointer;
     text-transform: uppercase;
     display: block;
+    text-align: center;
 }
 
-nav ul li a:hover, .dropdown:hover .dropbtn {
+nav ul li a:hover, nav ul li a.active, .dropdown:hover .dropbtn {
     background: rgba(255, 215, 0, 0.2);
     border-color: var(--primary-color);
     color: var(--primary-color);
@@ -97,14 +91,15 @@ nav ul li a:hover, .dropdown:hover .dropbtn {
 /* Выпадающее меню */
 .dropdown {
     position: relative;
-    display: inline-block;
+    display: flex;
+    justify-content: center;
 }
 
 .dropdown-content {
     display: none;
     position: absolute;
     background-color: rgba(0, 0, 0, 0.95);
-    min-width: 180px;
+    min-width: 160px;
     box-shadow: var(--shadow);
     z-index: 1000;
     border: 1px solid var(--primary-color);
@@ -116,11 +111,11 @@ nav ul li a:hover, .dropdown:hover .dropbtn {
 
 .dropdown-content a {
     color: white;
-    padding: 12px 16px;
+    padding: 10px;
     text-decoration: none;
     display: block;
     text-align: center;
-    transition: var(--transition);
+    font-size: 13px;
 }
 
 .dropdown-content a:hover {
@@ -132,22 +127,68 @@ nav ul li a:hover, .dropdown:hover .dropbtn {
     display: block;
 }
 
-/* Контейнеры и контент */
+/* Контейнеры */
 .container {
     background: var(--bg-dark);
-    margin: 30px auto;
-    padding: 30px;
+    margin: 20px auto;
+    padding: 20px;
+    width: 90%;
     max-width: 900px;
-    border-radius: 15px;
+    border-radius: 12px;
     box-shadow: var(--shadow);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Центрирование элементов внутри контейнера */
+    text-align: center; /* Центрирование текста */
+    box-sizing: border-box;
 }
 
-/* Кнопки скачивания */
+/* Таблицы читов (Адаптивные) */
+.table-wrapper {
+    overflow-x: auto;
+    margin: 20px 0;
+    border-radius: 8px;
+    width: 100%; /* Таблица занимает всю ширину контейнера */
+}
+
+.cheats-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 500px;
+    background: rgba(255, 255, 255, 0.05);
+    margin: 0 auto;
+}
+
+.cheats-table th, .cheats-table td {
+    padding: 12px;
+    text-align: center; /* Текст в ячейках по центру */
+    border-bottom: 1px solid rgba(255, 215, 0, 0.2);
+}
+
+.cheats-table th {
+    background: rgba(255, 215, 0, 0.1);
+    color: var(--primary-color);
+    text-transform: uppercase;
+    font-size: 0.9rem;
+}
+
+.code-badge {
+    background: var(--accent-color);
+    color: #fff;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-family: monospace;
+    font-weight: bold;
+    letter-spacing: 1px;
+    display: inline-block;
+}
+
+/* Кнопки */
 .button-container {
     display: flex;
     justify-content: center;
+    align-items: center;
     margin: 20px 0;
     width: 100%;
 }
@@ -155,66 +196,81 @@ nav ul li a:hover, .dropdown:hover .dropbtn {
 .download-btn {
     background: linear-gradient(135deg, var(--accent-color), #ff4500);
     color: white !important;
-    border: none;
-    padding: 15px 30px;
-    font-size: 1.1rem;
+    padding: 12px 25px;
+    font-size: 1rem;
     font-weight: bold;
-    cursor: pointer;
     border-radius: 50px;
     transition: var(--transition);
     text-decoration: none;
     text-transform: uppercase;
+    text-align: center;
     display: inline-block;
 }
 
 .download-btn:hover {
-    transform: translateY(-3px);
+    transform: translateY(-2px);
     box-shadow: 0 5px 15px rgba(255, 69, 0, 0.4);
 }
 
-/* Кнопка наверх (Теперь такая же, как кнопки скачивания) */
 #scroll-btn {
     position: fixed;
-    bottom: 30px;
-    right: 30px;
-    width: 55px;
-    height: 55px;
-    background: linear-gradient(135deg, var(--accent-color), #ff4500); /* Цвет как у кнопок */
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, var(--accent-color), #ff4500);
     color: white;
     border: none;
     border-radius: 50%;
-    font-size: 24px;
+    font-size: 20px;
     cursor: pointer;
-    display: none;
     z-index: 1000;
-    transition: var(--transition);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-    display: flex; /* Для центрирования стрелки */
+    display: none;
     align-items: center;
     justify-content: center;
+    box-shadow: var(--shadow);
 }
 
-#scroll-btn:hover {
-    transform: translateY(-5px) scale(1.1);
-    box-shadow: 0 8px 20px rgba(255, 69, 0, 0.5);
-}
-
-/* Текстовые блоки */
-.description-text {
-    text-align: left;
-    line-height: 1.6;
-    margin: 20px 0;
-    padding: 0 20px;
-}
-
-/* Адаптивность */
+/* Адаптивность для мобильных устройств */
 @media (max-width: 768px) {
+    header h1 {
+        font-size: 1.4rem;
+    }
+
     nav ul {
         flex-direction: column;
+        align-items: center;
+        width: 100%;
     }
+
+    nav ul li {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    nav ul li a {
+        text-align: center;
+        padding: 12px;
+        background: rgba(255, 255, 255, 0.05);
+    }
+
+    .dropdown {
+        width: 100%;
+        max-width: 300px;
+    }
+
     .dropdown-content {
         position: static;
         transform: none;
         width: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        border: none;
+        border-left: 2px solid var(--primary-color);
+        margin-top: 5px;
+    }
+
+    .container {
+        padding: 15px;
+        width: 95%;
     }
 }
