@@ -376,6 +376,17 @@ nav ul li a, .dropbtn {
     -webkit-overflow-scrolling: touch;
 }
 
+/* ЛОГИКА ВИДИМОСТИ ТАБЛИЦ В АККОРДЕОНЕ */
+.cheat-category .cheats-table { 
+    display: none; 
+}
+
+.cheat-category.active .table-wrapper,
+.cheat-category.active .cheats-table {
+    display: table;
+    width: 100%;
+}
+
 .cheat-category.active .table-wrapper {
     display: block;
 }
