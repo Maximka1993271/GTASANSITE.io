@@ -11,7 +11,7 @@
         init() {
             this.cacheElements();
             this.initDateTime();
-            this.initScrollTop();
+            this.initScrollTop(); // Модуль кнопки скроллинга
             this.initImageFallback();
             this.initSmoothNavigation();
             this.initFAQModal();      // Логика модального окна FAQ
@@ -28,7 +28,6 @@
                 scrollBtn: document.getElementById('scroll-btn'),
                 images: document.querySelectorAll('img'),
                 navLinks: document.querySelectorAll('nav ul li a'),
-                // Элементы модального окна FAQ
                 faqBtn: document.getElementById('faqBtn'),
                 faqModal: document.getElementById('faqModal'),
                 closeModal: document.querySelector('.close-modal')
@@ -38,129 +37,94 @@
         // --- МОДУЛЬ FAQ (МОДАЛЬНОЕ ОКНО) ---
         initFAQModal() {
             const { faqBtn, faqModal, closeModal } = this.elements;
+            if (!faqBtn || !faqModal) return;
 
-            if (faqBtn && faqModal) {
-                // Открытие окна при клике на кнопку FAQ
-                faqBtn.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    faqModal.style.display = 'block';
-                    document.body.style.overflow = 'hidden'; // Запрет прокрутки страницы под окном
-                });
+            faqBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                faqModal.style.display = 'block';
+                document.body.style.overflow = 'hidden'; // Запрет скролла при открытом окне
+            });
 
-                // Закрытие окна по клику на крестик
-                if (closeModal) {
-                    closeModal.addEventListener('click', () => {
-                        this.closeModalFunc(faqModal);
-                    });
-                }
+            const close = () => {
+                faqModal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            };
 
-                // Закрытие при клике на темную область вне окна
-                window.addEventListener('click', (event) => {
-                    if (event.target === faqModal) {
-                        this.closeModalFunc(faqModal);
-                    }
-                });
-
-                // Закрытие по клавише Escape
-                window.addEventListener('keydown', (e) => {
-                    if (e.key === 'Escape' && faqModal.style.display === 'block') {
-                        this.closeModalFunc(faqModal);
-                    }
-                });
-            }
+            if (closeModal) closeModal.addEventListener('click', close);
+            window.addEventListener('click', (e) => { if (e.target === faqModal) close(); });
         },
 
-        // Вспомогательная функция закрытия модального окна
-        closeModalFunc(modal) {
-            modal.style.display = 'none';
-            document.body.style.overflow = ''; // Возвращаем прокрутку страницы
-        },
-
-        // --- МОДУЛЬ ЧИТОВ (АККОРДЕОН) ---
+        // --- МОДУЛЬ АККОРДЕОНА (ЧИТЫ) ---
         initCheatAccordeon() {
-            // Ищем все заголовки категорий читов
-            document.querySelectorAll('.cheat-category h3').forEach(header => {
+            // Ищем все заголовки внутри категорий читов
+            const cheatHeaders = document.querySelectorAll('.cheat-category h2, .cheat-category-header');
+            
+            cheatHeaders.forEach(header => {
+                header.style.cursor = 'pointer'; // Указываем, что на элемент можно нажать
+                
                 header.addEventListener('click', () => {
-                    const parent = header.parentElement;
-                    
-                    // Переключаем класс active (CSS покажет/скроет таблицу)
-                    parent.classList.toggle('active');
-                    
-                    // (Опционально) Закрывать другие категории при открытии новой
-                    /*
-                    document.querySelectorAll('.cheat-category').forEach(cat => {
-                        if (cat !== parent) cat.classList.remove('active');
-                    });
-                    */
+                    const category = header.closest('.cheat-category');
+                    if (category) {
+                        category.classList.toggle('active');
+                    }
                 });
             });
         },
 
-        // --- МОДУЛЬ ВРЕМЕНИ (ЧАСЫ) ---
+        // --- ДАТА И ВРЕМЯ ---
         initDateTime() {
             const update = () => {
                 const now = new Date();
-                // Формат времени: ЧЧ:ММ:СС
-                const timeStr = now.toLocaleTimeString('ru-RU', { hour12: false });
-                // Формат даты: ДД.ММ.ГГГГ
-                const dateStr = now.toLocaleDateString('ru-RU');
+                const timeStr = now.toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+                const dateStr = now.toLocaleDateString('ru-RU', { day: '2-digit', month: 'long', year: 'numeric' });
 
-                if (this.elements.clock) this.elements.clock.textContent = timeStr;
-                if (this.elements.date) this.elements.date.textContent = dateStr;
-                
-                // Комбинированное поле (если есть на странице)
                 if (this.elements.dateTime) {
-                    this.elements.dateTime.textContent = `${dateStr} ${timeStr}`;
+                    this.elements.dateTime.textContent = `${dateStr} | ${timeStr}`;
                 }
             };
             update();
-            setInterval(update, 1000); // Обновление каждую секунду
+            setInterval(update, 1000);
         },
 
-        // --- МОДУЛЬ ПРОКРУТКИ НАВЕРХ ---
+        // --- КНОПКА "НАВЕРХ" ---
         initScrollTop() {
-            const btn = this.elements.scrollBtn;
-            if (!btn) return;
+            const { scrollBtn } = this.elements;
+            if (!scrollBtn) return;
 
+            // Показываем кнопку при прокрутке более 300px
             window.addEventListener('scroll', () => {
-                // Показываем кнопку только если прокрутили больше 300 пикселей
-                if (window.scrollY > 300) {
-                    btn.style.display = 'flex'; // Используем flex для центрирования иконки внутри
+                if (window.pageYOffset > 300) {
+                    scrollBtn.classList.add('visible');
+                    scrollBtn.style.display = 'block'; // Принудительное отображение
                 } else {
-                    btn.style.display = 'none';
+                    scrollBtn.classList.remove('visible');
+                    scrollBtn.style.display = 'none'; // Скрываем, если вверху
                 }
             });
 
-            btn.addEventListener('click', () => {
-                window.scrollTo({ top: 0, behavior: 'smooth' }); // Плавный скролл
+            // Плавный скролл наверх при клике
+            scrollBtn.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
             });
         },
 
-        // --- АВТОМАТИЧЕСКАЯ ПОДСВЕТКА АКТИВНОЙ ССЫЛКИ ---
+        // --- ПОДСВЕТКА АКТИВНОЙ ССЫЛКИ ---
         highlightActiveLink() {
-            const currentPath = window.location.pathname;
+            const currentPath = window.location.pathname.split('/').pop() || 'index.html';
             this.elements.navLinks.forEach(link => {
-                // Если путь ссылки совпадает с текущим адресом
-                if (link.getAttribute('href') && currentPath.includes(link.getAttribute('href'))) {
+                if (link.getAttribute('href') === currentPath) {
                     link.classList.add('active');
                 }
             });
         },
 
-        // --- ОБРАБОТКА ОШИБОК ЗАГРУЗКИ ИЗОБРАЖЕНИЙ ---
+        // --- ОБРАБОТКА ОШИБОК ЗАГРУЗКИ КАРТИНКИ ---
         initImageFallback() {
-            const fallbackUrl = 'https://via.placeholder.com/800x450?text=GTA+San+Andreas';
-            
+            const fallbackUrl = 'https://media-rockstargames-com.akamaized.net/mfe6/prod/__common/img/bbcbd2a2bb65ddad76e831c91c17b421.jpg';
             this.elements.images.forEach(img => {
-                // Добавляем ленивую загрузку для оптимизации скорости
-                if (!img.hasAttribute('loading')) {
-                    img.setAttribute('loading', 'lazy');
-                }
-
-                // Если картинка не загрузилась, ставим заглушку
                 img.addEventListener('error', function() {
                     this.src = fallbackUrl;
-                    this.style.filter = 'sepia(0.5) contrast(1.2)'; // Эффект под ретро-игру
+                    this.style.filter = 'sepia(0.5) contrast(1.2)';
                 }, { once: true });
             });
         },
@@ -169,7 +133,6 @@
         initSmoothNavigation() {
             document.addEventListener('click', (e) => {
                 const target = e.target.closest('a[href^="#"]');
-                // Игнорируем кнопку FAQ (у неё своя логика) и пустые ссылки
                 if (!target || target.id === 'faqBtn') return; 
 
                 const targetId = target.getAttribute('href');
@@ -180,7 +143,6 @@
                     e.preventDefault();
                     targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
                     
-                    // Если целевой элемент — категория читов, автоматически открываем её
                     if (targetElement.classList.contains('cheat-category')) {
                         targetElement.classList.add('active');
                     }
@@ -189,7 +151,7 @@
         }
     };
 
-    // Безопасный запуск скрипта после загрузки DOM
+    // Безопасный запуск
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', () => GTA_APP.init());
     } else {
