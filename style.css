@@ -9,7 +9,7 @@
     --transition: all 0.3s ease;    /* Стандартная плавность анимаций */
 }
 
-/* Глобальный сброс стилей */
+/* Глобальный сброс стилей и предотвращение вылета контента за границы */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -18,10 +18,10 @@
 
 html, body {
     width: 100%;
-    overflow-x: hidden;
+    overflow-x: hidden; /* Запрет горизонтального скролла */
     min-height: 100vh;
     font-family: 'Roboto', sans-serif;
-    /* Фоновое изображение Rockstar Games */
+    /* Фоновое изображение в стиле Rockstar Games */
     background: url('https://media-rockstargames-com.akamaized.net/mfe6/prod/__common/img/4bddd183ad5bce1fa0efdc5cbd958743.jpg') no-repeat center center fixed;
     background-size: cover;
     color: var(--text-light);
@@ -31,9 +31,122 @@ html, body {
     line-height: 1.5;
 }
 
+/* --- УЛУЧШЕННЫЕ СТИЛИ ДЛЯ СТРАНИЦЫ 404 (ЭФФЕКТ WASTED) --- */
+
+.wasted-content {
+    padding: 100px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 75vh;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.wasted-container {
+    position: relative;
+    margin-bottom: 70px;
+    filter: drop-shadow(0 0 15px rgba(255, 0, 0, 0.2));
+}
+
+/* Огромный полупрозрачный текст на заднем фоне с анимацией глитча */
+.wasted-bg-text {
+    font-size: clamp(6rem, 30vw, 15rem);
+    color: rgba(255, 255, 255, 0.05);
+    font-weight: 900;
+    line-height: 0.8;
+    user-select: none;
+    position: relative;
+    animation: glitch 3s infinite alternate;
+}
+
+/* Красная плашка "WASTED" с эффектом тряски */
+.wasted-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-2deg);
+    background: linear-gradient(180deg, rgba(20, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.95) 100%);
+    color: #ff3333;
+    padding: 20px 70px;
+    border: 5px solid #ff3333;
+    font-size: clamp(2.5rem, 15vw, 6rem);
+    font-weight: 800;
+    box-shadow: 
+        0 0 60px rgba(255, 0, 0, 0.5),
+        inset 0 0 20px rgba(255, 0, 0, 0.2);
+    text-shadow: 4px 4px 0px #000;
+    white-space: nowrap;
+    animation: wasted-shake 0.2s ease-in-out infinite alternate;
+    z-index: 10;
+}
+
+/* Сообщение об ошибке под плашкой */
+.error-msg {
+    background: rgba(0, 0, 0, 0.85);
+    padding: 30px;
+    border-radius: 4px;
+    border-top: 3px solid #ff3333;
+    border-bottom: 3px solid #ff3333;
+    max-width: 650px;
+    margin-bottom: 40px;
+    backdrop-filter: blur(5px);
+    box-shadow: var(--shadow);
+}
+
+.error-msg p {
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+    color: #eee;
+}
+
+/* Технический код ошибки */
+.error-code {
+    font-family: 'Courier New', Courier, monospace;
+    color: #ff3333;
+    font-size: 1rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 5px 15px;
+    display: inline-block;
+}
+
+/* --- АНИМАЦИИ --- */
+
+/* Эффект мелкой тряски для плашки Wasted */
+@keyframes wasted-shake {
+    0% { transform: translate(-50%, -50%) rotate(-2deg) scale(1); }
+    100% { transform: translate(-50.5%, -49.5%) rotate(-2.5deg) scale(1.02); }
+}
+
+/* Эффект глитча (искажения) для фонового текста */
+@keyframes glitch {
+    0% { transform: skew(0deg); opacity: 0.1; }
+    20% { transform: skew(2deg); opacity: 0.3; }
+    21% { transform: skew(-10deg); opacity: 0.05; }
+    25% { transform: skew(0deg); opacity: 0.1; }
+    70% { transform: skew(-1deg); opacity: 0.2; }
+    80% { transform: skew(5deg); opacity: 0.1; }
+    100% { transform: skew(0deg); opacity: 0.1; }
+}
+
+/* Настройки 404 для планшетов */
+@media (max-width: 768px) {
+    .wasted-content { padding: 60px 15px; }
+    .wasted-overlay {
+        padding: 10px 30px;
+        border-width: 4px;
+    }
+    .error-msg { padding: 20px; }
+}
+
 /* Принудительный сброс маркеров списков */
 ul, li, nav ul {
     list-style: none !important;
+    list-style-type: none !important;
 }
 
 /* Шапка сайта (Header) */
@@ -51,7 +164,8 @@ header h1 {
     color: var(--primary-color);
     text-transform: uppercase;
     letter-spacing: 2px;
-    font-size: clamp(1.4rem, 5vw, 2rem);
+    font-size: clamp(1.4rem, 5vw, 2rem); /* Адаптивный шрифт заголовка */
+    text-align: center;
 }
 
 /* Виджет даты и времени */
@@ -68,15 +182,23 @@ header h1 {
     border: 1px solid rgba(255, 215, 0, 0.3);
 }
 
-/* Навигация */
+/* Основная навигация */
+nav {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
 nav ul {
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-wrap: wrap;
+    flex-wrap: wrap; /* Перенос кнопок, если они не помещаются в ряд */
     gap: 8px;
+    padding: 0 10px;
 }
 
+/* Стили ссылок меню и кнопки выпадающего списка */
 nav ul li a, .dropbtn {
     color: #fff;
     text-decoration: none;
@@ -89,39 +211,50 @@ nav ul li a, .dropbtn {
     background: transparent;
     border: 1px solid transparent;
     cursor: pointer;
+    font-family: inherit;
 }
 
-nav ul li a:hover, nav ul li a.active {
-    color: var(--primary-color);
-    background: rgba(255, 255, 255, 0.1);
+/* Стили выпадающего меню (Dropdown) */
+.dropdown {
+    position: relative;
+    display: flex;
+    justify-content: center;
 }
 
-/* Выпадающее меню */
-.dropdown { position: relative; }
 .dropdown-content {
-    display: none;
+    display: none; /* Скрыто по умолчанию */
     position: absolute;
     background-color: rgba(0, 0, 0, 0.95);
     min-width: 180px;
+    box-shadow: var(--shadow);
     z-index: 1000;
     border: 1px solid var(--primary-color);
+    border-radius: 4px;
     top: 100%;
     left: 50%;
     transform: translateX(-50%);
 }
-.dropdown:hover .dropdown-content { display: block; }
+
 .dropdown-content a {
     color: white;
     padding: 12px;
+    text-decoration: none;
     display: block;
     text-align: center;
+    font-size: 13px;
 }
+
 .dropdown-content a:hover {
     background-color: var(--primary-color);
     color: #000;
 }
 
-/* Основной контейнер */
+/* Показ выпадающего списка при наведении */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Основные контейнеры для страниц */
 .container {
     background: var(--bg-dark);
     margin: 20px auto;
@@ -131,102 +264,299 @@ nav ul li a:hover, nav ul li a.active {
     border-radius: 12px;
     box-shadow: var(--shadow);
     border: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    overflow-wrap: anywhere; /* Чтобы длинные URL или слова не разрывали сетку */
 }
 
-/* --- СТИЛИ ДЛЯ ЧИТОВ (АККОРДЕОНЫ) --- */
+/* --- УНИКАЛЬНЫЕ СТИЛИ ДЛЯ СТРАНИЦЫ URBANIZE --- */
+
+/* Контейнер мода Urbanize */
+.urbanize-page {
+    background: rgba(10, 10, 10, 0.95) !important;
+    border: 2px solid var(--primary-color) !important;
+    width: 95% !important;
+    max-width: 1100px !important;
+}
+
+/* Заголовок страницы Urbanize */
+.urbanize-title {
+    color: var(--primary-color);
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+    border-bottom: 2px solid var(--accent-color);
+    padding-bottom: 8px;
+    margin-bottom: 15px;
+}
+
+/* Блок описания мода Urbanize */
+.urbanize-info {
+    text-align: left !important;
+    background: rgba(255, 255, 255, 0.05);
+    padding: clamp(10px, 3vw, 20px);
+    border-left: 4px solid var(--primary-color);
+    border-radius: 4px;
+    margin: 15px 0 !important;
+    color: #ddd !important;
+    width: 100%;
+    box-sizing: border-box;
+    font-size: clamp(0.85rem, 2.5vw, 0.95rem);
+    line-height: 1.4;
+}
+
+/* Оранжевая кнопка скачивания для Urbanize */
+.urbanize-dl-btn {
+    background: linear-gradient(135deg, #ff9933 0%, #ff4500 100%) !important;
+    padding: 12px 30px !important;
+    font-size: clamp(0.9rem, 3.5vw, 1.1rem) !important;
+    letter-spacing: 0.5px;
+    box-shadow: 0 6px 15px rgba(255, 69, 0, 0.3) !important;
+    border-radius: 6px !important;
+    display: inline-block;
+    width: auto;
+    max-width: 100%;
+}
+
+/* Мобильная адаптация для Urbanize */
+@media (max-width: 768px) {
+    .urbanize-page {
+        width: 100% !important;
+        margin: 5px 0 !important;
+        padding: 12px !important;
+        border-radius: 0 !important;
+        border-left: none !important;
+        border-right: none !important;
+    }
+
+    .urbanize-info {
+        font-size: 0.85rem;
+        line-height: 1.4;
+        margin: 10px 0 !important;
+    }
+
+    .urbanize-dl-btn {
+        width: 100% !important;
+        padding: 12px 15px !important;
+    }
+}
+
+/* --- ТАБЛИЦЫ ЧИТОВ И АККОРДЕОНЫ --- */
+
+/* Контейнер категории (сворачиваемый блок) */
 .cheat-category {
-    margin-bottom: 10px;
-    border: 1px solid #333;
+    width: 100%;
+    margin-bottom: 15px;
+    border: 1px solid rgba(255, 215, 0, 0.3);
     border-radius: 8px;
-    background: rgba(0, 0, 0, 0.5);
     overflow: hidden;
-    transition: var(--transition);
 }
 
+/* Заголовок категории чита */
 .cheat-category h3 {
+    margin: 0;
     padding: 15px;
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--primary-color);
     cursor: pointer;
-    background: #111;
-    color: #ffcc00;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    font-size: clamp(0.9rem, 3vw, 1.1rem);
 }
 
-.cheat-category h3::after {
-    content: '▼';
-    font-size: 0.8em;
-    transition: transform 0.3s;
-}
-
-.cheat-category.active h3::after {
-    transform: rotate(180deg);
-}
-
-/* Логика раскрытия */
+/* Обертка таблицы для включения горизонтального скролла */
 .table-wrapper {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.4s ease-out, opacity 0.3s ease;
-    opacity: 0;
-    background: rgba(0, 0, 0, 0.3);
+    display: none; /* Скрыто до активации класса .active через JS */
+    overflow-x: auto;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    -webkit-overflow-scrolling: touch;
+}
+
+/* ЛОГИКА ВИДИМОСТИ ТАБЛИЦ В АККОРДЕОНЕ */
+.cheat-category .cheats-table { 
+    display: none; 
+}
+
+.cheat-category.active .table-wrapper,
+.cheat-category.active .cheats-table {
+    display: table;
+    width: 100%;
 }
 
 .cheat-category.active .table-wrapper {
-    max-height: 2000px; /* Достаточно для больших таблиц */
-    opacity: 1;
-    padding: 10px;
+    display: block;
 }
 
+/* Стили самой таблицы читов */
 .cheats-table {
     width: 100%;
     border-collapse: collapse;
 }
 
 .cheats-table td {
-    padding: 12px 10px;
-    border-bottom: 1px solid #222;
+    padding: 12px 8px;
+    text-align: left;
+    border-bottom: 1px solid rgba(255, 215, 0, 0.1);
     font-size: 0.9rem;
+    word-break: break-word;
 }
 
-/* Выделение самих кодов */
+/* Выделение кодов (вторая колонка) */
 .cheats-table td:nth-child(2) {
     color: var(--accent-color);
     font-weight: bold;
     font-family: 'Courier New', monospace;
-    text-align: right;
-    min-width: 140px;
+    min-width: 120px;
 }
 
-/* Содержание (TOC) */
-.wiki-toc {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid var(--primary-color);
-    padding: 15px;
+/* Стилизация изображений с ограничением ширины */
+img {
+    display: block;
+    max-width: 100%; /* Не шире родительского контейнера */
+    height: auto;   /* Сохранение пропорций */
     border-radius: 8px;
-    margin-bottom: 20px;
-}
-.wiki-toc ol { column-count: 2; padding-left: 20px; }
-.wiki-toc a { color: #fff; text-decoration: none; line-height: 1.8; }
-.wiki-toc a:hover { color: var(--primary-color); }
-
-/* Эффект WASTED (404) */
-.wasted-overlay {
-    background: linear-gradient(180deg, rgba(20, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.95) 100%);
-    color: #ff3333;
-    padding: 20px 70px;
-    border: 5px solid #ff3333;
-    font-size: clamp(2.5rem, 15vw, 6rem);
-    text-shadow: 4px 4px 0px #000;
-    animation: wasted-shake 0.2s infinite alternate;
+    margin: 15px auto;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
 }
 
-@keyframes wasted-shake {
-    0% { transform: rotate(-2deg); }
-    100% { transform: rotate(-2.5deg) scale(1.02); }
+/* --- АДАПТИВНЫЙ КОНТЕЙНЕР ДЛЯ ВИДЕО (16:9) --- */
+.video-container {
+    width: 100%;
+    max-width: 900px; 
+    margin: 20px auto;
+    position: relative;
+    padding-bottom: 56.25%; /* Хаки для сохранения пропорций 16:9 */
+    height: 0;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    background: #000;
 }
 
-/* Кнопка Наверх */
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* Центрирование кнопок */
+.button-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin: 20px 0;
+}
+
+/* Универсальная кнопка скачивания */
+.download-btn, button[style*="background-color: #ff9933"] {
+    background: linear-gradient(135deg, var(--accent-color), #ff4500);
+    color: white !important;
+    padding: 14px 28px !important;
+    font-size: clamp(0.9rem, 2vw, 1rem) !important;
+    font-weight: bold !important;
+    border-radius: 50px !important;
+    transition: var(--transition) !important;
+    text-decoration: none !important;
+    text-transform: uppercase !important;
+    border: none !important;
+    cursor: pointer !important;
+    max-width: 100%;
+    text-align: center;
+}
+
+/* Сетка для отображения списков модов или плиток контента */
+.mod-list, .content-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+    gap: 20px;
+    width: 100%;
+    margin-top: 20px;
+}
+
+/* --- ОБЩАЯ МОБИЛЬНАЯ АДАПТИВНОСТЬ --- */
+@media (max-width: 768px) {
+    /* Меню навигации в две колонки */
+    nav ul {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        width: 100%;
+        padding: 0 10px;
+    }
+
+    nav ul li {
+        width: 100%;
+    }
+
+    nav ul li a, .dropbtn {
+        width: 100%;
+        font-size: 11px;
+        padding: 10px 5px;
+    }
+
+    .dropdown {
+        width: 100%;
+    }
+
+    /* Выпадающее меню центрируется на мобильных */
+    .dropdown-content {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 80%;
+    }
+
+    /* Растягиваем контейнеры на всю ширину экрана мобильного */
+    .container {
+        width: 100%;
+        margin: 10px 0;
+        padding: 10px;
+        border-radius: 0;
+        border-left: none;
+        border-right: none;
+    }
+    
+    .cheats-table td {
+        font-size: 0.8rem;
+        padding: 10px 5px;
+    }
+
+    .cheats-table td:nth-child(2) {
+        min-width: 90px;
+        font-size: 0.85rem;
+    }
+    
+    .video-container {
+        margin: 10px 0;
+    }
+
+    img {
+        width: 100% !important;
+        max-width: 576px;
+    }
+}
+
+/* Настройки для совсем маленьких экранов */
+@media (max-width: 480px) {
+    nav ul {
+        grid-template-columns: 1fr; /* Кнопки меню в один ряд */
+    }
+
+    header {
+        padding: 15px 5px;
+    }
+    
+    .cheats-table td {
+        font-size: 0.75rem;
+    }
+}
+
+/* Кнопка плавной прокрутки "Наверх" */
 #scroll-btn {
     position: fixed;
     bottom: 20px;
@@ -235,20 +565,97 @@ nav ul li a:hover, nav ul li a.active {
     height: 45px;
     background: linear-gradient(135deg, var(--accent-color), #ff4500);
     color: white;
-    border-radius: 50%;
     border: none;
+    border-radius: 50%;
+    font-size: 18px;
     cursor: pointer;
-    display: none;
     z-index: 1001;
+    display: none; /* Скрыто через CSS, активируется через JavaScript при скролле */
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow);
 }
 
-/* Адаптивность для мобильных */
-@media (max-width: 768px) {
-    nav ul {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
+/* --- PROPER SHADERS BLOCK (в стиле Urbanize, без изменения дизайна) --- */
+
+.proper-shaders-title {
+    color: var(--primary-color);
+    margin-top: 25px;
+    text-align: center;
+}
+
+.proper-shaders-info {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.05);
+    padding: clamp(10px, 3vw, 20px);
+    border-left: 4px solid var(--primary-color);
+    border-radius: 4px;
+    margin: 15px 0;
+    color: #ddd;
+    width: 100%;
+    box-sizing: border-box;
+    line-height: 1.4;
+}
+
+/* Чтобы видео выглядело аккуратнее */
+.video-item {
+    width: 100%;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.video-item iframe {
+    max-width: 100%;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+}
+
+/* Список особенностей */
+.location-list {
+    text-align: center;
+    margin-top: 10px;
+    padding-left: 0;
+}
+
+.location-list li {
+    margin-bottom: 6px;
+    list-style-position: inside;
+}
+
+/* ────────────────────────────────────────────────
+   Стили для таблицы содержания (wiki-toc) — перенесены из Cheats.html
+───────────────────────────────────────────────── */
+
+.wiki-toc {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--primary-color);
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 30px;
+    text-align: left;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.wiki-toc ol {
+    padding-left: 25px;
+    column-count: 2;
+}
+
+@media (max-width: 600px) {
+    .wiki-toc ol {
+        column-count: 1;
     }
-    .wiki-toc ol { column-count: 1; }
-    .container { width: 100%; border-radius: 0; }
-    .cheats-table td:nth-child(2) { min-width: 100px; font-size: 0.8rem; }
+}
+
+.wiki-toc a {
+    color: var(--text-light);
+    text-decoration: none;
+    line-height: 1.8;
+    transition: var(--transition);
+}
+
+.wiki-toc a:hover {
+    color: var(--primary-color);
+    padding-left: 5px;
 }
