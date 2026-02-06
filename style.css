@@ -577,3 +577,49 @@ img {
     justify-content: center;
     box-shadow: var(--shadow);
 }
+
+/* --- PROPER SHADERS BLOCK (в стиле Urbanize, без изменения дизайна) --- */
+
+.proper-shaders-title {
+    color: var(--primary-color);
+    margin-top: 25px;
+    text-align: center;
+}
+
+.proper-shaders-info {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.05);
+    padding: clamp(10px, 3vw, 20px);
+    border-left: 4px solid var(--primary-color);
+    border-radius: 4px;
+    margin: 15px 0;
+    color: #ddd;
+    width: 100%;
+    box-sizing: border-box;
+    line-height: 1.4;
+}
+
+/* чтобы видео выглядело аккуратнее */
+.video-item {
+    width: 100%;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.video-item iframe {
+    max-width: 100%;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+}
+
+/* список особенностей */
+.location-list {
+    text-align: center;
+    margin-top: 10px;
+    padding-left: 0;
+}
+
+.location-list li {
+    margin-bottom: 6px;
+    list-style-position: inside;
+}
