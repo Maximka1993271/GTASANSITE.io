@@ -599,7 +599,7 @@ img {
     line-height: 1.4;
 }
 
-/* чтобы видео выглядело аккуратнее */
+/* Чтобы видео выглядело аккуратнее */
 .video-item {
     width: 100%;
     margin-top: 20px;
@@ -612,7 +612,7 @@ img {
     box-shadow: var(--shadow);
 }
 
-/* список особенностей */
+/* Список особенностей */
 .location-list {
     text-align: center;
     margin-top: 10px;
