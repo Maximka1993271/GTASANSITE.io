@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Proper Shaders — реалистичный HD графический мод для GTA San Andreas с высокой совместимостью и отличной оптимизацией.">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Proper Shaders — HD графика для GTA San Andreas">
+    <meta property="og:description" content="Новый реалистичный графический мод Proper Shaders с упором на стабильность и производительность.">
+    <meta property="og:image" content="https://www.mixmods.com.br/wp-content/uploads/2026/02/proper-shaders.jpg">
+    <meta property="og:type" content="website">
+
+    <title>Proper Shaders — GTA San Andreas Portal</title>
+
+    <!-- Иконки -->
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon.png">
+    <link rel="apple-touch-icon" href="images/favicon.png">
+
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+<body>
+    <header>
+        <h1>[SA] Urbanize</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="urbanize.html">Урбанизация</a></li>
+                <li><a href="proper_shaders.html" class="active">Proper Shaders</a></li>
+                <li><a href="mods.html">Список модов</a></li>
+                <li><a href="Cheats.html">Читы</a></li>
+                <li><a href="Priority.html">Приоритеты</a></li>
+                <li><a href="install.html">Установка</a></li>
+				<li><a href="FAQ.html">FAQ</a></li>
+                <li class="dropdown">
+                    <button class="dropbtn">Радио ▾</button>
+                    <div class="dropdown-content">
+                         <a href="https://gtaradio.net/ru/4" target="_blank">GTA IV Radio</a>
+						<a href="https://gtaradio.net/ru/vcs" target="_blank">GTA Vice City Stories Radio</a>
+						<a href="https://gtaradio.net/ru/lcs" target="_blank">GTA Liberty City Stories Radio</a>
+						<a href="https://gtaradio.net/ru/sa" target="_blank">GTA San Andreas Radio</a>
+						<a href="https://gtaradio.net/ru/vc" target="_blank">GTA Vice City Radio</a>
+						<a href="https://gtaradio.net/ru/3" target="_blank">GTA III Radio</a>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+		<!-- Новый блок для даты и времени -->
+        <div id="datetime"></div>
+    </header>
+
+<main>
+<div class="container">
+
+    <h2>Добро пожаловать на страницу Proper Shaders!</h2>
+
+    <p>
+        Proper Shaders — это новый реалистичный мод с HD-графикой, созданный с целью обеспечения 
+        стабильности, оптимизации и ненавязчивого визуального улучшения игры. Мод отличается высокой 
+        совместимостью с другими модами и поддерживает современные графические функции, делая мир 
+        GTA San Andreas более живым и атмосферным без серьезной нагрузки на систему.
+    </p>
+
+    <h3>Видео Proper Shaders</h3>
+
+    <div class="video-item">
+        <iframe width="560" height="315"
+            src="https://www.youtube.com/embed/7uCiIDZdUNE"
+            title="Proper Shaders Teaser"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+        </iframe>
+
+        <h4>Teaser Proper Shaders</h4>
+
+        <ul class="location-list">
+            <li>Реалистичное освещение и тени.</li>
+            <li>HD-эффекты без сильной потери FPS.</li>
+            <li>Отличная оптимизация.</li>
+            <li>Высокая совместимость с другими модами.</li>
+            <li>Современные графические улучшения без перегруженности.</li>
+        </ul>
+
+        <a href="https://www.mixmods.com.br/2026/02/gta-sa-proper-shaders-teaser/" target="_blank">
+            <button style="padding: 10px 20px; font-size: 16px; background-color: #ff9933; color: white; border: none; border-radius: 5px; cursor: pointer;">
+                Перейти к моду
+            </button>
+        </a>
+    </div>
+
+</div>
+
+<button id="scroll-btn">⬆</button>
+
+<script src="script.js"></script>
+
+<script>
+function updateTime() {
+    var now = new Date();
+    var hours = String(now.getHours()).padStart(2, '0');
+    var minutes = String(now.getMinutes()).padStart(2, '0');
+    var seconds = String(now.getSeconds()).padStart(2, '0');
+    var day = now.getDate();
+    var month = now.getMonth() + 1;
+    var year = now.getFullYear();
+
+    var datetime = day + '.' + month + '.' + year + ' ' + hours + ':' + minutes + ':' + seconds;
+    document.getElementById('datetime').textContent = datetime;
+}
+
+setInterval(updateTime, 1000);
+</script>
+
+</body>
+</html>
