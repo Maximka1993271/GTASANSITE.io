@@ -20,7 +20,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
-<body> <header>
+<body>
+    <header>
         <h1>Grand Theft Auto: San Andreas</h1>
         <nav>
             <ul>
@@ -35,12 +36,12 @@
                 <li class="dropdown">
                     <button class="dropbtn">Радио ▾</button>
                     <div class="dropdown-content">
-                        <a href="https://gtaradio.net/ru/4" target="_blank">GTA IV Radio</a>
-                        <a href="https://gtaradio.net/ru/vcs" target="_blank">GTA VCS Radio</a>
-                        <a href="https://gtaradio.net/ru/lcs" target="_blank">GTA LCS Radio</a>
-                        <a href="https://gtaradio.net/ru/sa" target="_blank">GTA San Andreas Radio</a>
-                        <a href="https://gtaradio.net/ru/vc" target="_blank">GTA Vice City Radio</a>
-                        <a href="https://gtaradio.net/ru/3" target="_blank">GTA III Radio</a>
+                        <a href="https://gtaradio.net/ru/4" target="_blank" rel="noopener noreferrer">GTA IV Radio</a>
+                        <a href="https://gtaradio.net/ru/vcs" target="_blank" rel="noopener noreferrer">GTA Vice City Stories Radio</a>
+                        <a href="https://gtaradio.net/ru/lcs" target="_blank" rel="noopener noreferrer">GTA Liberty City Stories Radio</a>
+                        <a href="https://gtaradio.net/ru/sa" target="_blank" rel="noopener noreferrer">GTA San Andreas Radio</a>
+                        <a href="https://gtaradio.net/ru/vc" target="_blank" rel="noopener noreferrer">GTA Vice City Radio</a>
+                        <a href="https://gtaradio.net/ru/3" target="_blank" rel="noopener noreferrer">GTA III Radio</a>
                     </div>
                 </li>
             </ul>
@@ -51,8 +52,10 @@
     <main class="container">
         <h2>Grand Theft Auto: San Andreas</h2>
         
-        <img src="https://media-rockstargames-com.akamaized.net/mfe6/prod/__common/img/bbcbd2a2bb65ddad76e831c91c17b421.jpg" alt="GTA San Andreas Artwork">
-        
+        <img src="https://media-rockstargames-com.akamaized.net/mfe6/prod/__common/img/bbcbd2a2bb65ddad76e831c91c17b421.jpg" 
+             alt="Официальный арт Grand Theft Auto: San Andreas" 
+             style="max-width:100%; height:auto; border-radius:8px; display:block; margin:1.5em auto;">
+
         <div class="description-text">
             <p><strong>Описание игры:</strong></p>
             <p>Пять лет назад Карл Джонсон бежал из Los Santos – города преступлений, наркотиков и коррупции, где даже кинозвезды и миллионеры вынуждены любыми способами защищаться от вымогателей и бандитов.</p>
@@ -64,25 +67,43 @@
             <h2>Rockstar Games Launcher</h2>
             <p>Официальный клиент для запуска игр Rockstar Games.</p>
             <div class="button-container">
-                <a href="https://gamedownloads.rockstargames.com/public/installer/Rockstar-Games-Launcher.exe" target="_blank" class="download-btn">Download Launcher</a>
+                <a href="https://gamedownloads.rockstargames.com/public/installer/Rockstar-Games-Launcher.exe" 
+                   target="_blank" rel="noopener noreferrer" class="download-btn">Скачать Launcher</a>
             </div>
 
-            <h2>Grand Theft Auto San Andreas Original</h2>
-            <p>Чистая оригинальная версия игры.</p>
+            <h2>Grand Theft Auto: San Andreas — Оригинальная версия</h2>
+            <p>Чистая версия игры без модификаций.</p>
             <div class="button-container">
-                <a href="https://drive.google.com/file/d/1gea4-iN7UPqkWwErOUumWvRFHCQLjcHv/view?usp=drive_link" target="_blank" class="download-btn">Download (Google Drive)</a>
+                <a href="https://drive.google.com/file/d/1gea4-iN7UPqkWwErOUumWvRFHCQLjcHv/view?usp=drive_link" 
+                   target="_blank" rel="noopener noreferrer" class="download-btn">Скачать (Google Drive)</a>
             </div>
 
             <h2>Grand Theft Auto: San Andreas + Essentials Pack</h2>
-            <p>Версия с набором необходимых исправлений для новых систем.</p>
+            <p>Версия с набором необходимых исправлений для современных систем (рекомендуется).</p>
             <div class="button-container">
-                <a href="https://mega.nz/file/vBFBEaTa#s6y6zTS8KtGJ-AUZGRp3ou_wm8ZKUJTNl3d1t2KGS8Q" target="_blank" class="download-btn">Download (MEGA)</a>
+                <a href="https://mega.nz/file/vBFBEaTa#s6y6zTS8KtGJ-AUZGRp3ou_wm8ZKUJTNl3d1t2KGS8Q" 
+                   target="_blank" rel="noopener noreferrer" class="download-btn">Скачать (MEGA)</a>
             </div>
         </div>
     </main>
 
     <button id="scroll-btn">⬆</button>
 
-    <script src="script.js"></script>
+    <script>
+        // Обновление даты и времени (как в urbanize.html)
+        function updateTime() {
+            const now = new Date();
+            const pad = n => String(n).padStart(2, '0');
+            document.getElementById('datetime').textContent = 
+                `${pad(now.getDate())}.${pad(now.getMonth()+1)}.${now.getFullYear()} ` +
+                `${pad(now.getHours())}:${pad(now.getMinutes())}:${pad(now.getSeconds())}`;
+        }
+        setInterval(updateTime, 1000);
+        updateTime();
+    </script>
+
+    <!-- Если у тебя есть дополнительная логика в script.js — оставь -->
+    <!-- <script src="script.js"></script> -->
+
 </body>
 </html>
