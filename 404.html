@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="404 - Страница не найдена. ПОТРАЧЕНО.">
-    <title>404 - ПОТРАЧЕНО</title>
+    <title>404 — ПОТРАЧЕНО</title>
 
     <!-- Иконки -->
     <link rel="icon" href="images/favicon.ico" type="image/x-icon">
@@ -13,8 +13,6 @@
 
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <!-- Font Awesome можно убрать, если на этой странице не используются иконки -->
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> -->
 </head>
 <body>
     <header>
@@ -63,10 +61,10 @@
         </div>
     </main>
 
-    <button id="scroll-btn">⬆</button>
+    <button id="scroll-btn" aria-label="Прокрутить наверх">⬆</button>
 
     <script>
-        // Единый скрипт обновления времени (как на других страницах)
+        // Обновление времени — единый формат для всего сайта
         function updateTime() {
             const now = new Date();
             const pad = n => String(n).padStart(2, '0');
@@ -78,7 +76,6 @@
         updateTime();
     </script>
 
-    <!-- Если в script.js есть логика кнопки прокрутки и/или другие общие функции — оставляем -->
     <script src="script.js"></script>
 </body>
 </html>

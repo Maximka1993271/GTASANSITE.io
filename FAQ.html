@@ -7,13 +7,13 @@
     <meta property="og:title" content="FAQ — GTA: San Andreas">
     <meta property="og:description" content="Ответы на вопросы по установке модов, настройке приоритетов и решению проблем.">
     <meta property="og:image" content="https://media-rockstargames-com.akamaized.net/mfe6/prod/__common/img/bbcbd2a2bb65ddad76e831c91c17b421.jpg">
-    <title>FAQ & Guide - GTA San Andreas</title>
-    
+    <title>FAQ & Guide — GTA San Andreas</title>
+
     <!-- Иконки -->
     <link rel="icon" href="images/favicon.ico" type="image/x-icon">
     <link rel="icon" type="image/png" sizes="32x32" href="images/favicon.png">
     <link rel="apple-touch-icon" href="images/favicon.png">
-    
+
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -21,82 +21,85 @@
 <body>
     <header>
         <h1>Часто задаваемые вопросы и руководство</h1>
-         <nav>
+        <nav>
             <ul>
                 <li><a href="index.html">Главная</a></li>
                 <li><a href="urbanize.html">Урбанизация</a></li>
-                <li><a href="proper_shaders.html" class="active">Proper Shaders</a></li>
+                <li><a href="proper_shaders.html">Proper Shaders</a></li>
                 <li><a href="mods.html">Список модов</a></li>
                 <li><a href="Cheats.html">Читы</a></li>
                 <li><a href="Priority.html">Приоритеты</a></li>
                 <li><a href="install.html">Установка</a></li>
-				<li><a href="FAQ.html">FAQ</a></li>
+                <li><a href="FAQ.html">FAQ</a></li>
                 <li class="dropdown">
                     <button class="dropbtn">Радио ▾</button>
                     <div class="dropdown-content">
-                         <a href="https://gtaradio.net/ru/4" target="_blank">GTA IV Radio</a>
-						<a href="https://gtaradio.net/ru/vcs" target="_blank">GTA Vice City Stories Radio</a>
-						<a href="https://gtaradio.net/ru/lcs" target="_blank">GTA Liberty City Stories Radio</a>
-						<a href="https://gtaradio.net/ru/sa" target="_blank">GTA San Andreas Radio</a>
-						<a href="https://gtaradio.net/ru/vc" target="_blank">GTA Vice City Radio</a>
-						<a href="https://gtaradio.net/ru/3" target="_blank">GTA III Radio</a>
+                        <a href="https://gtaradio.net/ru/4" target="_blank" rel="noopener noreferrer">GTA IV Radio</a>
+                        <a href="https://gtaradio.net/ru/vcs" target="_blank" rel="noopener noreferrer">GTA Vice City Stories Radio</a>
+                        <a href="https://gtaradio.net/ru/lcs" target="_blank" rel="noopener noreferrer">GTA Liberty City Stories Radio</a>
+                        <a href="https://gtaradio.net/ru/sa" target="_blank" rel="noopener noreferrer">GTA San Andreas Radio</a>
+                        <a href="https://gtaradio.net/ru/vc" target="_blank" rel="noopener noreferrer">GTA Vice City Radio</a>
+                        <a href="https://gtaradio.net/ru/3" target="_blank" rel="noopener noreferrer">GTA III Radio</a>
                     </div>
                 </li>
             </ul>
         </nav>
-		<!-- Блок для отображения даты и времени через script.js -->
         <div id="datetime">Загрузка времени...</div>
     </header>
 
-    <main>
-        <div class="container">
-            <section class="info-section">
-                <h2 style="color: var(--primary-color); text-align: center; margin-bottom: 30px;">Часто задаваемые вопросы</h2>
+    <main class="container">
+        <section class="faq-section">
+            <h2>Руководство для новичков</h2>
+            <div class="guide-content">
+                <p>Если вы новичок в модификации GTA: San Andreas, начните с установки базовых плагинов, таких как ModLoader и ASI Loader. Они позволяют добавлять моды без замены оригинальных файлов игры. Рекомендуется использовать Essentials Pack для стабильности на новых ОС.</p>
+                <p>После установки ModLoader, настройте приоритеты в файле modloader.ini, чтобы избежать конфликтов. Подробности в разделе <a href="Priority.html">Приоритеты</a>.</p>
+            </div>
 
-                <div class="faq-container">
-                    <div class="faq-item" style="background: var(--bg-card); padding: 20px; border-radius: 8px; margin-bottom: 15px; border-left: 4px solid var(--primary-color);">
-                        <h3 style="color: var(--accent-color); margin-bottom: 10px;">С чего начать модификацию игры?</h3>
-                        <p>Рекомендуется использовать чистую версию игры 1.0 (NOCD). Первым делом установите <strong>Essentials Pack</strong> (SilentPatch, Widescreen Fix, Framerate Vigilante), чтобы исправить технические ошибки оригинала.</p>
-                    </div>
-
-                    <div class="faq-item" style="background: var(--bg-card); padding: 20px; border-radius: 8px; margin-bottom: 15px; border-left: 4px solid var(--primary-color);">
-                        <h3 style="color: var(--accent-color); margin-bottom: 10px;">Как правильно устанавливать моды?</h3>
-                        <p>Самый простой и правильный способ - через <strong>ModLoader</strong>. Вам необходимо создать папку <code>_ESSENTIALS+</code> внутри директории <code>modloader</code> и перенести туда основные файлы: <strong>FramerateVigilante</strong>, <strong>GraphicsTweaker</strong>, <strong>RepairGTA</strong>, <strong>SilentPatch</strong>, <strong>Widescreen Fix</strong>. Это обеспечит стабильную работу игры и правильный приоритет загрузки без замены системных архивов.</p>
-                    </div>
-
-                    <div class="faq-item" style="background: var(--bg-card); padding: 20px; border-radius: 8px; margin-bottom: 15px; border-left: 4px solid var(--primary-color);">
-                        <h3 style="color: var(--accent-color); margin-bottom: 10px;">Игра вылетает при запуске, что делать?</h3>
-                        <p>Проверьте, установлены ли все необходимые библиотеки (ASI Loader). Если установлен Essentials Pack, посмотрите файл лога вылета. Также убедитесь, что у вас не конфликтуют крупные графические моды (проверьте вкладку <a href="Priority.html" style="color: var(--primary-color);">Приоритеты</a>).</p>
-                    </div>
-
-                    <div class="faq-item" style="background: var(--bg-card); padding: 20px; border-radius: 8px; margin-bottom: 15px; border-left: 4px solid var(--primary-color);">
-                        <h3 style="color: var(--accent-color); margin-bottom: 10px;">Можно ли использовать сохранения из обычной версии?</h3>
-                        <p>Да, но если вы установили глобальные моды, меняющие карту (например, некоторые компоненты Urbanize), старые сохранения могут работать некорректно или вызывать вылеты.</p>
-                    </div>
+            <h2>Часто задаваемые вопросы</h2>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <h3>Как установить RoSA Project?</h3>
+                    <p>Скачайте архив с RoSA Project Evolved и распакуйте его в папку modloader. Установите приоритет 30 для правильной загрузки (см. <a href="Priority.html">Приоритеты</a>).</p>
                 </div>
 
-                <div class="download-section" style="margin-top: 40px; text-align: center;">
-                    <h2>Нужна помощь?</h2>
-                    <p>Если вы не нашли ответ на свой вопрос, изучите пошаговую инструкцию в разделе установки.</p>
-                    <div class="button-container">
-                        <a href="install.html" class="download-btn">Перейти к установке</a>
-                    </div>
+                <div class="faq-item">
+                    <h3>Что такое Essentials+?</h3>
+                    <p>Essentials+ — это набор базовых исправлений и улучшений. Для установки модов вам необходимо создать папку <code>_ESSENTIALS+</code> внутри директории <code>modloader</code> и перенести туда основные файлы: <strong>FramerateVigilante</strong>, <strong>GraphicsTweaker</strong>, <strong>RepairGTA</strong>, <strong>SilentPatch</strong>, <strong>Widescreen Fix</strong>. Это обеспечит стабильную работу игры и правильный приоритет загрузки без замены системных архивов.</p>
                 </div>
-            </section>
-        </div>
+
+                <div class="faq-item">
+                    <h3>Игра вылетает при запуске, что делать?</h3>
+                    <p>Проверьте, установлены ли все необходимые библиотеки (ASI Loader). Если установлен Essentials Pack, посмотрите файл лога вылета. Также убедитесь, что у вас не конфликтуют крупные графические моды (проверьте вкладку <a href="Priority.html">Приоритеты</a>).</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>Можно ли использовать сохранения из обычной версии?</h3>
+                    <p>Да, но если вы установили глобальные моды, меняющие карту (например, некоторые компоненты Urbanize), старые сохранения могут работать некорректно или вызывать вылеты.</p>
+                </div>
+            </div>
+
+            <div class="download-section">
+                <h2>Нужна помощь?</h2>
+                <p>Если вы не нашли ответ на свой вопрос, изучите пошаговую инструкцию в разделе установки.</p>
+                <div class="button-container">
+                    <a href="install.html" class="download-btn">Перейти к установке</a>
+                </div>
+            </div>
+        </section>
     </main>
 
-    <button id="scroll-btn" title="Наверх">⬆</button>
+    <button id="scroll-btn" aria-label="Наверх">⬆</button>
 
     <script src="script.js"></script>
+
     <script>
-        // Функция обновления времени, если она не подтянулась из script.js
+        // Обновление времени — единый формат для всего сайта
         function updateTime() {
-            const dtElement = document.getElementById('datetime');
-            if (dtElement) {
-                const now = new Date();
-                dtElement.textContent = now.toLocaleString('ru-RU');
-            }
+            const now = new Date();
+            const pad = n => String(n).padStart(2, '0');
+            document.getElementById('datetime').textContent =
+                `${pad(now.getDate())}.${pad(now.getMonth() + 1)}.${now.getFullYear()} ` +
+                `${pad(now.getHours())}:${pad(now.getMinutes())}:${pad(now.getSeconds())}`;
         }
         setInterval(updateTime, 1000);
         updateTime();

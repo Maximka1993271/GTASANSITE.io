@@ -288,8 +288,6 @@ nav ul li a, .dropbtn {
     border-bottom: 2px solid var(--accent-color);
     padding-bottom: 8px;
     margin-bottom: 15px;
-    width: 100%;
-    font-size: clamp(1.2rem, 4vw, 1.8rem);
 }
 
 /* Блок описания мода Urbanize */
@@ -622,4 +620,42 @@ img {
 .location-list li {
     margin-bottom: 6px;
     list-style-position: inside;
+}
+
+/* ────────────────────────────────────────────────
+   Стили для таблицы содержания (wiki-toc) — перенесены из Cheats.html
+───────────────────────────────────────────────── */
+
+.wiki-toc {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--primary-color);
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 30px;
+    text-align: left;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.wiki-toc ol {
+    padding-left: 25px;
+    column-count: 2;
+}
+
+@media (max-width: 600px) {
+    .wiki-toc ol {
+        column-count: 1;
+    }
+}
+
+.wiki-toc a {
+    color: var(--text-light);
+    text-decoration: none;
+    line-height: 1.8;
+    transition: var(--transition);
+}
+
+.wiki-toc a:hover {
+    color: var(--primary-color);
+    padding-left: 5px;
 }

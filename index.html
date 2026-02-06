@@ -4,10 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Портал по модификации GTA: San Andreas. Инструкции по установке RoSA Project и Urbanize, актуальные чит-коды, настройка приоритетов ModLoader.">
+    <meta name="keywords" content="GTA San Andreas, моды, читы, RoSA Project, Urbanize, ModLoader, скачать ГТА Сан Андреас">
     
     <meta property="og:title" content="GTA: San Andreas — Моды, Инструкции и Читы">
     <meta property="og:description" content="Все для прокачки вашей GTA San Andreas: от графических модов до полных списков чит-кодов.">
     <meta property="og:image" content="images/og-main.jpg">
+    <meta property="og:url" content="https://your-domain.com/">
     <meta property="og:type" content="website">
 
     <title>GTA: San Andreas Portal — Главная</title>
@@ -22,88 +24,114 @@
 </head>
 <body>
     <header>
-        <h1>Grand Theft Auto: San Andreas</h1>
-        <nav>
-            <ul>
-                <li><a href="index.html">Главная</a></li>
-                <li><a href="urbanize.html">Урбанизация</a></li>
-                <li><a href="proper_shaders.html">Proper Shaders</a></li>
-                <li><a href="mods.html">Список модов</a></li>
-                <li><a href="Cheats.html">Читы</a></li>
-                <li><a href="Priority.html">Приоритеты</a></li>
-                <li><a href="install.html">Установка</a></li>
-                <li><a href="FAQ.html">FAQ</a></li>
-                <li class="dropdown">
-                    <button class="dropbtn">Радио ▾</button>
-                    <div class="dropdown-content">
-                        <a href="https://gtaradio.net/ru/4" target="_blank" rel="noopener noreferrer">GTA IV Radio</a>
-                        <a href="https://gtaradio.net/ru/vcs" target="_blank" rel="noopener noreferrer">GTA Vice City Stories Radio</a>
-                        <a href="https://gtaradio.net/ru/lcs" target="_blank" rel="noopener noreferrer">GTA Liberty City Stories Radio</a>
-                        <a href="https://gtaradio.net/ru/sa" target="_blank" rel="noopener noreferrer">GTA San Andreas Radio</a>
-                        <a href="https://gtaradio.net/ru/vc" target="_blank" rel="noopener noreferrer">GTA Vice City Radio</a>
-                        <a href="https://gtaradio.net/ru/3" target="_blank" rel="noopener noreferrer">GTA III Radio</a>
-                    </div>
-                </li>
-            </ul>
-        </nav>
-        <div id="datetime">Загрузка времени...</div>
+        <div class="header-content">
+            <h1>Grand Theft Auto: San Andreas</h1>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="active">Главная</a></li>
+                    <li><a href="urbanize.html">Урбанизация</a></li>
+                    <li><a href="proper_shaders.html">Proper Shaders</a></li>
+                    <li><a href="mods.html">Список модов</a></li>
+                    <li><a href="Cheats.html">Читы</a></li>
+                    <li><a href="Priority.html">Приоритеты</a></li>
+                    <li><a href="install.html">Установка</a></li>
+                    <li><a href="FAQ.html">FAQ</a></li>
+                    <li class="dropdown">
+                        <button class="dropbtn" aria-haspopup="true" aria-expanded="false">Радио <i class="fas fa-caret-down"></i></button>
+                        <div class="dropdown-content">
+                            <a href="https://gtaradio.net/ru/4" target="_blank" rel="noopener">GTA IV Radio</a>
+                            <a href="https://gtaradio.net/ru/vcs" target="_blank" rel="noopener">GTA VCS Radio</a>
+                            <a href="https://gtaradio.net/ru/lcs" target="_blank" rel="noopener">GTA LCS Radio</a>
+                            <a href="https://gtaradio.net/ru/sa" target="_blank" rel="noopener">GTA SA Radio</a>
+                            <a href="https://gtaradio.net/ru/vc" target="_blank" rel="noopener">GTA VC Radio</a>
+                            <a href="https://gtaradio.net/ru/3" target="_blank" rel="noopener">GTA III Radio</a>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+            <div id="datetime" class="datetime-display" aria-live="off">Загрузка времени...</div>
+        </div>
     </header>
 
     <main class="container">
-        <h2>Grand Theft Auto: San Andreas</h2>
-        
-        <img src="https://media-rockstargames-com.akamaized.net/mfe6/prod/__common/img/bbcbd2a2bb65ddad76e831c91c17b421.jpg" 
-             alt="Официальный арт Grand Theft Auto: San Andreas" 
-             style="max-width:100%; height:auto; border-radius:8px; display:block; margin:1.5em auto;">
+        <section class="hero-section">
+            <h2>Grand Theft Auto: San Andreas</h2>
+            
+            <figure>
+                <img src="https://media-rockstargames-com.akamaized.net/mfe6/prod/__common/img/bbcbd2a2bb65ddad76e831c91c17b421.jpg"
+                     alt="Официальный арт Grand Theft Auto: San Andreas — Карл Джонсон в Лос-Сантосе"
+                     class="main-art"
+                     loading="lazy">
+                <figcaption>Добро пожаловать в штат San Andreas</figcaption>
+            </figure>
 
-        <div class="description-text">
-            <p><strong>Описание игры:</strong></p>
-            <p>Пять лет назад Карл Джонсон бежал из Los Santos – города преступлений, наркотиков и коррупции, где даже кинозвезды и миллионеры вынуждены любыми способами защищаться от вымогателей и бандитов.</p>
-            <p>Начало 1990-х годов. Карл возвращается домой. Его мать убита, семья распалась, друзья попали в беду, а против него самого выдвинуто сфабрикованное обвинение в убийстве.</p>
-            <p>Чтобы вернуть близких и восстановить былые связи, Карл отправляется в опасное турне по San Andreas: он должен во что бы то ни стало завоевать улицы.</p>
-        </div>
+            <article class="description-text">
+                <p><strong>Описание игры:</strong></p>
+                <p>Пять лет назад Карл Джонсон бежал из Los Santos – города преступлений, наркотиков и коррупции, где даже кинозвезды и миллионеры вынуждены любыми способами защищаться от вымогателей и бандитов.</p>
+                <p>Начало 1990-х годов. Карл возвращается домой. Его мать убита, семья распалась, друзья попали в беду, а против него самого выдвинуто сфабрикованное обвинение в убийстве.</p>
+                <p>Чтобы вернуть близких и восстановить былые связи, Карл отправляется в опасное турне по San Andreas: он должен во что бы то ни стало завоевать улицы.</p>
+            </article>
+        </section>
 
-        <div class="download-section">
-            <h2>Rockstar Games Launcher</h2>
-            <p>Официальный клиент для запуска игр Rockstar Games.</p>
-            <div class="button-container">
-                <a href="https://gamedownloads.rockstargames.com/public/installer/Rockstar-Games-Launcher.exe" 
-                   target="_blank" rel="noopener noreferrer" class="download-btn">Скачать Launcher</a>
+        <section class="download-section">
+            <div class="download-card">
+                <h3>Rockstar Games Launcher</h3>
+                <p>Официальный клиент для запуска игр Rockstar Games.</p>
+                <div class="button-container">
+                    <a href="https://gamedownloads.rockstargames.com/public/installer/Rockstar-Games-Launcher.exe"
+                       target="_blank" rel="noopener" class="download-btn"><i class="fas fa-download"></i> Скачать Launcher</a>
+                </div>
             </div>
 
-            <h2>Grand Theft Auto: San Andreas — Оригинальная версия</h2>
-            <p>Чистая версия игры без модификаций.</p>
-            <div class="button-container">
-                <a href="https://drive.google.com/file/d/1gea4-iN7UPqkWwErOUumWvRFHCQLjcHv/view?usp=drive_link" 
-                   target="_blank" rel="noopener noreferrer" class="download-btn">Скачать (Google Drive)</a>
+            <div class="download-card">
+                <h3>GTA: San Andreas — Оригинал</h3>
+                <p>Чистая версия игры без модификаций.</p>
+                <div class="button-container">
+                    <a href="https://drive.google.com/file/d/1gea4-iN7UPqkWwErOUumWvRFHCQLjcHv/view?usp=drive_link"
+                       target="_blank" rel="noopener" class="download-btn gdrive"><i class="fab fa-google-drive"></i> Скачать (Google Drive)</a>
+                </div>
             </div>
 
-            <h2>Grand Theft Auto: San Andreas + Essentials Pack</h2>
-            <p>Версия с набором необходимых исправлений для современных систем (рекомендуется).</p>
-            <div class="button-container">
-                <a href="https://mega.nz/file/vBFBEaTa#s6y6zTS8KtGJ-AUZGRp3ou_wm8ZKUJTNl3d1t2KGS8Q" 
-                   target="_blank" rel="noopener noreferrer" class="download-btn">Скачать (MEGA)</a>
+            <div class="download-card highlight">
+                <h3>GTA: San Andreas + Essentials Pack</h3>
+                <p>Версия с набором необходимых исправлений для современных систем (рекомендуется).</p>
+                <div class="button-container">
+                    <a href="https://mega.nz/file/vBFBEaTa#s6y6zTS8KtGJ-AUZGRp3ou_wm8ZKUJTNl3d1t2KGS8Q"
+                       target="_blank" rel="noopener" class="download-btn mega"><i class="fas fa-archive"></i> Скачать (MEGA)</a>
+                </div>
             </div>
-        </div>
+        </section>
     </main>
 
-    <button id="scroll-btn">⬆</button>
+    <footer>
+        <p>&copy; 2026 GTA: San Andreas Portal. Все права на игру принадлежат Rockstar Games.</p>
+    </footer>
 
+    <button id="scroll-btn" aria-label="Вернуться наверх">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <script src="script.js"></script>
     <script>
-        // Обновление даты и времени (как в urbanize.html)
+        /**
+         * Обновление даты и времени.
+         * Используем Intl.DateTimeFormat для локализации.
+         */
         function updateTime() {
+            const timeDisplay = document.getElementById('datetime');
+            if (!timeDisplay) return;
+
             const now = new Date();
-            const pad = n => String(n).padStart(2, '0');
-            document.getElementById('datetime').textContent = 
-                `${pad(now.getDate())}.${pad(now.getMonth()+1)}.${now.getFullYear()} ` +
-                `${pad(now.getHours())}:${pad(now.getMinutes())}:${pad(now.getSeconds())}`;
+            const options = {
+                day: '2-digit', month: '2-digit', year: 'numeric',
+                hour: '2-digit', minute: '2-digit', second: '2-digit'
+            };
+            
+            timeDisplay.textContent = new Intl.DateTimeFormat('ru-RU', options).format(now).replace(',', '');
         }
+        
         setInterval(updateTime, 1000);
         updateTime();
     </script>
-
-    <!-- Если у тебя есть дополнительная логика в script.js — оставь -->
-    <!-- <script src="script.js"></script> -->
-
 </body>
 </html>

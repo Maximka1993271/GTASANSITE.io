@@ -7,89 +7,97 @@
     <meta property="og:title" content="Приоритеты ModLoader — Настройка">
     <meta property="og:description" content="Настройте ModLoader правильно, чтобы моды не конфликтовали друг с другом.">
     <meta property="og:image" content="https://media-rockstargames-com.akamaized.net/mfe6/prod/__common/img/bbcbd2a2bb65ddad76e831c91c17b421.jpg">
-    <title>Priority - GTA San Andreas</title>
-    
+    <title>Приоритеты ModLoader — GTA San Andreas</title>
+
     <!-- Иконки -->
     <link rel="icon" href="images/favicon.ico" type="image/x-icon">
     <link rel="icon" type="image/png" sizes="32x32" href="images/favicon.png">
     <link rel="apple-touch-icon" href="images/favicon.png">
-    
+
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <header>
-   
-        <h1>Priority GTA: San Andreas</h1>
+        <h1>Приоритеты ModLoader</h1>
         <nav>
             <ul>
                 <li><a href="index.html">Главная</a></li>
                 <li><a href="urbanize.html">Урбанизация</a></li>
-                <li><a href="proper_shaders.html" class="active">Proper Shaders</a></li>
+                <li><a href="proper_shaders.html">Proper Shaders</a></li>
                 <li><a href="mods.html">Список модов</a></li>
                 <li><a href="Cheats.html">Читы</a></li>
                 <li><a href="Priority.html">Приоритеты</a></li>
                 <li><a href="install.html">Установка</a></li>
-				<li><a href="FAQ.html">FAQ</a></li>
+                <li><a href="FAQ.html">FAQ</a></li>
                 <li class="dropdown">
                     <button class="dropbtn">Радио ▾</button>
                     <div class="dropdown-content">
-                         <a href="https://gtaradio.net/ru/4" target="_blank">GTA IV Radio</a>
-						<a href="https://gtaradio.net/ru/vcs" target="_blank">GTA Vice City Stories Radio</a>
-						<a href="https://gtaradio.net/ru/lcs" target="_blank">GTA Liberty City Stories Radio</a>
-						<a href="https://gtaradio.net/ru/sa" target="_blank">GTA San Andreas Radio</a>
-						<a href="https://gtaradio.net/ru/vc" target="_blank">GTA Vice City Radio</a>
-						<a href="https://gtaradio.net/ru/3" target="_blank">GTA III Radio</a>
+                        <a href="https://gtaradio.net/ru/4" target="_blank" rel="noopener noreferrer">GTA IV Radio</a>
+                        <a href="https://gtaradio.net/ru/vcs" target="_blank" rel="noopener noreferrer">GTA Vice City Stories Radio</a>
+                        <a href="https://gtaradio.net/ru/lcs" target="_blank" rel="noopener noreferrer">GTA Liberty City Stories Radio</a>
+                        <a href="https://gtaradio.net/ru/sa" target="_blank" rel="noopener noreferrer">GTA San Andreas Radio</a>
+                        <a href="https://gtaradio.net/ru/vc" target="_blank" rel="noopener noreferrer">GTA Vice City Radio</a>
+                        <a href="https://gtaradio.net/ru/3" target="_blank" rel="noopener noreferrer">GTA III Radio</a>
                     </div>
                 </li>
             </ul>
         </nav>
-		<!-- Новый блок для даты и времени -->
-        <div id="datetime"></div>
+        <div id="datetime">Загрузка времени...</div>
     </header>
-    
-    <main>
-        <div class="container">
-            <h2>Priority List</h2>
-            <p>Установите данные значения в настройках <strong>ModLoader</strong>, чтобы избежать конфликтов текстур и моделей:</p>
-            
-            <div class="priority-list-wrapper">
-                <ul class="custom-list">
-                    <li>
-                        <i class="fas fa-layer-group"></i> 
-                        <strong>_essentials+</strong>: <span class="val">99</span>
-                    </li>
-					<li>
-                        <i class="fas fa-layer-group"></i> 
-                        <strong>project props 3.2 community</strong>: <span class="val">100</span>
-                    </li>
-                    <li>
-                        <i class="fas fa-wrench"></i> 
-                        <strong>Proper fixes</strong>: <span class="val">40</span>
-                    </li>
-                    <li>
-                        <i class="fas fa-user-tie"></i> 
-                        <strong>Proper player retex</strong>: <span class="val">61</span>
-                    </li>
-                    <li>
-                        <i class="fas fa-car"></i> 
-                        <strong>Revamped vehicles project</strong>: <span class="val">62</span>
-                    </li>
-                    <li>
-                        <i class="fas fa-mountain"></i> 
-                        <strong>Rosa project evolved</strong>: <span class="val">30</span>
-                    </li>
-                </ul>
-            </div>
+
+    <main class="container">
+        <h2>Рекомендуемый порядок приоритетов в ModLoader</h2>
+        <p>Установите эти значения в файле <code>modloader.ini</code> (или через интерфейс ModLoader), чтобы избежать конфликтов текстур, моделей и скриптов:</p>
+
+        <div class="priority-list-wrapper">
+            <ul class="custom-list">
+                <li>
+                    <i class="fas fa-layer-group"></i>
+                    <strong>_essentials+</strong>: <span class="val">99</span>
+                </li>
+                <li>
+                    <i class="fas fa-layer-group"></i>
+                    <strong>project props 3.2 community</strong>: <span class="val">100</span>
+                </li>
+                <li>
+                    <i class="fas fa-wrench"></i>
+                    <strong>Proper fixes</strong>: <span class="val">40</span>
+                </li>
+                <li>
+                    <i class="fas fa-user-tie"></i>
+                    <strong>Proper player retex</strong>: <span class="val">61</span>
+                </li>
+                <li>
+                    <i class="fas fa-car"></i>
+                    <strong>Revamped vehicles project</strong>: <span class="val">62</span>
+                </li>
+                <li>
+                    <i class="fas fa-mountain"></i>
+                    <strong>Rosa project evolved</strong>: <span class="val">30</span>
+                </li>
+            </ul>
         </div>
+
+        <p class="note">Чем выше число приоритета — тем позже мод загружается и тем выше его приоритет над предыдущими. Essentials и Project Props ставятся последними, чтобы перезаписывать всё остальное.</p>
     </main>
 
-     <!-- Кнопка прокрутки вверх -->
-    <button id="scroll-btn">⬆</button>
+    <button id="scroll-btn" aria-label="Наверх">⬆</button>
 
-	<script src="script.js"></script>
-  
+    <script src="script.js"></script>
+
+    <script>
+        // Обновление времени — единый формат для всего сайта
+        function updateTime() {
+            const now = new Date();
+            const pad = n => String(n).padStart(2, '0');
+            document.getElementById('datetime').textContent =
+                `${pad(now.getDate())}.${pad(now.getMonth() + 1)}.${now.getFullYear()} ` +
+                `${pad(now.getHours())}:${pad(now.getMinutes())}:${pad(now.getSeconds())}`;
+        }
+        setInterval(updateTime, 1000);
+        updateTime();
     </script>
 </body>
 </html>

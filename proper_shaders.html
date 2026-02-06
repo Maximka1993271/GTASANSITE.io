@@ -18,12 +18,13 @@
 
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 
 <body>
     <header>
         <h1>Proper Shaders</h1>
-        <nav>
+        <nav aria-label="Главное меню">
             <ul>
                 <li><a href="index.html">Главная</a></li>
                 <li><a href="urbanize.html">Урбанизация</a></li>
@@ -34,84 +35,106 @@
                 <li><a href="install.html">Установка</a></li>
                 <li><a href="FAQ.html">FAQ</a></li>
                 <li class="dropdown">
-                    <button class="dropbtn">Радио ▾</button>
+                    <button class="dropbtn">Радио <i class="fas fa-caret-down"></i></button>
                     <div class="dropdown-content">
-                        <a href="https://gtaradio.net/ru/4" target="_blank">GTA IV Radio</a>
-                        <a href="https://gtaradio.net/ru/vcs" target="_blank">GTA Vice City Stories Radio</a>
-                        <a href="https://gtaradio.net/ru/lcs" target="_blank">GTA Liberty City Stories Radio</a>
-                        <a href="https://gtaradio.net/ru/sa" target="_blank">GTA San Andreas Radio</a>
-                        <a href="https://gtaradio.net/ru/vc" target="_blank">GTA Vice City Radio</a>
-                        <a href="https://gtaradio.net/ru/3" target="_blank">GTA III Radio</a>
+                        <a href="https://gtaradio.net/ru/4" target="_blank" rel="noopener">GTA IV Radio</a>
+                        <a href="https://gtaradio.net/ru/vcs" target="_blank" rel="noopener">GTA Vice City Stories Radio</a>
+                        <a href="https://gtaradio.net/ru/lcs" target="_blank" rel="noopener">GTA Liberty City Stories Radio</a>
+                        <a href="https://gtaradio.net/ru/sa" target="_blank" rel="noopener">GTA San Andreas Radio</a>
+                        <a href="https://gtaradio.net/ru/vc" target="_blank" rel="noopener">GTA Vice City Radio</a>
+                        <a href="https://gtaradio.net/ru/3" target="_blank" rel="noopener">GTA III Radio</a>
                     </div>
                 </li>
             </ul>
         </nav>
-        <div id="datetime"></div>
+        <div id="datetime" title="Текущее время"></div>
     </header>
 
 <main>
     <div class="container">
+        <section class="content-header">
+            <h2 class="proper-shaders-title">Добро пожаловать на страницу Proper Shaders!</h2>
+            <div class="proper-shaders-info">
+                <p>
+                    <strong>Proper Shaders</strong> — это современный графический мод, ориентированный на стабильность и 
+                    оптимизацию. Он добавляет в GTA San Andreas реалистичные эффекты постобработки, делая картинку 
+                    сочной и «живой», при этом сохраняя высокую производительность даже на средних сборках.
+                </p>
+            </div>
+        </section>
 
-        <h2>Добро пожаловать на страницу Proper Shaders!</h2>
+        <section class="video-section">
+            <h3>Видео Proper Shaders</h3>
 
-        <p>
-            Proper Shaders — это новый реалистичный мод с HD-графикой, созданный с целью обеспечения 
-            стабильности, оптимизации и ненавязчивого визуального улучшения игры. Мод отличается высокой 
-            совместимостью с другими модами и поддерживает современные графические функции, делая мир 
-            GTA San Andreas более живым и атмосферным без серьезной нагрузки на систему.
-        </p>
+            <div class="video-item">
+                <iframe width="560" height="315"
+                    src="https://www.youtube.com/embed/7uCiIDZdUNE"
+                    title="Proper Shaders Teaser"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen>
+                </iframe>
 
-        <h3>Видео Proper Shaders</h3>
+                <h4>Teaser Proper Shaders</h4>
 
-        <div class="video-item">
-            <iframe width="560" height="315"
-                src="https://www.youtube.com/embed/7uCiIDZdUNE"
-                title="Proper Shaders Teaser"
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen>
-            </iframe>
+                <ul class="location-list">
+                    <li><i class="fas fa-check"></i> Реалистичное освещение и тени.</li>
+                    <li><i class="fas fa-check"></i> HD-эффекты без сильной потери FPS.</li>
+                    <li><i class="fas fa-check"></i> Отличная оптимизация.</li>
+                    <li><i class="fas fa-check"></i> Высокая совместимость с другими модами.</li>
+                    <li><i class="fas fa-check"></i> Современные графические улучшения без перегруженности.</li>
+                </ul>
 
-            <h4>Teaser Proper Shaders</h4>
-
-            <ul class="location-list">
-                <li>Реалистичное освещение и тени.</li>
-                <li>HD-эффекты без сильной потери FPS.</li>
-                <li>Отличная оптимизация.</li>
-                <li>Высокая совместимость с другими модами.</li>
-                <li>Современные графические улучшения без перегруженности.</li>
-            </ul>
-
-            <a href="https://www.mixmods.com.br/2026/02/gta-sa-proper-shaders-teaser/" target="_blank">
-                <button style="padding: 10px 20px; font-size: 16px; background-color: #ff9933; color: white; border: none; border-radius: 5px; cursor: pointer;">
-                    Перейти к моду
-                </button>
-            </a>
-        </div>
-
+                <div class="button-container">
+                    <a href="https://www.mixmods.com.br/2026/02/gta-sa-proper-shaders-teaser/" 
+                       target="_blank" 
+                       rel="noopener noreferrer" 
+                       class="download-link">
+                        <button class="download-btn">
+                            <i class="fas fa-external-link-alt"></i> Перейти к моду
+                        </button>
+                    </a>
+                </div>
+            </div>
+        </section>
     </div>
 </main>
 
-<button id="scroll-btn">⬆</button>
+<button id="scroll-btn" title="Наверх">⬆</button>
 
 <script src="script.js"></script>
 
 <script>
+/** Обновление даты и времени **/
 function updateTime() {
-    var now = new Date();
-    var hours = String(now.getHours()).padStart(2, '0');
-    var minutes = String(now.getMinutes()).padStart(2, '0');
-    var seconds = String(now.getSeconds()).padStart(2, '0');
-    var day = String(now.getDate()).padStart(2, '0');
-    var month = String(now.getMonth() + 1).padStart(2, '0');
-    var year = now.getFullYear();
-
-    var datetime = day + '.' + month + '.' + year + ' ' + hours + ':' + minutes + ':' + seconds;
-    document.getElementById('datetime').textContent = datetime;
+    const now = new Date();
+    // Используем современный метод форматирования даты для чистоты кода
+    const options = { 
+        day: '2-digit', month: '2-digit', year: 'numeric',
+        hour: '2-digit', minute: '2-digit', second: '2-digit' 
+    };
+    const datetimeStr = now.toLocaleString('ru-RU', options).replace(',', '');
+    document.getElementById('datetime').textContent = datetimeStr;
 }
 
+// Запуск интервала обновления
 setInterval(updateTime, 1000);
-updateTime(); // Запуск сразу
+updateTime();
+
+/** Логика кнопки "Наверх" **/
+const scrollBtn = document.getElementById("scroll-btn");
+window.onscroll = function() {
+    // Используем window.scrollY для лучшей совместимости
+    if (window.scrollY > 300) {
+        scrollBtn.style.display = "flex";
+    } else {
+        scrollBtn.style.display = "none";
+    }
+};
+
+scrollBtn.onclick = function() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+};
 </script>
 
 </body>
