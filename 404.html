@@ -3,41 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="404 - Страница не найдена. ПОТРАЧЕНО.">
     <title>404 - ПОТРАЧЕНО</title>
+
     <!-- Иконки -->
     <link rel="icon" href="images/favicon.ico" type="image/x-icon">
     <link rel="icon" type="image/png" sizes="32x32" href="images/favicon.png">
     <link rel="apple-touch-icon" href="images/favicon.png">
-    
+
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome можно убрать, если на этой странице не используются иконки -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> -->
 </head>
+<body>
     <header>
-        <h1>404 - ПОТРАЧЕНО</h1>
-         <nav>
+        <h1>404 — ПОТРАЧЕНО</h1>
+        <nav>
             <ul>
                 <li><a href="index.html">Главная</a></li>
                 <li><a href="urbanize.html">Урбанизация</a></li>
-                <li><a href="proper_shaders.html" class="active">Proper Shaders</a></li>
+                <li><a href="proper_shaders.html">Proper Shaders</a></li>
                 <li><a href="mods.html">Список модов</a></li>
                 <li><a href="Cheats.html">Читы</a></li>
                 <li><a href="Priority.html">Приоритеты</a></li>
                 <li><a href="install.html">Установка</a></li>
-				<li><a href="FAQ.html">FAQ</a></li>
+                <li><a href="FAQ.html">FAQ</a></li>
                 <li class="dropdown">
                     <button class="dropbtn">Радио ▾</button>
                     <div class="dropdown-content">
-                         <a href="https://gtaradio.net/ru/4" target="_blank">GTA IV Radio</a>
-						<a href="https://gtaradio.net/ru/vcs" target="_blank">GTA Vice City Stories Radio</a>
-						<a href="https://gtaradio.net/ru/lcs" target="_blank">GTA Liberty City Stories Radio</a>
-						<a href="https://gtaradio.net/ru/sa" target="_blank">GTA San Andreas Radio</a>
-						<a href="https://gtaradio.net/ru/vc" target="_blank">GTA Vice City Radio</a>
-						<a href="https://gtaradio.net/ru/3" target="_blank">GTA III Radio</a>
+                        <a href="https://gtaradio.net/ru/4" target="_blank" rel="noopener noreferrer">GTA IV Radio</a>
+                        <a href="https://gtaradio.net/ru/vcs" target="_blank" rel="noopener noreferrer">GTA Vice City Stories Radio</a>
+                        <a href="https://gtaradio.net/ru/lcs" target="_blank" rel="noopener noreferrer">GTA Liberty City Stories Radio</a>
+                        <a href="https://gtaradio.net/ru/sa" target="_blank" rel="noopener noreferrer">GTA San Andreas Radio</a>
+                        <a href="https://gtaradio.net/ru/vc" target="_blank" rel="noopener noreferrer">GTA Vice City Radio</a>
+                        <a href="https://gtaradio.net/ru/3" target="_blank" rel="noopener noreferrer">GTA III Radio</a>
                     </div>
                 </li>
             </ul>
         </nav>
-		<!-- Блок для отображения даты и времени через script.js -->
         <div id="datetime">Загрузка времени...</div>
     </header>
 
@@ -47,7 +51,7 @@
                 <div class="wasted-bg-text">404</div>
                 <div class="wasted-overlay">ПОТРАЧЕНО</div>
             </div>
-            
+
             <div class="error-msg">
                 <p>Вы заехали на территорию Балласов, и этой страницы больше нет.</p>
                 <div class="error-code">ERROR_CODE: 0x404_STREET_NOT_FOUND</div>
@@ -61,17 +65,20 @@
 
     <button id="scroll-btn">⬆</button>
 
-    <script src="script.js"></script>
     <script>
-        // Резервный таймер обновления времени
-        function tick() {
-            const el = document.getElementById('datetime');
-            if (el && (el.innerText.includes('Загрузка') || el.innerText === '')) {
-                el.innerText = new Date().toLocaleString('ru-RU');
-            }
+        // Единый скрипт обновления времени (как на других страницах)
+        function updateTime() {
+            const now = new Date();
+            const pad = n => String(n).padStart(2, '0');
+            document.getElementById('datetime').textContent =
+                `${pad(now.getDate())}.${pad(now.getMonth() + 1)}.${now.getFullYear()} ` +
+                `${pad(now.getHours())}:${pad(now.getMinutes())}:${pad(now.getSeconds())}`;
         }
-        setInterval(tick, 1000);
-        tick();
+        setInterval(updateTime, 1000);
+        updateTime();
     </script>
+
+    <!-- Если в script.js есть логика кнопки прокрутки и/или другие общие функции — оставляем -->
+    <script src="script.js"></script>
 </body>
 </html>
