@@ -1,6 +1,6 @@
 /**
- * Единый скрипт для сайта GTA: SA Portal
- * Работает на всех страницах, включая Cheats.html
+ * Единый скрипт для портала GTA: San Andreas
+ * Обрабатывает: время, скролл, активные ссылки, аккордеоны читов и навигацию.
  */
 (function() {
     'use strict';
@@ -15,15 +15,17 @@
             this.initSmoothAnchors();
         },
 
+        // Сохраняем ссылки на элементы, чтобы не искать их постоянно
         cacheElements() {
             this.elements = {
                 dateTime: document.getElementById('datetime'),
                 scrollBtn: document.getElementById('scroll-btn'),
-                navLinks: document.querySelectorAll('nav ul li a')
+                navLinks: document.querySelectorAll('nav ul li a'),
+                cheatHeaders: document.querySelectorAll('.cheat-category h3')
             };
         },
 
-        // Дата и время: ДД.ММ.ГГГГ ЧЧ:ММ:СС
+        // 1. Обновление даты и времени (Формат: ДД.ММ.ГГГГ ЧЧ:ММ:СС)
         initDateTime() {
             const el = this.elements.dateTime;
             if (!el) return;
@@ -40,13 +42,17 @@
             setInterval(update, 1000);
         },
 
-        // Кнопка "Наверх"
+        // 2. Кнопка "Наверх"
         initScrollTop() {
             const btn = this.elements.scrollBtn;
             if (!btn) return;
 
             window.addEventListener('scroll', () => {
-                btn.style.display = window.scrollY > 300 ? 'flex' : 'none';
+                if (window.pageYOffset > 300) {
+                    btn.style.display = 'flex';
+                } else {
+                    btn.style.display = 'none';
+                }
             });
 
             btn.addEventListener('click', () => {
@@ -54,61 +60,62 @@
             });
         },
 
-        // Подсветка активной ссылки в меню
+        // 3. Подсветка текущей страницы в меню
         highlightActiveLink() {
-            const current = window.location.pathname.split('/').pop() || 'index.html';
-            this.elements.navLinks?.forEach(link => {
-                const href = link.getAttribute('href');
-                link.classList.toggle('active', href === current || href === `./${current}`);
+            const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+            this.elements.navLinks.forEach(link => {
+                if (link.getAttribute('href') === currentPath) {
+                    link.classList.add('active');
+                }
             });
         },
 
-        // Аккордеон: открытие/закрытие по клику на заголовок <h3>
+        // 4. Логика аккордеона для страницы читов
         initCheatAccordeon() {
-            document.querySelectorAll('.cheat-category h3').forEach(header => {
-                header.style.cursor = 'pointer';
-
-                header.addEventListener('click', (e) => {
-                    e.preventDefault();
+            this.elements.cheatHeaders.forEach(header => {
+                header.addEventListener('click', () => {
                     const category = header.parentElement;
-                    if (category) {
-                        category.classList.toggle('active');
-                    }
+                    
+                    // Если хочешь, чтобы при открытии одной категории закрывались другие, 
+                    // раскомментируй блок ниже:
+                    /*
+                    document.querySelectorAll('.cheat-category').forEach(el => {
+                        if (el !== category) el.classList.remove('active');
+                    });
+                    */
+
+                    category.classList.toggle('active');
                 });
             });
         },
 
-        // Плавная прокрутка + АВТО ОТКРЫТИЕ категории при клике по оглавлению
+        // 5. Плавная прокрутка из оглавления + авто-открытие категории
         initSmoothAnchors() {
             document.querySelectorAll('.wiki-toc a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function(e) {
                     e.preventDefault();
 
-                    const targetId = this.getAttribute('href'); // #player, #weapons и т.д.
+                    const targetId = this.getAttribute('href');
                     const target = document.querySelector(targetId);
 
                     if (target) {
-                        // Плавная прокрутка
-                        target.scrollIntoView({ 
-                            behavior: 'smooth', 
-                            block: 'start' 
-                        });
+                        // Сначала открываем категорию, чтобы скролл был точным
+                        target.classList.add('active');
 
-                        // Находим .cheat-category и открываем его
-                        const category = target.closest('.cheat-category');
-                        if (category) {
-                            // Задержка 350 мс — чтобы прокрутка завершилась
-                            setTimeout(() => {
-                                category.classList.add('active');
-                            }, 350);
-                        }
+                        // Плавная прокрутка
+                        setTimeout(() => {
+                            target.scrollIntoView({ 
+                                behavior: 'smooth', 
+                                block: 'start' 
+                            });
+                        }, 50);
                     }
                 });
             });
         }
     };
 
-    // Запуск
+    // Запуск приложения после загрузки DOM
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', () => GTA_APP.init());
     } else {
