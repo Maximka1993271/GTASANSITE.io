@@ -470,12 +470,21 @@ img {
 }
 
 /* Сетка для отображения списков модов или плиток контента */
+/* ДОБАВЛЕНО ВЫРАВНИВАНИЕ ПО ЦЕНТРУ И ОТСТУПЫ */
 .mod-list, .content-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
-    gap: 20px;
+    display: flex; /* Смена на flex для лучшего контроля центрирования списка */
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px; /* Отступы между названиями */
     width: 100%;
     margin-top: 20px;
+}
+
+.mod-list li {
+    text-align: center;
+    width: 100%;
+    margin-bottom: 10px; /* Дополнительный отступ снизу для каждого пункта */
 }
 
 /* --- ОБЩАЯ МОБИЛЬНАЯ АДАПТИВНОСТЬ --- */
