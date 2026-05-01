@@ -1,6 +1,5 @@
 /**
  * Единый скрипт для портала GTA: San Andreas
- * Обрабатывает: время, скролл, активные ссылки, аккордеоны читов и навигацию.
  */
 (function() {
     'use strict';
@@ -13,23 +12,23 @@
             this.highlightActiveLink();
             this.initCheatAccordeon();
             this.initSmoothAnchors();
+            this.initImageZoom(); 
         },
 
-        // Сохраняем ссылки на элементы, чтобы не искать их постоянно
         cacheElements() {
             this.elements = {
                 dateTime: document.getElementById('datetime'),
                 scrollBtn: document.getElementById('scroll-btn'),
                 navLinks: document.querySelectorAll('nav ul li a'),
-                cheatHeaders: document.querySelectorAll('.cheat-category h3')
+                cheatHeaders: document.querySelectorAll('.cheat-category h3'),
+                // Убираем жесткую привязку к картинкам здесь, будем искать их в методе
+                grid: document.querySelector('.comparison-grid')
             };
         },
 
-        // 1. Обновление даты и времени (Формат: ДД.ММ.ГГГГ ЧЧ:ММ:СС)
         initDateTime() {
             const el = this.elements.dateTime;
             if (!el) return;
-
             const update = () => {
                 const now = new Date();
                 const pad = n => String(n).padStart(2, '0');
@@ -37,30 +36,21 @@
                     `${pad(now.getDate())}.${pad(now.getMonth() + 1)}.${now.getFullYear()} ` +
                     `${pad(now.getHours())}:${pad(now.getMinutes())}:${pad(now.getSeconds())}`;
             };
-
             update();
             setInterval(update, 1000);
         },
 
-        // 2. Кнопка "Наверх"
         initScrollTop() {
             const btn = this.elements.scrollBtn;
             if (!btn) return;
-
             window.addEventListener('scroll', () => {
-                if (window.pageYOffset > 300) {
-                    btn.style.display = 'flex';
-                } else {
-                    btn.style.display = 'none';
-                }
+                btn.style.display = (window.pageYOffset > 300) ? 'flex' : 'none';
             });
-
             btn.addEventListener('click', () => {
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             });
         },
 
-        // 3. Подсветка текущей страницы в меню
         highlightActiveLink() {
             const currentPath = window.location.pathname.split('/').pop() || 'index.html';
             this.elements.navLinks.forEach(link => {
@@ -70,52 +60,76 @@
             });
         },
 
-        // 4. Логика аккордеона для страницы читов
         initCheatAccordeon() {
             this.elements.cheatHeaders.forEach(header => {
                 header.addEventListener('click', () => {
-                    const category = header.parentElement;
-                    
-                    // Если хочешь, чтобы при открытии одной категории закрывались другие, 
-                    // раскомментируй блок ниже:
-                    /*
-                    document.querySelectorAll('.cheat-category').forEach(el => {
-                        if (el !== category) el.classList.remove('active');
-                    });
-                    */
-
-                    category.classList.toggle('active');
+                    header.parentElement.classList.toggle('active');
                 });
             });
         },
 
-        // 5. Плавная прокрутка из оглавления + авто-открытие категории
         initSmoothAnchors() {
             document.querySelectorAll('.wiki-toc a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function(e) {
                     e.preventDefault();
-
-                    const targetId = this.getAttribute('href');
-                    const target = document.querySelector(targetId);
-
+                    const target = document.querySelector(this.getAttribute('href'));
                     if (target) {
-                        // Сначала открываем категорию, чтобы скролл был точным
                         target.classList.add('active');
-
-                        // Плавная прокрутка
                         setTimeout(() => {
-                            target.scrollIntoView({ 
-                                behavior: 'smooth', 
-                                block: 'start' 
-                            });
+                            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
                         }, 50);
                     }
                 });
             });
+        },
+
+        // ИСПРАВЛЕННЫЙ МЕТОД
+        initImageZoom() {
+            // Используем делегирование: вешаем событие на весь body
+            document.addEventListener('click', (e) => {
+                // Проверяем, что кликнули именно по картинке внутри сетки сравнения
+                if (e.target.closest('.comparison-grid img')) {
+                    this.openModal(e.target.src);
+                }
+            });
+
+            // Добавляем курсор через CSS (стилизуем все картинки в сетке сразу)
+            const style = document.createElement('style');
+            style.textContent = '.comparison-grid img { cursor: zoom-in !important; }';
+            document.head.appendChild(style);
+        },
+
+        openModal(src) {
+            const modal = document.createElement('div');
+            modal.style.cssText = `
+                position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+                background: rgba(0,0,0,0.92); display: flex; align-items: center;
+                justify-content: center; z-index: 10000; cursor: zoom-out;
+                animation: fadeIn 0.3s ease;
+            `;
+
+            const fullImg = document.createElement('img');
+            fullImg.src = src;
+            fullImg.style.cssText = `
+                max-width: 95%; max-height: 95%; 
+                border: 2px solid #ffcc00;
+                box-shadow: 0 0 50px rgba(0,0,0,0.8);
+                transform: scale(1);
+                transition: transform 0.3s ease;
+            `;
+
+            // Добавляем простую анимацию появления
+            const anim = document.createElement('style');
+            anim.textContent = '@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }';
+            document.head.appendChild(anim);
+
+            modal.appendChild(fullImg);
+            document.body.appendChild(modal);
+
+            modal.onclick = () => modal.remove();
         }
     };
 
-    // Запуск приложения после загрузки DOM
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', () => GTA_APP.init());
     } else {

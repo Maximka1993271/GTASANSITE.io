@@ -19,6 +19,26 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .content-center { text-align: center; margin: 30px 0; }
+        .promo-image img { max-width: 100%; height: auto; border-radius: 8px; margin: 15px 0; display: block; margin-left: auto; margin-right: auto; }
+        .description-block { margin: 25px 0; line-height: 1.6; font-size: 1.05em; color: #e0e0e0; text-align: center; }
+        .feature-section { margin-bottom: 40px; }
+        .feature-section h4 { text-align: center; color: #ffcc00; font-size: 1.5em; margin-bottom: 10px; }
+        
+        /* Установлено в 1 колонку */
+        .progress-container { display: grid; grid-template-columns: 1fr; gap: 20px; margin: 40px 0; }
+        
+        .progress-column { background: rgba(255,255,255,0.05); padding: 20px; border-radius: 10px; border-left: 4px solid #ffcc00; }
+        .progress-column h5 { margin-top: 0; color: #fff; border-bottom: 1px solid #444; padding-bottom: 10px; }
+        .progress-list { list-style: none; padding: 0; margin: 0; text-align: left; }
+        .progress-list li { margin-bottom: 8px; font-size: 0.95em; display: flex; align-items: flex-start; }
+        .progress-list li::before { content: "•"; color: #ffcc00; font-weight: bold; margin-right: 10px; }
+        
+        /* Установлено в 1 колонку для сравнений */
+        .comparison-grid { display: grid; grid-template-columns: 1fr; gap: 15px; margin: 20px 0; justify-items: center; }
+        .comparison-grid img { width: 100%; max-width: 600px; height: auto; border-radius: 4px; cursor: pointer; }
+    </style>
 </head>
 
 <body>
@@ -53,45 +73,148 @@
 <main>
     <div class="container">
         <section class="content-header">
-            <h2 class="proper-shaders-title">Добро пожаловать на страницу Proper Shaders!</h2>
+            <h2 class="proper-shaders-title">[SA]Proper Shaders (HD графика для GTA SA)</h2>
             <div class="proper-shaders-info">
-                <p>
-                    <strong>Proper Shaders</strong> — это современный графический мод, ориентированный на стабильность и 
-                    оптимизацию. Он добавляет в GTA San Andreas реалистичные эффекты постобработки, делая картинку 
-                    сочной и «живой», при этом сохраняя высокую производительность даже на средних сборках.
-                </p>
+                <p><strong>Proper Shaders</strong> — Модификация, которая кардинально меняет графику GTA San Andreas (PC).</p>
             </div>
         </section>
 
         <section class="video-section">
-            <h3>Видео Proper Shaders</h3>
-
             <div class="video-item">
-                <iframe width="560" height="315"
-                    src="https://www.youtube.com/embed/7uCiIDZdUNE"
-                    title="Proper Shaders Teaser"
-                    frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen>
-                </iframe>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/7uCiIDZdUNE" title="Proper Shaders Teaser" frameborder="0" allowfullscreen></iframe>
+                
+                <div class="promo-image">
+                    <img src="https://www.mixmods.com.br/wp-content/uploads/2026/05/gta-san-andreas-mod-pc-proper-shaders-logo-1.png" alt="Proper Shaders Logo">
+                </div>
 
-                <h4>Teaser Proper Shaders</h4>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/7uCiIDZdUNE" title="Proper Shaders Overview" frameborder="0" allowfullscreen></iframe>
 
-                <ul class="location-list">
-                    <li><i class="fas fa-check"></i> Реалистичное освещение и тени.</li>
-                    <li><i class="fas fa-check"></i> HD-эффекты без сильной потери FPS.</li>
-                    <li><i class="fas fa-check"></i> Отличная оптимизация.</li>
-                    <li><i class="fas fa-check"></i> Высокая совместимость с другими модами.</li>
-                    <li><i class="fas fa-check"></i> Современные графические улучшения без перегруженности.</li>
-                </ul>
+                <div class="description-block">
+                    <p>Стремясь к стабильности, совместимости и оптимизации, Proper Shaders переиздали GTA SA в HD-качестве, создав по-настоящему играбельную игру, предназначенную не только для скриншотов, но и для игрового процесса.</p>
+                </div>
+
+                <div class="promo-image">
+                    <img src="https://www.mixmods.com.br/wp-content/uploads/2026/05/gta-sa-mod-proper-shaders-hd-graphics-realistic-remaster-remake-shadows-lights-a8-500x209.jpg" alt="Preview 1">
+                    <img src="https://www.mixmods.com.br/wp-content/uploads/2026/05/gta-sa-mod-proper-shaders-hd-graphics-realistic-remaster-remake-shadows-lights-a1-500x209.jpg" alt="Preview 2">
+                </div>
+
+                <div class="content-center">
+                    <h4>Это не набор предустановок или модпак; это модификация.</h4>
+                    <p class="description-block">Вы больше не видите ссылку для скачивания пресета для ENB / RenderHook / ReShade. Proper Shaders — это собственный мод, созданный мной (Junior_Djjr) с опытом разработки игр с 2015 года и моддинга GTA San Andreas с 2011 года; инициатором и участником проекта выступила Джессика Наталия, а также были использованы некоторые фрагменты кода от SkyGfx (aap), с применением современных, высокотехнологичных шейдеров и решений.</p>
+                </div>
+
+                <div class="feature-section">
+                    <div class="promo-image"><img src="https://www.mixmods.com.br/wp-content/uploads/2026/05/gta-sa-mod-proper-shaders-hd-graphics-realistic-remaster-remake-shadows-lights-a5-500x209.jpg" alt="Integration"></div>
+                    <h4>Хорошая интеграция в игру.</h4>
+                    <p class="description-block">Идеально настроено для дневного и ночного времени; внешние и внутренние локации; игровой процесс, кат-сцены и т. д. Модификация, созданная для настоящего удовольствия от игры.</p>
+                </div>
+
+                <div class="feature-section">
+                    <div class="promo-image"><img src="https://www.mixmods.com.br/wp-content/uploads/2026/05/gta-sa-mod-proper-shaders-hd-graphics-realistic-remaster-remake-cutscene-big-smoke-sweet-500x253.jpg" alt="Non-invasive"></div>
+                    <h4>Неинвазивный</h4>
+                    <p class="description-block">Сохраняет оригинальное отображение и функциональность игры. Proper Shaders работает, просто расширяя уже существующее отображение игры, вместо того, чтобы пытаться воссоздать все с нуля. Игра остается стабильной на движке RenderWare 3.6 и API DirectX 9.</p>
+                </div>
+
+                <div class="feature-section">
+                    <div class="promo-image"><img src="https://www.mixmods.com.br/wp-content/uploads/2026/05/gta-sa-mod-proper-shaders-hd-graphics-realistic-remaster-remake-shadows-lights-a6-500x209.jpg" alt="Customizable"></div>
+                    <h4>Настраиваемый</h4>
+                    <p class="description-block">Подобно MixSets, Proper Shaders обладает широкими возможностями настройки, позволяя использовать его для создания реалистичной графики или просто для коррекции и улучшения оригинальной графики игры, заменяя SkyGfx. Другими словами, при желании вы можете использовать его исключительно для улучшения z-fighting, мягких частиц и т.д.</p>
+                </div>
+
+                <div class="feature-section">
+                    <div class="promo-image"><img src="https://www.mixmods.com.br/wp-content/uploads/2026/05/gta-sa-mod-proper-shaders-hd-graphics-realistic-remaster-remake-shadows-lights-a4-500x209.jpg" alt="Optimized"></div>
+                    <h4>Оптимизированный</h4>
+                    <p class="description-block">Модификация практически не повышает минимальные системные требования игры, а рекомендуемые требования (для теней, динамического освещения) невысоки, и на компьютерах среднего и даже низкого уровня не наблюдается никаких задержек. В загрузку входят предустановки «Низкие/Средние/Высокие» и т.д.</p>
+                </div>
+
+                <div class="feature-section">
+                    <div class="promo-image"><img src="https://www.mixmods.com.br/wp-content/uploads/2026/05/gta-sa-mod-proper-shaders-hd-graphics-realistic-remaster-remake-shadows-lights-a3-500x209.jpg" alt="Deferred"></div>
+                    <h4>Отложенная отрисовка завершена.</h4>
+                    <p class="description-block">Это первый в мире мод, который действительно переводит рендеринг GTA San Andreas на отложенную технику. Вкратце, он обеспечивает масштабируемую оптимизацию продвинутых шейдерных техник, таких как плавные тени и динамическое попиксельное освещение.</p>
+                </div>
+
+                <div class="feature-section">
+                    <div class="promo-image"><img src="https://www.mixmods.com.br/wp-content/uploads/2026/05/gta-sa-mod-proper-shaders-hd-graphics-realistic-remaster-remake-lights-deferred-gbuffer-500x209.jpg" alt="Lights"></div>
+                    <h4>Динамические попиксельные и объемные источники света</h4>
+                    <p class="description-block">Благодаря полностью отложенному рендерингу, Proper Shaders отображает сотни динамических источников света практически без влияния на частоту кадров, которые действительно освещают окружающую среду.</p>
+                </div>
+
+                <div class="promo-image">
+                    <img src="https://www.mixmods.com.br/wp-content/uploads/2026/05/gta-sa-mod-proper-shaders-hd-graphics-realistic-remaster-remake-shadows-lights-a2-500x209.jpg" alt="Showcase">
+                </div>
+
+                <!-- Блок прогресса -->
+                <div class="progress-container">
+                    <div class="progress-column">
+                        <h5>Текущий прогресс</h5>
+                        <ul class="progress-list">
+                            <li>Техника отложенного рендеринга</li>
+                            <li>Попиксельное освещение (сотни источников)</li>
+                            <li>Объемные световые лучи</li>
+                            <li>Динамические 4 каскадных тени (PCSS)</li>
+                            <li>Мягкая теневая маска (Gaussian)</li>
+                            <li>Окклюзия окружения (SSAO, HBAO)</li>
+                            <li>Имитация HDR (ACES / Timoty)</li>
+                            <li>Саморазоблачение и Блум</li>
+                            <li>Солнечные лучи и SMAA</li>
+                            <li>Туман нового горизонта</li>
+                            <li>Мягкие частицы и Мипмаппинг</li>
+                            <li>Более 11к настроенных текстур</li>
+                        </ul>
+                    </div>
+                    <div class="progress-column">
+                        <h5>В ходе выполнения</h5>
+                        <ul class="progress-list">
+                            <li>Объемные облака</li>
+                            <li>PBR-шейдер неба</li>
+                            <li>Картирование шероховатости</li>
+                            <li>Нормальное отображение</li>
+                            <li>Металлическое картирование</li>
+                            <li>Улучшенная поверхность воды</li>
+                            <li>Проектор наклеек (GPU)</li>
+                            <li>Отражения в экранном пространстве</li>
+                        </ul>
+                    </div>
+                    <div class="progress-column">
+                        <h5>Запланировано</h5>
+                        <ul class="progress-list">
+                            <li>Блики от объектива</li>
+                            <li>Объемный туман по высоте</li>
+                            <li>Глобальное освещение (GI)</li>
+                            <li>Дождевое покрытие для авто</li>
+                            <li>Parallax Occlusion Mapping</li>
+                            <li>Сложные повреждения краски</li>
+                            <li>Временное сглаживание (TAA)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="content-center">
+                    <h4>Сравнения:</h4>
+                    <p>(Нажмите для увеличения)</p>
+                    <div class="comparison-grid">
+                        <img src="https://www.mixmods.com.br/wp-content/uploads/2026/05/gta-sa-mod-proper-shaders-hd-graphics-realistic-remaster-remake-shadows-lights-0a-vd-500x209.jpg">
+                        <img src="https://www.mixmods.com.br/wp-content/uploads/2026/05/gta-sa-mod-proper-shaders-hd-graphics-realistic-remaster-remake-shadows-lights-0b-pd-500x209.jpg">
+                        <img src="https://www.mixmods.com.br/wp-content/uploads/2026/05/gta-sa-mod-proper-shaders-hd-graphics-realistic-remaster-remake-shadows-lights-0c-db-500x209.jpg">
+                        <img src="https://www.mixmods.com.br/wp-content/uploads/2026/05/gta-sa-mod-proper-shaders-hd-graphics-realistic-remaster-remake-shadows-lights-0d-ad-500x209.jpg">
+                        <img src="https://www.mixmods.com.br/wp-content/uploads/2026/05/gta-sa-mod-proper-shaders-hd-graphics-realistic-remaster-remake-shadows-lights-1a-vn-500x209.jpg">
+                        <img src="https://www.mixmods.com.br/wp-content/uploads/2026/05/gta-sa-mod-proper-shaders-hd-graphics-realistic-remaster-remake-shadows-lights-1b-pn-500x209.jpg">
+                        <img src="https://www.mixmods.com.br/wp-content/uploads/2026/05/gta-sa-mod-proper-shaders-hd-graphics-realistic-remaster-remake-shadows-lights-1c-nb-500x209.jpg">
+                        <img src="https://www.mixmods.com.br/wp-content/uploads/2026/05/gta-sa-mod-proper-shaders-hd-graphics-realistic-remaster-remake-shadows-lights-1d-na-500x209.jpg">
+                    </div>
+                </div>
+
+                <p class="description-block">Чего ожидать? В настоящее время версии работают нормально, но мод находится на ранней стадии разработки, не стоит ожидать 100% стабильности. Я постоянно исправляю ошибки и улучшаю совместимость. Это мой новый проект с моделью «freemium» (ранний доступ спонсорам, затем бесплатно).</p>
+                
+                <div class="promo-image">
+                    <img src="https://www.mixmods.com.br/wp-content/uploads/2026/05/gta-sa-mod-proper-shaders-hd-graphics-realistic-remaster-remake-shadows-lights-a9-500x209.jpg" alt="Stability">
+                    <img src="https://www.mixmods.com.br/wp-content/uploads/2026/05/gta-sa-mod-proper-shaders-hd-graphics-realistic-remaster-remake-shadows-lights-a7-500x209.jpg" alt="Final">
+                </div>
 
                 <div class="button-container">
-                    <a href="https://www.mixmods.com.br/2026/02/gta-sa-proper-shaders-teaser/" 
-                       target="_blank" 
-                       rel="noopener noreferrer" 
-                       class="download-link">
+                    <a href="https://sharemods.com/592gl4fs4637/SA_-_Proper_Shaders_03-26___40_pb5tyk09td__41_.zip.html" target="_blank" rel="noopener noreferrer" class="download-link">
                         <button class="download-btn">
-                            <i class="fas fa-external-link-alt"></i> Перейти к моду
+                            <i class="fas fa-download"></i> СКАЧАТЬ
                         </button>
                     </a>
                 </div>
@@ -102,40 +225,22 @@
 
 <button id="scroll-btn" title="Наверх">⬆</button>
 
-<script src="script.js"></script>
-
 <script>
-/** Обновление даты и времени **/
 function updateTime() {
     const now = new Date();
-    // Используем современный метод форматирования даты для чистоты кода
-    const options = { 
-        day: '2-digit', month: '2-digit', year: 'numeric',
-        hour: '2-digit', minute: '2-digit', second: '2-digit' 
-    };
-    const datetimeStr = now.toLocaleString('ru-RU', options).replace(',', '');
-    document.getElementById('datetime').textContent = datetimeStr;
+    const options = { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit' };
+    document.getElementById('datetime').textContent = now.toLocaleString('ru-RU', options).replace(',', '');
 }
-
-// Запуск интервала обновления
 setInterval(updateTime, 1000);
 updateTime();
 
-/** Логика кнопки "Наверх" **/
 const scrollBtn = document.getElementById("scroll-btn");
 window.onscroll = function() {
-    // Используем window.scrollY для лучшей совместимости
-    if (window.scrollY > 300) {
-        scrollBtn.style.display = "flex";
-    } else {
-        scrollBtn.style.display = "none";
-    }
+    scrollBtn.style.display = (window.scrollY > 300) ? "flex" : "none";
 };
-
 scrollBtn.onclick = function() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
 };
 </script>
-
 </body>
 </html>

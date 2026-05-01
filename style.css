@@ -31,6 +31,33 @@ html, body {
     line-height: 1.5;
 }
 
+/* --- СЕТКА СРАВНЕНИЯ (КАРТИНКИ В СТОЛБИК) --- */
+
+.comparison-grid {
+    display: flex;            /* Используем flexbox */
+    flex-direction: column;   /* Выстраиваем элементы строго в столбик */
+    align-items: center;      /* Центрируем картинки по горизонтали */
+    gap: 25px;                /* Расстояние между картинками */
+    margin: 25px 0;
+    width: 100%;
+}
+
+.comparison-grid img {
+    width: 100%;              /* Растягиваем картинку на всю ширину контейнера */
+    max-width: 850px;         /* Ограничиваем максимальную ширину */
+    height: auto;
+    cursor: zoom-in;
+    transition: var(--transition);
+    border: 1px solid rgba(255, 215, 0, 0.2);
+    margin: 0;                /* Сброс внешних отступов для чистоты сетки */
+}
+
+.comparison-grid img:hover {
+    transform: scale(1.02);   /* Легкий эффект увеличения при наведении */
+    border-color: var(--primary-color);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+}
+
 /* --- УЛУЧШЕННЫЕ СТИЛИ ДЛЯ СТРАНИЦЫ 404 (ЭФФЕКТ WASTED) --- */
 
 .wasted-content {
@@ -500,3 +527,86 @@ img {
 @media (max-width: 600px) { .wiki-toc ol { column-count: 1; } }
 .wiki-toc a { color: var(--text-light); text-decoration: none; line-height: 1.8; transition: var(--transition); }
 .wiki-toc a:hover { color: var(--primary-color); padding-left: 5px; }
+
+/* Сетка для карточек CLEO */
+.cleo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.cleo-card {
+    background: var(--bg-card);
+    border: 1px solid rgba(255, 215, 0, 0.1);
+    border-radius: 8px;
+    padding: 20px;
+    text-align: left;
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.cleo-card:hover {
+    border-color: var(--primary-color);
+    transform: translateY(-5px);
+}
+
+.cleo-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.game-icon {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 4px;
+    margin: 0; /* Сброс глобального маржина */
+}
+
+.cleo-titles h3 {
+    color: var(--primary-color);
+    font-size: 1.1rem;
+    margin: 0;
+}
+
+.version-tag {
+    font-size: 0.8rem;
+    color: #888;
+}
+
+.cleo-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 15px;
+}
+
+/* Переопределение для маленьких кнопок в карточках */
+.cleo-actions .download-btn-orange {
+    margin: 0 !important;
+    padding: 8px 15px !important;
+    font-size: 12px !important;
+    flex: 1;
+}
+
+.cleo-actions .redux {
+    background: linear-gradient(180deg, #444 0%, #222 100%) !important;
+    box-shadow: none !important;
+}
+
+.cleo-actions .redux:hover {
+    background: #555 !important;
+}
+
+/* Мобильная адаптация */
+@media (max-width: 600px) {
+    .cleo-grid {
+        grid-template-columns: 1fr;
+    }
+}
