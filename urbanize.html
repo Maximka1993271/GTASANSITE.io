@@ -22,37 +22,41 @@
 </head>
 <body>
     <header>
-        <h1>[SA] Urbanize</h1>
-        <nav>
-            <ul>
-                <li><a href="index.html">Главная</a></li>
-                <li><a href="urbanize.html">Урбанизация</a></li>
-                <li><a href="proper_shaders.html">Proper Shaders</a></li>
-                <li><a href="mods.html">Список модов</a></li>
-                <li><a href="Cheats.html">Читы</a></li>
-                <li><a href="Priority.html">Приоритеты</a></li>
-                <li><a href="install.html">Установка</a></li>
-                <li><a href="FAQ.html">FAQ</a></li>
-                <li class="dropdown">
-                    <button class="dropbtn">Радио ▾</button>
-                    <div class="dropdown-content">
-                        <a href="https://gtaradio.net/ru/4" target="_blank">GTA IV Radio</a>
-                        <a href="https://gtaradio.net/ru/vcs" target="_blank">GTA Vice City Stories Radio</a>
-                        <a href="https://gtaradio.net/ru/lcs" target="_blank">GTA Liberty City Stories Radio</a>
-                        <a href="https://gtaradio.net/ru/sa" target="_blank">GTA San Andreas Radio</a>
-                        <a href="https://gtaradio.net/ru/vc" target="_blank">GTA Vice City Radio</a>
-                        <a href="https://gtaradio.net/ru/3" target="_blank">GTA III Radio</a>
-                    </div>
-                </li>
-            </ul>
-        </nav>
-        <div id="datetime"></div>
+        <div class="header-content">
+            <h1>[SA] Urbanize</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="urbanize.html" class="active">Урбанизация</a></li>
+                    <li><a href="proper_shaders.html">Proper Shaders</a></li>
+                    <li><a href="mods.html">Список модов</a></li>
+                    <li><a href="Cheats.html">Читы</a></li>
+                    <li><a href="Priority.html">Приоритеты</a></li>
+                    <li><a href="install.html">Установка</a></li>
+                    <li><a href="FAQ.html">FAQ</a></li>
+                    <li class="dropdown">
+                        <button class="dropbtn" aria-haspopup="true" aria-expanded="false">Радио <i class="fas fa-caret-down"></i></button>
+                        <div class="dropdown-content">
+                            <a href="https://gtaradio.net/ru/4" target="_blank" rel="noopener">GTA IV Radio</a>
+                            <a href="https://gtaradio.net/ru/vcs" target="_blank" rel="noopener">GTA Vice City Stories Radio</a>
+                            <a href="https://gtaradio.net/ru/lcs" target="_blank" rel="noopener">GTA Liberty City Stories Radio</a>
+                            <a href="https://gtaradio.net/ru/sa" target="_blank" rel="noopener">GTA San Andreas Radio</a>
+                            <a href="https://gtaradio.net/ru/vc" target="_blank" rel="noopener">GTA Vice City Radio</a>
+                            <a href="https://gtaradio.net/ru/3" target="_blank" rel="noopener">GTA III Radio</a>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+            <div id="datetime" class="datetime-display" aria-live="off">Загрузка времени...</div>
+        </div>
     </header>
 
     <main>
-        <div class="container">
-            <h2>Добро пожаловать на страницу Urbanize!</h2>
-            <p>Здесь вы найдете материалы и информацию о проекте Urbanize в GTA: San Andreas.</p>
+        <div class="container urbanize-page">
+            <h2 class="urbanize-title">[SA] Urbanize (ambient NPCs)</h2>
+            <div class="urbanize-info">
+			<p style="text-align: center;">Здесь вы найдете материалы и информацию о проекте Urbanize в GTA: San Andreas.</p>
+            </div>
             
             <img src="https://www.mixmods.com.br/wp-content/uploads/2022/10/urbanize-logo-catarse.png" 
                  alt="Urbanize Logo" 
@@ -60,581 +64,368 @@
 
             <p>Urbanize — это мод-проект, цель которого — возродить GTA San Andreas (классическую версию для ПК) путем добавления новых неигровых персонажей по всему San Andreas.</p>
 
-            <h3>Новые видео Urbanize (хронология обновлений)</h3>
-
+            <!-- Версия 01-24 -->
             <div class="video-item">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/iHnjTZFRS_U" title="Обзор мода [SA] Urbanize" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                <p>Версия 12-22 (публичный доступ)</p>
-                <h4>Новые локации в Urbanize</h4>
+                <h3>Версия 01-24</h3>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/7v4MrVh2zBY" title="Обзор мода [SA] Urbanize Версия 01-24" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 <ul class="location-list">
-                    <li>Ganton Бар.</li>
-                    <li>Вершина горы Chiliad.</li>
-                    <li>Alhambra Клуб Los Santos.</li>
-                    <li>Пляжный столик с людьми (по всему San Andreas).</li>
-                    <li>Люди, лежащие на шезлонге (по всему San Andreas).</li>
-                    <li>Квадратный стол с людьми (по всему San Andreas).</li>
-                    <li>Кинотеатр в Los Santos.</li>
+                    <li>Оптимизирована система модов. Теперь все скрипты кэшируются для повторного использования, что снижает нагрузку на диск (и предотвращает скачки производительности), а также уменьшает использование и фрагментацию оперативной памяти (что повышает производительность). В файл .ini добавлена опция отладки.</li>
+                    <li>Создана система для добавления скриптов/триггеров непосредственно пешеходам.</li>
+                    <li>Создана система для добавления скриптов/триггеров в точки, где ходят пешеходы, что позволяет создавать новых людей на тротуарах и т.д., выполняющих различные действия.</li>
+                    <li>Модификация "Ped Lean" (люди, прислоняющиеся друг к другу) была улучшена и адаптирована для системы Urbanize: она стала намного более оптимизированной, стабильной, естественной и с лучшим выбором людей.</li>
+                    <li>Теперь группы из 2 или 3 человек могут появляться и общаться в любом месте San Andreas, где есть пешеходы. Это значительно повышает уровень погружения в игру и позволяет избежать пустых тротуаров в отдаленных районах (поскольку используется собственная система появления игроков, а не система самой игры).</li>
+                    <li>Эзекиэль адаптировал анимации из GTA IV для Urbanize. Теперь практически все анимации диалогов заменены на более реалистичные и естественные анимации из GTA IV, а также добавлены десятки новых анимаций, которые будут использоваться в будущих версиях проекта.</li>
+                    <li>Добавил сигарету/сигару в руку каждого персонажа, создав анимацию курения.</li>
+                    <li>Добавили лейку, которую дали в руки людям, поливающим растения.</li>
                 </ul>
             </div>
 
+            <!-- Версия 02-24 -->
             <div class="video-item">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/73uknDZxZNA" title="Обзор мода [SA] Urbanize" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                <p>Версия 01-23 (публичный доступ)</p>
-                <h4>Новые локации в Urbanize</h4>
+                <h3>Версия 02-24</h3>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/McqT30JO6aE" title="Обзор мода [SA] Urbanize Версия 02-24" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 <ul class="location-list">
-                    <li>Полицейский участок и больница Los Santos.</li>
-                    <li>Полицейский участок и больница San Fierro.</li>
-                    <li>Полицейский участок и больница Las Venturas.</li>
-                    <li>Стоянка трейлеров недалеко от Los Santos.</li>
-                    <li>Блоки гетто в Ganton.</li>
+                    <li>Рабочие коммунальных служб подметают полы по всему San Andreas (процедурно сгенерированному богатому району из GTA IV).</li>
+                    <li>Люди, сидящие на скамейках, могут появляться с газетами (также адаптированными из GTA IV). Предусмотрен избирательный отбор в зависимости от социального класса пешехода и т.д.</li>
+                    <li>Добавлены десятки новых анимаций из GTA IV, конвертированных Ezekiel. Все анимации в моде были переработаны в соответствии с новыми анимациями, особенно анимации диалогов, которые стали более естественными, имеют больше вариаций и индивидуальности для разных классов людей.</li>
+                    <li>Добавлено 40 новых персонажей, создающих новые анимации для GTA IV в различных урбанизациях по всему San Andreas.</li>
+                    <li>В Las Venturas (а также в некоторых сельских и пустынных районах) было установлено 400 кондиционеров, закрепленных на стенах.</li>
+                    <li>Теперь мод автоматически увеличивает лимит игровых объектов ("References"), чтобы предотвратить потенциальный сбой в играх с большим количеством модов.</li>
                 </ul>
             </div>
 
+            <!-- Версия 03-24 -->
             <div class="video-item">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/ymPDMxr7f3Y" title="Обзор мода [SA] Urbanize" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                <p>Версия 02-23 (публичный доступ)</p>
-                <h4>Новые локации в Urbanize</h4>
+                <h3>Версия 03-24</h3>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/qUqGq5ytu0E" title="Обзор мода [SA] Urbanize Версия 03-24" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 <ul class="location-list">
-                    <li>Банды нападают друг на друга или на вас.</li>
-                    <li>Академия Santa Maria Beach.</li>
-                    <li>Продавцы на пирсе Santa Maria.</li>
-                    <li>Боеприпасы Fort Carson.</li>
-                    <li>Боеприпасы возле Las Venturas.</li>
-                    <li>Стол с бандой, играющей в кости: Grove Street, El Corona, Playa Del Seville, Glen Park, Las Colinas;</li>
-                    <li>Охотники в лесах округа Flint, интегрированные с животными из Myths Maker – Animals Pack;</li>
-                    <li>Странные дела: 4 локации;</li>
-                    <li>500 реквизита (сейчас мусорные контейнеры по всему Los Santos).</li>
+                    <li>Люди ремонтируют свои машины в 90 местах по всему San Andreas. Триггеров много, но они разделены по дням недели, поэтому их появление всё ещё довольно редкое и естественное. Система также всегда пытается использовать одну и ту же машину и человека в одном и том же доме и хорошо адаптирована к вариациям VehFuncs.</li>
+                    <li>Люди в конце пирса на пляже Santa Maria.</li>
+                    <li>Теперь люди, сидящие на скамейках, также могут появляться в кадре, когда пьют или едят (анимация из GTA IV).</li>
+                    <li>Добавил ещё несколько анимаций из GTA IV для использования в некоторых старых городах.</li>
+                    <li>Улучшена настройка для создания изображений людей, разговаривающих на тротуаре; теперь лучше обрабатывается местоположение и время с меньшим количеством людей на улице.</li>
+                    <li>Мод был перебалансирован, чтобы избежать создания слишком большого количества людей (тем самым нарушая лимит пешеходов), а лимит пешеходов был автоматически увеличен, чтобы предотвратить прекращение появления новых персонажей.</li>
+                    <li>Добавлено 400 предметов реквизита в ящиках по всему Los Santos (вдоль тротуаров и переулков).</li>
+                    <li>В конфигурационные файлы добавлен раздел «ИСКЛЮЧЕНИЯ». Это позволяет моду исключать области, чтобы предотвратить появление NPC в объектах, или проще отключать локации (полезно, если вы используете моды, добавляющие объекты, такие как столы, в дома или персонажей CJ's, или используете мод, изменяющий какое-либо место в игре).</li>
                 </ul>
             </div>
 
+            <!-- Версия 04-24 -->
             <div class="video-item">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/cb9ua08Vk_0" title="Обзор мода [SA] Urbanize" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                <p>Версия 03-23 (публичный доступ)</p>
-                <h4>Новые локации в Urbanize</h4>
+                <h3>Версия 04-24</h3>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/JIcTbaPLB84" title="Обзор мода [SA] Urbanize Версия 04-24" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 <ul class="location-list">
-                    <li>Гроув-стрит;</li>
-                    <li>Больница Los Santos.</li>
-                    <li>Больница El Quebrados.</li>
-                    <li>Больница Fort Carson.</li>
-                    <li>Полицейский участок El Quebrados.</li>
-                    <li>Полицейский участок Fort Carson.</li>
-                    <li>3 пожарных части (LS, SF, LV);</li>
-                    <li>Спасатели на пляже Santa Maria.</li>
-                    <li>Всего 1070 объектов (на данный момент это мусорные баки по всему Los Santos и San Fierro).</li>
-                </ul>
-            </div>
-
-            <div class="video-item">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/fDK2NFDIBeQ" title="Обзор мода [SA] Urbanize" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                <p>Версия 04-23 (публичный доступ)</p>
-                <h4>Новые локации в Urbanize</h4>
-                <ul class="location-list">
-                    <li>Скейтбордисты катаются на скейтборде и другая молодежь в Glen-парке. Если у вас не установлен мод для скейтборда , вы будете использовать велосипед BMX.</li>
-                    <li>Полицейский участок и заправочная станция Dillimore.</li>
-                    <li>Больница Montgomery.</li>
-                    <li>Angel Pine Шериф.</li>
-                    <li>медицинский центр Angel Pine, церковь и мотель.</li>
-                    <li>Люди лежат на трех моделях шезлонгов. По всему San Andreas.</li>
-                    <li>Люди, поднимающиеся или спускающиеся с горы Chiliad на велосипеде (4 места);</li>
-                    <li>Странные случаи: 1 локация (пасхалка из игровой загадки).</li>
-                    <li>Всего 2000 реквизита (на данный момент мусорные баки во всех крупных городах).</li>
-                </ul>
-            </div>
-
-            <div class="video-item">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/xo81MV2jRec" title="Обзор мода [SA] Urbanize" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                <p>Версия 05-23 (публичный доступ)</p>
-                <h4>Новые локации в Urbanize</h4>
-                <ul class="location-list">
-                    <li>Миссия "Black Project" преобразована в работу немиссийным способом: Вы можете вторгаться в Зону 69, когда захотите, в свободном режиме. Скрипт был отредактирован непосредственно из утекшего исходного кода GTA Trilogy. В файле .ini есть варианты сложности.</li>
-                    <li>Стоянка трейлеров возле Зоны 69 (также включает в себя десятки новых объектов).</li>
-                    <li>Бар Lil' Probe'Inn.</li>
-                    <li>Бар Dillimore’s "The Welcome Pump".</li>
-                    <li>Glen Парк Норт.</li>
-                    <li>Больше автомобилей припарковано в полицейских гаражах LS, SF и LV</li>
-                    <li>Люди сидят и разговаривают за круглым столом (по всему San Andreas).</li>
-                    <li>640 новых реквизитов, всего 2640. Теперь весь San Andreas заставлен мусорными баками и контейнерами для мусора!</li>
-                </ul>
-            </div>
-
-            <div class="video-item">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/Ej6uc40HHFI" title="Обзор мода [SA] Urbanize" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                <p>Версия 06-23 (публичный доступ)</p>
-                <h4>Новые локации в Urbanize</h4>
-                <ul class="location-list">
-                    <li>Ящики для разгрузки грузовиков (33 локации в LS).</li>
-                    <li>Отель "VRock" в LV.</li>
-                    <li>Фасад отеля "Pirates In Men's Pants" в LV.</li>
-                    <li>Площадь "Roca Escalante" в LV.</li>
-                    <li>Стоянка для автофургонов в Angel Pine.</li>
-                    <li>Воссоздал всю банковскую систему игры и применил ее еще к одной (ID 1368). Теперь NPC лучше выбираются в разных позициях, появляются и исчезают издалека, выполняют разные анимации, разговаривают, смотрят на часы и т. д.</li>
-                    <li>Разместил 1000 новых банков в LS, SF и LV. На каждом из них может появиться до трех NPC, а это значит, что в новой версии добавлены тысячи новых триггеров NPC!</li>
-                    <li>Странные случаи: 1 локация.</li>
-                    <li>Maximum Supporter Extra: Дополнение к интерьеру мода Мишель "GTA V Bahama Mama's" .</li>
-                </ul>
-            </div>
-
-            <div class="video-item">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/I2NrH67J0r0" title="Обзор мода [SA] Urbanize" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                <p>Версия 07-23 (публичный доступ)</p>
-                <h4>Новые локации в Urbanize</h4>
-                <ul class="location-list">
-                    <li>Автомобили останавливаются и заправляются на заправках в 14 локациях San Andrea. *один из них работает только со следующим обновлением Proper Fixes.</li>
-                    <li>Ящики для разгрузки грузовиков (17 локаций в SF).</li>
-                    <li>Разгрузочные ящики для грузовиков (28 локаций в LV).</li>
-                    <li>Люди стоят в очереди в кинотеатр на пляже Verona.</li>
-                    <li>Люди в районе магазина наживок Angel Pine.</li>
-                    <li>Люди в домах в El Quebrados.</li>
-                    <li>Продавцы в ларьках на пляже Verona.</li>
-                    <li>Странные случаи: 1 локация.</li>
-                    <li>Сотни новых банков в сельской и пустынной местности.</li>
-                    <li>Более 400 новых объектов столов и стульев в LS и LV.</li>
-                </ul>
-            </div>
-
-            <div class="video-item">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/N69q-Cx4vsc" title="Обзор мода [SA] Urbanize" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                <p>Версия 08-23 (публичный доступ)</p>
-                <h4>Новые локации в Urbanize</h4>
-                <ul class="location-list">
-                    <li>Люди на двух баскетбольных площадках LS. Забрасывание мяча в баскетбольное кольцо.</li>
-                    <li>Заправка округа Flint и парк грузовиков.</li>
-                    <li>Заправочная станция Whetstone.</li>
-                    <li>Заправочная станция Angel Pine (требуется последняя версия Proper Fixes).</li>
-                    <li>Заправка Montgomery.</li>
-                    <li>Продавец в ларьках с лапшой (первоначально использовавшихся в Chinatown).</li>
-                    <li>Продавец на рыночных прилавках (первоначально использовавшихся в Hashbury).</li>
-                    <li>Около 400 новых объектов столов и стульев в SF и других локациях San Andreas. Также еще несколько банков.</li>
-                </ul>
-            </div>
-
-            <div class="video-item">
-                <iframe width="560" height="315" src="https://vk.com/video_ext.php?oid=-219680311&id=456239027" title="Обзор мода [SA] Urbanize" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                <p>Версия 09-23 (публичный доступ)</p>
-                <h4>Новые локации в Urbanize</h4>
-                <ul class="location-list">
-                    <li>Люди устраивают барбекю во дворах. Больше шансов на выходных. Coalbag требуется новая версия CLEO+ , которая добавляет объекты без замены идентификаторов.</li>
-                    <li>Ganton Alley (LS) с переполненными бандами.</li>
-                    <li>Нищие под мостом Ganton на восток LS.</li>
-                    <li>Люди сидят на металлической скамейке, обычно используемой в аэропортах.</li>
-                    <li>Фасад аэропорта LS.</li>
-                    <li>Фасад аэропорта SF.</li>
-                    <li>Фасад аэропорта LV.</li>
-                    <li>Площадь в центре SF.</li>
-                    <li>Около 600 новых объектов на потолках в LS и SF, но в основном в LV. 60 барбекю.</li>
-                </ul>
-            </div>
-
-            <div class="video-item">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/9rAR9eirX54" title="Обзор мода [SA] Urbanize" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                <p>Версия 10-23 (публичный доступ)</p>
-                <h4>Новые локации в Urbanize</h4>
-                <ul class="location-list">
-                    <li>Лесорубы к востоку от Panopticon.</li>
-                    <li>Лесорубы к западу от Panopticon.</li>
-                    <li>Кладбище LS (также появляется в ролике).</li>
-                    <li>Церковь SF.</li>
-                    <li>Площадь SF в океане.</li>
-                    <li>Рынок Робои в Вайнвуде, LS.</li>
-                    <li>Ученые и другие специалисты The Big Ear.</li>
-                    <li>Люди пользуются телефоном-автоматом (2 объекта по всему San Andreas).</li>
-                    <li>Почти 1000 новых объектов на потолках (всего 1600 по всему San Andreas).</li>
-                </ul>
-            </div>
-
-            <div class="video-item">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/6gN6KB1mN1c" title="Обзор мода [SA] Urbanize" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                <p>Версия 11-23 (публичный доступ)</p>
-                <h4>Новые локации в Urbanize</h4>
-                <ul class="location-list">
-                    <li>Строители в Glen-Парке (LS).</li>
-                    <li>Строители в King (SF).</li>
-                    <li>Строители в Rockshore (LV).</li>
-                    <li>Строители в казино Starfish (LV).</li>
-                    <li>Кладбище Palomino Creek.</li>
-                    <li>Ферма Hilltop.</li>
-                    <li>Ферма Beacon Hill.</li>
-                    <li>Военные и ученые KACC.</li>
-                    <li>Около 600 новых объектов кондиционирования на стенах San Fierro.</li>
-                </ul>
-            </div>
-
-            <div class="video-item">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/kA9pGGtHMC0" title="Обзор мода [SA] Urbanize" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                <p>Версия 12-23 (публичный доступ)</p>
-                <h4>Новые локации в Urbanize</h4>
-                <ul class="location-list">
-                    <li>Las Colinas (LS)</li>
-                    <li>Заправочная станция Idlewood (LS)</li>
-                    <li>Заправочная станция El Quebrados</li>
-                    <li>The Payasadas</li>
-                    <li>Bayside</li>
-                    <li>Магазин пончиков LS</li>
-                    <li>Магазин пончиков Fort Carson</li>
-                    <li>SF Трейлер Ресторан</li>
-                    <li>600 новых объектов кондиционирования на стенах Los Santos.</li>
-                </ul>
-            </div>
-
-            <div class="video-item">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/7v4MrVh2zBY" title="Обзор мода [SA] Urbanize" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                <p>Версия 01-24 (публичный доступ)</p>
-                <h4>Новые локации в Urbanize</h4>
-                <ul class="location-list">
-                    <li>Оптимизирована система модов. Теперь все сценарии кэшируются для повторного использования, что снижает использование диска (что также позволяет избежать скачков задержки), а также использование и фрагментацию оперативной памяти (что повышает производительность). Включает опцию отладки в .ini.</li>
-                    <li>Создана система добавления скриптов/триггеров непосредственно к пешеходам.</li>
-                    <li>Создал систему добавления скриптов/триггеров в точках ходьбы пешеходов, что позволяет создавать новых людей на тротуарах и т. д., выполняющих действия.</li>
-                    <li>Мод "Ped Lean" (люди касаются друг друга) улучшен и преобразован в систему Urbanize: гораздо более оптимизированный, стабильный, естественный и лучший выбор людей.</li>
-                    <li>Теперь группы из 2 или 3 человек могут появляться и разговаривать везде, где появляются пешеходы, по всему San Andreas. Это значительно повышает уровень погружения в игру, а также позволяет избежать пустых далеких тротуаров (поскольку используется собственная система появления, а не игровая).</li>
-                    <li>Иезекииль преобразовал анимацию GTA IV в Urbanize. Теперь практически все анимации разговоров заменены на более реалистичные и естественные анимации из GTA IV, а также десятки новых анимаций, которые будут использоваться в следующих версиях проекта.</li>
-                    <li>Добавлена сигарета/сигара в руке каждого, создающая анимацию курения.</li>
-                    <li>Добавлена лейка для растений в руках людей, поливающих растения.</li>
-                </ul>
-            </div>
-
-            <div class="video-item">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/McqT30JO6aE" title="Обзор мода [SA] Urbanize" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                <p>Версия 02-24 (публичный доступ)</p>
-                <h4>Новые локации в Urbanize</h4>
-                <ul class="location-list">
-                    <li>Общественные работники подметают полы по всему San Andreas (процедурно генерируются в богатых районах, из GTA IV).</li>
-                    <li>Могут появиться люди, сидящие на скамейках и читающие газеты (тоже конвертированные из GTA IV). Существуют условия выбора в зависимости от класса пешехода и т. д.</li>
-                    <li>Добавлены еще десятки анимаций GTA IV, конвертированных Ezekiel. Все анимации в моде были переработаны, чтобы адаптироваться к новым анимациям, особенно анимации разговоров, где они более естественны, имеют больше вариаций и индивидуальности для разных классов людей.</li>
-                    <li>Добавлено 40 новых людей, создающих новые анимации GTA IV в различных разработках по всему San Andreas.</li>
-                    <li>Добавлено 400 объектов кондиционирования воздуха на стены по всему Las Venturas (а также в сельской местности и пустыне).</li>
-                    <li>Теперь мод автоматически увеличивает игровой лимит (“References”), чтобы исправить возможный вылет в играх с множеством модов.</li>
-                </ul>
-            </div>
-
-            <div class="video-item">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/qUqGq5ytu0E" title="Обзор мода [SA] Urbanize" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                <p>Версия 03-24 (публичный доступ)</p>
-                <h4>Новые локации в Urbanize</h4>
-                <ul class="location-list">
-                    <li>Люди ремонтируют свои машины в 90 локациях San Andreas. Триггеров много, но они разделены по дням недели, поэтому увидеть их все же довольно редко и естественно. Система также всегда пытается использовать одну и ту же машину и человека в одном и том же доме, даже хорошо адаптированную к вариациям VehFuncs .</li>
-                    <li>Люди в конце пирса в Santa Maria Beach</li>
-                    <li>Люди, сидящие на скамейках, теперь также могут выглядеть пьющими или едят (анимации GTA IV).</li>
-                    <li>Добавлено еще несколько анимаций из GTA IV для использования в некоторых старых урбанизациях.</li>
-                    <li>Улучшено создание людей, разговаривающих на тротуаре, теперь лучше учитываются места и время, когда на улицах меньше людей.</li>
-                    <li>Мод был перебалансирован, чтобы не создавать слишком много людей (таким образом, работая над лимитом пешеходов), и автоматически увеличивал лимит пешеходов, чтобы избежать остановки появления.</li>
-                    <li>Добавлено 400 реквизитов из ящиков в Los Santos (на тротуарах и переулках).</li>
-                    <li>В файлы конфигурации добавлен раздел "EXCLUSION". При этом мод может исключать области, чтобы не создавать NPC в объектах, или деактивировать локации более простым способом (полезно, если вы используете моды, добавляющие объекты, например столы, в дома или персонажей CJ, или используете мод, меняющий некоторые локации в игре).</li>
-                </ul>
-            </div>
-
-            <div class="video-item">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/JIcTbaPLB84" title="Обзор мода [SA] Urbanize" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                <p>Версия 04-24 (публичный доступ)</p>
-                <h4>Новые локации в Urbanize</h4>
-                <ul class="location-list">
-                    <li>Люди в Ganton's баре.</li>
-                    <li>Люди в домах Palomino.</li>
+                    <li>Люди внутри бара Ganton's.</li>
+                    <li>Люди в домах Palomino's.</li>
                     <li>Люди смотрят на море в Bayside.</li>
-                    <li>Велосипедисты припарковались с MTB-велосипедами в лесу округа Flint (используются велосипеды с ванильным расположением).</li>
-                    <li>Добавлена оптимизация, чтобы сделать триггерную систему мода легче.</li>
-                    <li>Исправлены люди, не реагирующие на огонь.</li>
-                    <li>Исправлены некоторые люди, восстанавливающиеся, застрявшие на полу.</li>
-                    <li>Добавлено 400 объектов из ящиков (и некоторых мусорных контейнеров) по всему San Fierro (на тротуарах и переулках).</li>
+                    <li>Велосипедисты стоят с горными велосипедами в лесу округа Flint (велосипеды расположены стандартным образом).</li>
+                    <li>Добавлены оптимизации для облегчения системы запуска мода.</li>
+                    <li>Исправлено: Люди не реагировали на пожар.</li>
+                    <li>Исправлены некоторые случаи, когда люди застревали в земле во время реставрации.</li>
+                    <li>Добавлено 400 декоративных объектов в виде коробок (и нескольких мусорных контейнеров) по всему San Fierro (на тротуарах и в переулках).</li>
                 </ul>
             </div>
 
+            <!-- Версия 05-24 -->
             <div class="video-item">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/Hk8bML9aA-E" title="Обзор мода [SA] Urbanize" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                <p>Версия 05-24 (публичный доступ)</p>
-                <h4>Новые локации в Urbanize</h4>
+                <h3>Версия 05-24</h3>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/Hk8bML9aA-E" title="Обзор мода [SA] Urbanize Версия 05-24" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 <ul class="location-list">
-                    <li>Люди внутри клуба Alhambra.</li>
-                    <li>Люди на площади LS Pershing.</li>
+                    <li>Люди внутри клуба «Alhambra».</li>
+                    <li>Люди на площади Першинг-сквер в Los Angeles.</li>
                     <li>Люди в жилом районе Fort Carson.</li>
-                    <li>Люди в трейлерном парке возле SF.</li>
+                    <li>Люди в трейлерном парке недалеко от San Francisco.</li>
                     <li>Люди, использующие телескопы (объект CJ_VIEW_TELE2).</li>
-                    <li>Портирован и улучшен мод Бомж и мусорные мешки: нищие перемещают мешки с мусором, которые динамически находят, куда бы они ни пошли.</li>
-                    <li>Переделаны люди, разговаривающие по телефону-автомату: теперь используется анимация из GTA IV и собственная модель телефона.</li>
-                    <li>Добавлен параметр "PedPopulationMult" в качестве MixSets (заменяет настроенное в нем значение) для настройки лимита населения (из popcycle.dat) в игре. Это заставляет больше людей и машин появляться на улицах, но в основном не позволяет дополнительным людям, созданным Urbanize, привести к тому, что игра перестанет порождать новых людей и машины на улицах. Благодаря этому Urbanize теперь поставляется с предварительной конфигурацией для слабых ПК (чтобы создать меньше людей и избежать лагов).</li>
-                    <li>Добавлено 600 объектов из ящиков (и некоторых мусорных контейнеров) по всему Las Venturas, сельской местности и пустыне (через тротуары и переулки).</li>
+                    <li>Мод «Бездомные и мусорные мешки» был портирован и улучшен: нищие роются в мусорных мешках, которые они динамически находят, куда бы ни пошли.</li>
+                    <li>Переделанная версия сцены разговора людей по общедоступному телефону: теперь используется анимация из GTA IV и собственная модель телефона.</li>
+                    <li>Добавлен параметр «PedPopulationMult» в MixSets (заменяет значение, заданное там) для регулировки лимита населения игры (из popcycle.dat). Это приводит к появлению большего количества людей и автомобилей на улицах, но в основном предотвращает прекращение появления новых людей и автомобилей на улицах из-за дополнительных людей, создаваемых Urbanize. Благодаря этому Urbanize теперь предварительно настроен для слабых ПК (чтобы создавать меньше людей и, следовательно, избегать задержек).</li>
+                    <li>Добавлено 600 декоративных объектов — ящиков (и нескольких мусорных контейнеров) — по всему Лас-Вентурасу, в сельской местности и пустыне (вдоль тротуаров и переулков).</li>
                 </ul>
             </div>
 
+            <!-- Версия 06-24 -->
             <div class="video-item">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/graNLLbTUxo" title="Обзор мода [SA] Urbanize" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                <p>Версия 06-24 (публичный доступ)</p>
-                <h4>Новые локации в Urbanize</h4>
+                <h3>Версия 06-24</h3>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/graNLLbTUxo" title="Обзор мода [SA] Urbanize Версия 06-24" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 <ul class="location-list">
-                    <li>Люди стоят и ждут, садятся или выходят из такси (200 триггеров по всему San Andreas, если следовать логике).</li>
-                    <li>Люди в баре "69" на шоссе в Los Santos.</li>
-                    <li>Люди на остановке шоссе, ведущего в Los Santos.</li>
-                    <li>Люди на фабрике Fleisch Berg.</li>
-                    <li>Люди в церкви Blackfield Church in Las Venturas.</li>
-                    <li>Люди в супермаркете San Fierro.</li>
-                    <li>Добавлено 500 реквизитов почтовых ящиков в дома в Los Santos and San Fierro.</li>
-                    <li>Добавлено больше объектов в переулках Jefferson's.</li>
+                    <li>Люди стоят и ждут, садятся в такси или выходят из них (200 триггеров по всему San Andreas, если следовать логике).</li>
+                    <li>Люди в баре "69" на шоссе в направлении Los Santos.</li>
+                    <li>Люди отдыхают на придорожной стоянке на шоссе, ведущем в Los Santos.</li>
+                    <li>Люди на заводе Fleisch Berg.</li>
+                    <li>Люди в церкви Blackfield Church в Las Venturas.</li>
+                    <li>Люди в супермаркете в San Fierro.</li>
+                    <li>Добавлено 500 декоративных объектов в виде почтовых ящиков к домам в Los Santos и San Fierro.</li>
+                    <li>В переулках Джефферсона появилось больше новых объектов.</li>
                 </ul>
             </div>
 
+            <!-- Версия 07-24 -->
             <div class="video-item">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/cqNDudWSWSA" title="Обзор мода [SA] Urbanize" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                <p>Версия 07-24 (публичный доступ)</p>
-                <h4>Новые локации в Urbanize</h4>
+                <h3>Версия 07-24</h3>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/cqNDudWSWSA" title="Обзор мода [SA] Urbanize Версия 07-24" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 <ul class="location-list">
-                    <li>Люди танцуют брейк-данс под музыку по радио (13 локаций, модели различаются в зависимости от города и возможностей местной банды).</li>
-                    <li>Проститутки, стоящие в стратегических локациях, садящиеся в машины (38 триггеров по всему San Andreas).</li>
-                    <li>Люди в автошколе San Fierro.</li>
-                    <li>Люди в мотошколе Las Venturas.</li>
-                    <li>Люди внутри и снаружи лодочной школы в Bayside (инструктор изначально был задуман игрой, есть оригинальные аудио для NPC, но по какой-то причине я не смог их воспроизвести).</li>
-                    <li>Добавлено 500 реквизитов почтовых ящиков в дома в Las Venturas, сельской местности и пустыне. Включает в себя еще несколько сотен газет и государственных почтовых отделений по всему San Andreas.</li>
+                    <li>Люди танцуют брейкданс под музыку из радиоприёмников (13 мест, модели различаются в зависимости от города и возможности присутствия местных банд).</li>
+                    <li>Проститутки паркуются в стратегически важных местах и садятся в машины (38 точек активации по всему San Andreas).</li>
+                    <li>Люди внутри автошколы в San Fierro.</li>
+                    <li>Люди внутри мотошколы в Las Venturas.</li>
+                    <li>Люди внутри и снаружи школы лодок в Bayside (инструктор изначально планировался для игры; есть оригинальные аудиофайлы для NPC, но по какой-то причине мне не удалось их воспроизвести).</li>
+                    <li>Добавлено 500 декоративных почтовых ящиков к домам в Las Venturas, сельской местности и пустыне. Также добавлено несколько сотен газет и общественных почтовых отделений по всему San Andreas.</li>
                 </ul>
             </div>
 
+            <!-- Версия 08-24 -->
             <div class="video-item">
-                <iframe width="560" height="315" src="https://vk.com/video_ext.php?oid=-219680311&id=456239028" title="Обзор мода [SA] Urbanize" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                <p>Версия 08-24 (публичный доступ)</p>
-                <h4>Новые локации в Urbanize</h4>
+                <h3>Версия 08-24</h3>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/4bNN3P1brrw" title="Обзор мода [SA] Urbanize Версия 08-24" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 <ul class="location-list">
-                    <li>Пляжная вечеринка (luau). Перекомпилировано из исходного кода игры с добавлением удаленных функций, таких как квадроциклы и вечеринки, проходящие на пляжах Santa Maria и Seville. Rockstar заставила их появиться на этих двух пляжах, чтобы вы могли танцевать, когда захотите, по той же идее, что и танцы лоурайдеров.</li>
-                    <li>Добавлены люди, устанавливающие антенны на крышах домов в Las Colinas (который теперь включен и в другие локации).</li>
-                    <li>Люди в El Corona в LS.</li>
-                    <li>Люди на пирсе Randolf в LV.</li>
-                    <li>Люди на горе Missionary Hill в SF.</li>
-                    <li>Банда в переулках Garcia в SF.</li>
-                    <li>Добавлено 500 горшков с растениями в Los Santos.</li>
+                    <li>Пляжная вечеринка (luau). Перекомпилировано из исходного кода игры, добавлены и удалены такие элементы, как квадроциклы и вечеринка, проходящая как на пляже Санта-Мария, так и на пляже Севилья. Rockstar разработала её таким образом, чтобы вечеринки могли появляться на этих двух пляжах, и вы могли танцевать, когда захотите, подобно танцевальной атмосфере в лоурайдерах.</li>
+                    <li>Добавлены кадры, на которых люди ремонтируют антенны на крышах домов в Las Colinas (теперь эти кадры включены и в другие места).</li>
+                    <li>Люди в El Corona в Los Santos.</li>
+                    <li>Люди на пирсе Randolf в Las Venturas.</li>
+                    <li>Люди на пирсе Rockshore в Las Venturas.</li>
+                    <li>Люди на Missionary Hill в San Fierro.</li>
+                    <li>Банда в переулках Garcia в San Fierro.</li>
+                    <li>Добавлено 500 декоративных предметов в виде цветочных горшков в Los Santos.</li>
                 </ul>
             </div>
 
+            <!-- Версия 09-24 -->
             <div class="video-item">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/XZoMLOqUzpE" title="Обзор мода [SA] Urbanize" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                <p>Версия 09-24 (публичный доступ)</p>
-                <h4>Новые локации в Urbanize</h4>
+                <h3>Версия 09-24</h3>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/XZoMLOqUzpE" title="Обзор мода [SA] Urbanize Версия 09-24" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 <ul class="location-list">
-                    <li>Добавлен коммерческий самолет, летающий, приземляющийся и взлетающий по всему San Andreas. Он использует искусственный интеллект и физику игры (может взаимодействовать) и перемещается без коллайдеров за счет оптимизации.</li>
-                    <li>В аэропортах LS, SF и LV есть сотрудники, которые ждут и приближаются к самолету, когда он приземляется и паркуется, имитируя проверку перед следующим рейсом.</li>
-                    <li>Добавлено 300 горшков с растениями в SF и еще 200 мусорных баков в SF и LS.</li>
+                    <li>Добавлен коммерческий самолет, совершающий полеты, посадку и взлет по всему San Andreas. Он использует игровой ИИ и физику (может взаимодействовать) и перемещается на расстоянии без столкновений благодаря оптимизации.</li>
+                    <li>В аэропортах Los Santos, San Fierro и Las Venturas есть команда, которая ожидает и подходит к садящимся и припаркованным самолетам, имитируя осмотр перед следующим рейсом.</li>
+                    <li>Добавлено 300 декоративных цветочных горшков в San Fierro и еще 200 мусорных баков в San Fierro и Los Santos.</li>
                 </ul>
             </div>
 
+            <!-- Версия 10-24 -->
             <div class="video-item">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/5folSphxUzs" title="Обзор мода [SA] Urbanize" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                <p>Версия 10-24 (альфа-доступ)</p>
-                <h4>Новые локации в Urbanize</h4>
+                <h3>Версия 10-24</h3>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/5folSphxUzs" title="Обзор мода [SA] Urbanize Версия 10-24" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 <ul class="location-list">
-                    <li>Добавлены дополнительные маршруты самолетов: Додо, Бигль и Шамал (Невада не была добавлена из-за неудовлетворительной физики). Каждый день модели самолетов меняются, всегда существует ограничение — 3 одновременно.</li>
-                    <li>Модели самолетов и пилотов полностью настраиваются в файлах .dat (отдельно по маршрутам). Брейкдансеров теперь также можно настраивать.</li>
-                    <li>Добавлены люди, идущие по дорожкам аэропорта Los Santos. Чтобы быть видимым, необходимы правильные исправления.</li>
-                    <li>Добавлены конусы при парковке коммерческого самолета, как в реальной жизни.</li>
-                    <li>Добавлено 500 горшков с растениями в Las Venturas, сельской местности и пустыне.</li>
+                    <li>Добавлены новые маршруты полёта: Додо, Бигл и Шамал (Невада не была добавлена, так как плохо сочеталась с физикой). Модели полёта меняются каждый день, всегда действует ограничение в 3 маршрута одновременно.</li>
+                    <li>Модели самолетов и пилотов полностью настраиваются в файлах .dat (разделенных по маршрутам). Теперь также можно настраивать брейкдансеров.</li>
+                    <li>Добавлены люди, ходящие по пешеходным дорожкам в аэропорту Los Santos. Для отображения требуется внесение соответствующих исправлений.</li>
+                    <li>Добавили конусы на стоянке коммерческого самолета, как в реальной жизни.</li>
+                    <li>Добавлено 500 декоративных предметов в виде цветочных горшков в Las Venturas, сельской местности и пустыне.</li>
                 </ul>
             </div>
 
+            <!-- Версия 11-24 -->
             <div class="video-item">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/AwTa3MmkTxM" title="Обзор мода [SA] Urbanize" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                <p>Версия 11-24 (бета-доступ)</p>
-                <h4>Новые локации в Urbanize</h4>
+                <h3>Версия 11-24</h3>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/AwTa3MmkTxM" title="Обзор мода [SA] Urbanize Версия 11-24" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 <ul class="location-list">
-                    <li>Добавлено 5 вертолётов, по одному в каждом регионе карты: 3 Маверика в городах, 1 Воробей в пустыне, 1 спасательный вертолёт в лесу (редко). Помните, что модели настраиваются через файл .dat.</li>
-                    <li>Добавлено расстояние от самой дальней растительности. Существует 57 тысяч объектов, предназначенных для имитации procobj.dat, но теперь с бесконечной возможностью просмотра на расстоянии (особенно с помощью Project2DFX) и более оптимизированной, чем исходная система игры. Для этого пришлось выйти за новые ограничения игры, теперь игра поддерживает миллионы объектов .ipl. Это предварительный просмотр того, что будет общедоступно в рождественской версии Proper Fixes. (только ПК)</li>
-                    <li>Исправлены реакции логгеров и возможный сбой при срабатывании триггеров объектов.</li>
+                    <li>Добавлено 5 вертолетов, по одному в каждом регионе карты: 3 «Маверика» в городах, 1 «Спарроу» в пустыне, 1 спасательный вертолет в лесу (редкий). Напоминаем, что модели можно настроить через файл .dat.</li>
+                    <li>Увеличено расстояние для растительности. Для имитации файла procobj.dat размещено 57 000 объектов, но теперь с возможностью бесконечной дальности обзора (особенно с Project2DFX) и более оптимизированной, чем оригинальная система игры. Для этого потребовалось преодолеть ограничения новой игры; теперь игра поддерживает миллионы объектов .ipl. Это предварительная версия того, что будет выпущено в рождественской версии Proper Fixes. (Только для ПК)</li>
+                    <li>Исправлены реакции лесорубов и возможная ошибка, приводившая к сбою игры при срабатывании объектов.</li>
                     <li>НЛО.</li>
                 </ul>
             </div>
 
+            <!-- Версия 12-24 -->
             <div class="video-item">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/6tjugsN5ejM" title="Обзор мода [SA] Urbanize" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                <p>Версия 12-24</p>
-                <h4>Новые изменения в Urbanize</h4>
+                <h3>Версия 12-24</h3>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/6tjugsN5ejM" title="Обзор мода [SA] Urbanize Версия 12-24" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 <ul class="location-list">
-                    <li>Люди на ферме Flint Range.</li>
-                    <li>Люди в поле в Flint County.</li>
-                    <li>Люди на ферме Acres farm.</li>
-                    <li>Люди на ферме недалеко от Palomino Creek.</li>
-                    <li>Люди на гоночной ферме Racing Farm.</li>
-                    <li>Люди в поле возле фермы Hiltop Farm.</li>
-                    <li>Больше людей на ферме Hiltop Farm (обновление).</li>
-                    <li>Люди на западной ферме возле Fort Carson.</li>
+                    <li>Люди на ферме в районе Flint Range.</li>
+                    <li>Жители сельской местности округа Flint.</li>
+                    <li>Люди на ферме Blueberry Acres.</li>
+                    <li>Люди на ферме недалеко от ручья Palomino.</li>
+                    <li>Люди на ипподроме в округе Red.</li>
+                    <li>Люди в поле возле фермы Hiltop.</li>
+                    <li>На ферме Hiltop появилось больше людей (обновление).</li>
+                    <li>Люди на западной ферме недалеко от Fort Carson.</li>
                     <li>Люди на восточной ферме недалеко от Fort Carson.</li>
-                    <li>Добавлен молоток и корзина с ягодами и орехами для людей, выполняющих определенные анимации, а также исправлена недостающая бутылка в других анимациях.</li>
-                    <li>Добавлено 600 деревянных заборов по всему San Andreas.</li>
+                    <li>Добавлены молоток и корзина с ягодами и орехами для персонажей, выполняющих определенные анимации, а также исправлено отсутствие бутылки в других анимациях.</li>
+                    <li>Добавлено 600 деревянных заборов для всего San Andreas.</li>
                 </ul>
             </div>
 
+		<!-- Версия 01-25 -->
+		<div class="video-item">
+			<h3>Версия 01-25</h3>
+			<iframe width="560" height="315" src="https://www.youtube.com/embed/hNTKL6NHIZc" title="Обзор мода [SA] Urbanize Версия 01-25" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+			<ul class="location-list">
+				<li>Добавлено 100 бандитских группировок по всему San Andreas! Они разного размера, расположены в переулках и других местах за пределами улиц, как будто это места собраний или встреч. Люди, машины, оружие и агрессивные реакции интегрированы с оригинальной игровой системой. Также есть несколько локаций за пределами стандартных территорий банд, для модов, добавляющих новые банды, например, в Las Venturas.</li>
+				<li>В Las Venturas добавлены люди, играющие в баскетбол на двух площадках.</li>
+				<li>Внесены некоторые исправления и корректировки в работу выбора анимации диалога, что повышает стабильность работы.</li>
+				<li>Добавлено 500 новых объектов ограждения по всему San Andreas, в основном для заполнения тех мест, где Rockstar «забыли» их разместить.</li>
+			</ul>
+		</div>
+
+		<!-- Версия 02-25 -->
+		<div class="video-item">
+			<h3>Версия 02-25</h3>
+			<iframe width="560" height="315" src="https://www.youtube.com/embed/KabXxICcVKc" title="Обзор мода [SA] Urbanize Версия 02-25" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+			<ul class="location-list">
+				<li>Добавили 80 человек на балконы домов и зданий по всему San Andreas! Они прислоняются друг к другу, отдыхают и так далее. Возвращаются внутрь, когда им угрожают.</li>
+				<li>Добавлена группа бездомных под мостом в Willowfield, Los Santos (включает в себя объекты из набора).</li>
+				<li>В Los Santos добавлено 550 объектов в виде мусорных мешков.</li>
+			</ul>
+		</div>
+
+		<!-- Версия 03-25 -->
+		<div class="video-item">
+			<h3>Версия 03-25</h3>
+			<iframe width="560" height="315" src="https://www.youtube.com/embed/G_JdKZXzPXk" title="Обзор мода [SA] Urbanize Версия 03-25" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+			<ul class="location-list">
+				<li>Добавлена настройка миссии "«Body Harvest" для "Фермы", напрямую перенесенная из просочившегося в сеть исходного кода 2021 года, с улучшениями.</li>
+				<li>Добавилось еще 30 сломавшихся автомобилей, которые теперь появляются на дорогах во второй половине дня и вечером.</li>
+				<li>Улучшена логика появления неисправных автомобилей, и теперь существует разница в том, кто именно ремонтирует машину.</li>
+				<li>Во всех более чем 100 урбанизациях игры теперь есть система, согласно которой, если вы "пошалите", например, напугаете и убьете людей в урбанизации, это место будет временно отключено.</li>
+				<li>Исправлена ошибка, из-за которой самолеты сталкивались с ветряной электростанцией.</li>
+				<li>В San Fierro добавлено 500 объектов в виде мусорных мешков.</li>
+			</ul>
+		</div>
+
+		<!-- Версия 04-25 -->
+		<div class="video-item">
+			<h3>Версия 04-25</h3>
+			<iframe width="560" height="315" src="https://www.youtube.com/embed/32NzuUild74" title="Обзор мода [SA] Urbanize Версия 04-25" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+			<ul class="location-list">
+				<li>Добавлено 27 точек в San Andreas, где охранники обеспечивают безопасность у входов (пассивно-агрессивный подход).</li>
+				<li>Добавлено 30 частных охранников, патрулирующих территории по всему San Andreas (пассивно-агрессивное поведение).</li>
+				<li>Мой мод «Peds Buy Food» был реализован, теперь он лучше, полнее и оптимизирован.</li>
+				<li>Исправлены ошибки и добавлен API для помощи сторонним разработчикам модов в использовании утилит и разрешении конфликтов.</li>
+				<li>В Las Venturas появилось 500 предметов, представляющих собой мусорные мешки.</li>
+			</ul>
+		</div>
+
+		<!-- Версия 05-25 -->
+		<div class="video-item">
+			<h3>Версия 05-25</h3>
+			<iframe width="560" height="315" src="https://www.youtube.com/embed/OdReqZihOBE" title="Обзор мода [SA] Urbanize Версия 05-25" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+			<ul class="location-list">
+				<li>Добавлено 12 частных водителей (шоферов), размещенных по всему San Andreas.</li>
+				<li>Люди в баре в Восточном Los Santos.</li>
+				<li>Люди в обсерватории Los Santos.</li>
+				<li>Люди на пирсе Ocean Flats в San Fierro.</li>
+				<li>Люди в ресторане на берегу оврага Fort Carson.</li>
+				<li>Люди в ресторане в ущелье Las Payasadas.</li>
+				<li>Люди на ранчо «Hidden Valley».</li>
+				<li>Теперь на собраниях банд можно присутствовать людям с бейсбольными битами в руках.</li>
+				<li>Исправлена ошибка, из-за которой велосипеды не отображались в баре Ganton's.</li>
+				<li>В Los Santos добавлено 450 световых столбиков.</li>
+			</ul>
+		</div>
+
+            <!-- Версия 06-25 -->
             <div class="video-item">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/hNTKL6NHIZc" title="Обзор мода [SA] Urbanize Версия 01-25" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                <p>Версия 01-25</p>
-                <h4>Новые изменения в Urbanize</h4>
+                <h3>Версия 06-25</h3>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/eMinQw4Otdc" title="Обзор мода [SA] Urbanize Версия 06-25" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 <ul class="location-list">
-                    <li>Добавлено 100 бандитских группировок по всему San Andreas! Они разного размера, в переулках и других местах за тротуаром, как будто это собрания или собрания. Люди, машины, оружие и агрессивные реакции — все интегрировано в оригинальную игровую систему. Также есть несколько локаций за пределами стандартных территорий банд для модов, добавляющих новые банды, например, в Las Venturas.</li>
-                    <li>Добавлены люди, играющие в баскетбол на двух площадках Las Venturas.</li>
-                    <li>Некоторые исправления стабильности и выбор анимации разговора.</li>
-                    <li>Добавлено еще 500 объектов забора по всему San Andreas, обычно заполняющих местность, которую Rockstar «забыли» разместить.</li>
+                    <li>Добавлено 9 локаций с внедорожными трассами: горные велосипеды, мотоциклы для мотокросса или квадроциклы, различные типы, обычно парами. Заменяет старых велосипедистов на горе Chiliad, теперь с большим количеством вариантов и более длинными трассами. Обновите свой мод на шлемы, чтобы исправить проблему с мотоциклетным шлемом.</li>
+                    <li>Добавлено 9 мест, где останавливались люди с горными велосипедами или мотоциклами для мотокросса, а также путешественники/пешие туристы.</li>
+                    <li>В San Fierro добавлено 400 световых столбиков.</li>
                 </ul>
             </div>
 
+            <!-- Версия 07-25 -->
             <div class="video-item">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/KabXxICcVKc" title="Обзор мода [SA] Urbanize" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                <p>Версия 02-25</p>
-                <h4>Новые изменения в Urbanize</h4>
+                <h3>Версия 07-25</h3>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/PLDFe-85-Rw" title="Обзор мода [SA] Urbanize Версия 07-25" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 <ul class="location-list">
-                    <li>Добавлено 80 человек на балконы домов и зданий по всему San Andreas! Наклоны, растяжки и т. д. При возникновении угрозы они возвращаются в дом.</li>
-                    <li>Добавлена группа нищих под мостом Willowfield LS bridge (включая объекты окружения).</li>
-                    <li>Добавлено 550 мусорных мешков по всему Los Santos.</li>
+                    <li>Добавлено 8 новых жилых комплексов, занимающих всю территорию порта Los Santos (Ocean Docks). В дополнение к Soundize.</li>
+                    <li>В Las Venturas добавлено 400 световых столбиков.</li>
                 </ul>
             </div>
 
+            <!-- Версия 08-25 -->
             <div class="video-item">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/G_JdKZXzPXk" title="Обзор мода [SA] Urbanize" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                <p>Версия 02-25 (дополнение)</p>
-                <h4>Новые изменения в Urbanize</h4>
+                <h3>Версия 08-25</h3>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/-m5jhzGksvY" title="Обзор мода [SA] Urbanize Версия 08-25" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 <ul class="location-list">
-                    <li>Добавлена настройка миссии «Body Harvest» в «The Farm», преобразованная напрямую из исходного кода, утекшего в сеть в 2021 году, с улучшениями.</li>
-                    <li>Добавлено еще 30 сломанных автомобилей, которые теперь появляются на дорогах днем и вечером.</li>
-                    <li>Логика появления сломанных автомобилей была улучшена, и теперь есть вариация человека, ремонтирующего машину под ними.</li>
-                    <li>Все 100+ жилых комплексов в игре теперь включают в себя систему, в которой, если вы допустите ошибку, например, напугаете или убьете людей в жилом комплексе, это место будет временно отключено.</li>
-                    <li>Исправлены самолеты, врезавшиеся в ветряную электростанцию.</li>
-                    <li>Добавлено 500 мусорных мешков по всему San Fierro</li>
-                </ul>
-            </div>
-
-            <div class="video-item">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/32NzuUild74" title="Обзор мода [SA] Urbanize" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                <p>Версия 04-25</p>
-                <h4>Новые изменения в Urbanize</h4>
-                <ul class="location-list">
-                    <li>Добавлено 27 локаций с охранниками, охраняющими двери по всему San Andreas (пассивно-агрессивные).</li>
-                    <li>Добавлено 30 частных охранников, патрулирующих районы по всему San Andreas (пассивно-агрессивные).</li>
-                    <li>Реализовал свой мод « Peds Buy Food », теперь он лучше, полнее и оптимизированнее.</li>
-                    <li>Исправлены ошибки и добавлен API для помощи сторонним моддерам с утилитами и исправлениями конфликтов.</li>
-                    <li>Добавлено 500 мусорных мешков по всему Las Venturas.</li>
-                </ul>
-            </div>
-
-            <div class="video-item">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/OdReqZihOBE" title="Обзор мода [SA] Urbanize" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                <p>Версия 05-25</p>
-                <h4>Новые изменения в Urbanize</h4>
-                <ul class="location-list">
-                    <li>Добавлено 12 частных шоферов, работающих по всему San Andreas.</li>
-                    <li>Люди в баре в Восточном Los Santos.</li>
-                    <li>Люди в обсерватории Los Santos.</li>
-                    <li>Люди на пирсе Ocean Flats в San Fierro.</li>
-                    <li>Посетители ресторана Fort Carson Ravine.</li>
-                    <li>Люди в ресторане в ущелье Las Payasadas.</li>
-                    <li>Люди на ранчо Valle Ocultado.</li>
-                    <li>На собраниях банд теперь можно появляться с бейсбольной битой в руках.</li>
-                    <li>Исправлена ошибка, из-за которой велосипеды не отображались в баре Гантона.</li>
-                    <li>Добавлено 450 столбовых светильников в Los Santos.</li>
-                </ul>
-            </div>
-
-            <div class="video-item">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/eMinQw4Otdc" title="Обзор мода [SA] Urbanize" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                <p>Версия 06-25</p>
-                <h4>Новые изменения в Urbanize</h4>
-                <ul class="location-list">
-                    <li>Добавлено 9 локаций с внедорожными трассами: для МТБ, мотокросса или квадроциклов, по-разному, обычно парами. Он заменяет старых велосипедистов на горе Chiliad, предлагая больше вариаций и более длинные маршруты. Обновите свой Helmet Mod , чтобы починить шлем для мотокросса.</li>
-                    <li>Добавлено 9 мест, где можно увидеть людей с горными или кроссовыми велосипедами, а также путешественников/туристов.</li>
-                    <li>Добавлено 400 столбовых светильников в San Fierro.</li>
-                </ul>
-            </div>
-
-            <div class="video-item">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/PLDFe-85-Rw" title="Обзор мода [SA] Urbanize" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                <p>Версия 07-25</p>
-                <h4>Новые изменения в Urbanize</h4>
-                <ul class="location-list">
-                    <li>Добавлено 8 городских застроек, заполняющих всю территорию гавани Santos Harbor (Ocean Docks). Для соответствия Soundize.</li>
-                    <li>Добавлено 400 объектов освещения в Las Venturas.</li>
-                </ul>
-            </div>
-
-            <div class="video-item">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/-m5jhzGksvY" title="Обзор мода [SA] Urbanize" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                <p>Версия 08-25</p>
-                <h4>Новые изменения в Urbanize</h4>
-                <ul class="location-list">
-                    <li>Добавлены рабочие по всему нефтяному месторождению около Fort Carson (соответствующие звукам Soundize).</li>
-                    <li>Добавлен житель с распорядком дня в доме в Flint Water.</li>
+                    <li>На месторождении вблизи Fort Carson были добавлены новые рабочие (звуки соответствуют звукам, используемым в Soundize).</li>
+                    <li>Добавлен житель с установленным распорядком дня в доме в Flint Water.</li>
                     <li>Добавлен житель с распорядком дня в доме в Tierra Robada.</li>
-                    <li>Мод теперь поддерживает опциональные breakdance2.wav и breakdance3.wav для изменения звучания моделей радио-Breakdance.</li>
-                    <li>Теперь в INI-файле можно указать, какое оружие используют банды при наездах, а также внесены другие исправления в функциональность.</li>
+                    <li>Мод теперь поддерживает дополнительные файлы breakdance2.wav и breakdance3.wav для изменения звучания моделей брейкданс-радио.</li>
+                    <li>Теперь можно указать тип оружия, используемого бандами при стрельбе из проезжающих автомобилей, в файле .ini, а также внесены другие исправления в функциональность.</li>
                     <li>Добавлено 300 объектов пожарных гидрантов по всему San Andreas.</li>
                 </ul>
             </div>
 
+            <!-- Версия 09-25 -->
             <div class="video-item">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/fn4CtG9og2E" title="Обзор мода [SA] Urbanize" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                <p>Версия 09-25</p>
-                <h4>Новые изменения в Urbanize</h4>
+                <h3>Версия 09-25</h3>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/fn4CtG9og2E" title="Обзор мода [SA] Urbanize Версия 09-25" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 <ul class="location-list">
-                    <li>Добавлено 11 уборщиков, подметающих полы во внутренних помещениях: Burger Shot, Cluckin' Bell, The Well Stacked Pizza, 24/7, Victim.</li>
-                    <li>Добавлен работник кухни в Burger Shot, Cluckin' Bell и The Well Stacked Pizza.</li>
-                    <li>Добавлено событие, в котором мужчина писает, моет руки и выходит из туалета Burger Shot (на основе скриншота бета-версии).</li>
-                    <li>Добавлено луау на небольшом пляже в округе Флинт.</li>
-                    <li>Добавлено 200 паркоматов и несколько знаков ограничения парковки по всему San Andreas. Rockstar забыла использовать эти два объекта: их разрушение приносит деньги (оригинальная игровая механика).</li>
+                    <li>Добавлено 11 уборщиков, подметающих полы внутри помещений: Burger Shot, Cluckin' Bell, The Well Stacked Pizza, 24/7, Victim.</li>
+                    <li>В кухни ресторанов Burger Shot, Cluckin' Bell и The Well Stacked Pizza был принят новый сотрудник.</li>
+                    <li>Добавлено событие, в котором мужчина мочится, моет руки и выходит из туалета Burger Shot (по мотивам скриншота из бета-версии).</li>
+                    <li>Добавили гавайскую вечеринку на небольшом пляже в округе Флинт.</li>
+                    <li>Добавлено 200 объектов парковочных автоматов и несколько знаков ограничения времени парковки по всему San Andreas. Это два объекта, которые Rockstar забыли использовать; при их поломке выпадают деньги (оригинальная игровая механика).</li>
                 </ul>
             </div>
 
+            <!-- Версия 10-25 -->
             <div class="video-item">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/NNjciUdWNFo" title="Обзор мода [SA] Urbanize" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                <p>Версия 10-25</p>
-                <h4>Новые изменения в Urbanize</h4>
+                <h3>Версия 10-25</h3>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/NNjciUdWNFo" title="Обзор мода [SA] Urbanize Версия 10-25" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 <ul class="location-list">
-                    <li>Торговцы, люди и нищие в двух магазинах на пляже Santa Maria.</li>
-                    <li>Люди возле вагона-ресторана «Хобос» в Los Angeles.</li>
+                    <li>Торговцы, люди и нищий в двух магазинах на пляже Santa Maria.</li>
+                    <li>Люди возле ресторана "Hobos" в вагоне поезда в Los Santos.</li>
                     <li>Люди на пирсе 69 в San Francisco.</li>
-                    <li>Люди на маленьком острове у пирса 69 в San Francisco ночью, скопированные из миссии «Пирс 69».</li>
-                    <li>Туристы перед отелем-пирамидой LV.</li>
-                    <li>Туристы перед отелем The Visage в LV.</li>
-                    <li>Отдельный необязательный бонус: по запросу спонсора в каждом городе будет летать дополнительный самолет, в котором вы сможете выбрать установку и идентификатор модели самолета.</li>
+                    <li>Люди на небольшом острове у пирса 69 в San Francisco ночью, кадры из миссии «Pier 69».</li>
+                    <li>Туристы перед отелем в форме пирамиды в Las Venturas.</li>
+                    <li>Туристы перед отелем The Visage de LV.</li>
+                    <li>Дополнительный бонус: по просьбе спонсора — дополнительный самолет, летающий в каждом городе, где вы сможете установить его и выбрать идентификатор модели самолета.</li>
                 </ul>
             </div>
 
+            <!-- Версия 11-25 -->
             <div class="video-item">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/J1pxnk1vmCo" title="Обзор мода [SA] Urbanize" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                <p>Версия 11-25</p>
-                <h4>Новые изменения в Urbanize</h4>
-                <p>
-                    Добавлены пешеходы, использующие зонтики (в сочетании с новым обновлением Soundize ).<br>
-                    В следующем месяце выйдет последняя версия Urbanize на неопределённый срок, так как мне нужно больше свободного времени для работы над другими проектами, а Urbanize уже практически готов. Смотрите конец видео.
-                </p>
+                <h3>Версия 11-25</h3>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/J1pxnk1vmCo" title="Обзор мода [SA] Urbanize Версия 11-25" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <ul class="location-list">
+                    <li>Добавлены пешеходы, использующие зонты (в сочетании с новым обновлением Soundize).</li>
+                </ul>
             </div>
 
+            <!-- Финальная версия 12-25 -->
             <div class="video-item">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/eJklms1TYpY" 
-                        title="Urbanize — финальная версия 12-25" 
-                        frameborder="0" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                        allowfullscreen></iframe>
-                <p>Версия 12-25 Updated 02/02/26 — <strong>финальная публичная версия</strong></p>
-                <h4>Новые изменения в Urbanize</h4>
-                <p>
-                    Добавлены объекты и люди на пляжи Santa Maria, Verona и San Fierro: полупроцедурная генерация с ежедневным добавлением новых объектов; их количество варьируется в зависимости от времени суток. Дополнительные объекты обладают физикой и НЕ заменяют никакие игровые файлы или идентификаторы моделей (благодаря CLEO+). Поэтому мод сохраняет высокую совместимость с другими модами. Вдохновлено реальными изображениями пляжей Лос-Анджелеса 90-х годов.<br><br>
-                    Теперь люди, которые связаны друг с другом (обычно посредством общения), будут периодически общаться.<br>
-                    Добавлены дополнительные API для внешних скриптов, позволяющие управлять определенными аспектами мода.<br><br>
-                    <strong>И вот финальная версия Urbanize, теперь доступная для всех!</strong><br>
-                    Теперь исправлена и проблема с появлением пешеходов с зонтами в помещениях, а также обновлены еще 12 скриптов для устранения очень редкого сбоя.
-                </p>
+                <h3>Версия 12-25 — Финальная публичная версия</h3>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/eJklms1TYpY" title="Urbanize — финальная версия 12-25" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <ul class="location-list">
+                    <li>Добавлены объекты и люди на пляжи Santa Maria, Verona и San Fierro: полупроцедурная генерация с ежедневным добавлением новых объектов; их количество варьируется в зависимости от времени суток. Дополнительные объекты обладают физикой и НЕ заменяют никакие игровые файлы или идентификаторы моделей (благодаря CLEO+). Поэтому мод сохраняет высокую совместимость с другими модами. Вдохновлено реальными изображениями пляжей Los Angeles 90-х годов.</li>
+                    <li>Теперь люди, которые связаны друг с другом (обычно посредством общения), будут периодически общаться.</li>
+                    <li>Добавлены дополнительные API для внешних скриптов, позволяющие управлять определенными аспектами мода.</li>
+                </ul>
+            </div>
 
-                <a href="https://sharemods.com/n38k0eu5z2ae/SA_-_Urbanize_12-25_Final_1.zip.html" target="_blank" rel="noopener noreferrer">
-                    <button style="padding:12px 24px; font-size:17px; background:#ff9933; color:white; border:none; border-radius:6px; cursor:pointer; margin:1.5em 0;">
-                        Скачать Urbanize 12-25 Final
-                    </button>
+            <!-- Дополнительная информация -->
+            <div class="urbanize-info" style="margin-top: 30px;">
+                <p><strong>Для каждой "урбанизации" имеются конфигурационные файлы (текстовые файлы .dat), включая модели пешеходов, транспортных средств и т. д.</strong> Это полезно, если вы добавили в игру новые модели или хотите отключить какое-либо местоположение или объект. Этот мод не изменяет и не заменяет никакие игровые файлы.</p>
+                
+                <p>Всё происходит случайным образом, естественным образом или по процедурному сценарию, меняясь в зависимости от времени суток, дня недели и т. д. Вы также можете увеличивать или уменьшать количество создаваемых модом объектов (он поставляется с предустановленными настройками).</p>
+                
+                <p>Это, безусловно, самый тщательно проработанный мод из всех, что я когда-либо создавал. Система превосходна, стабильна, оптимизирована и хорошо интегрирована в игру. Для создания этого мода потребовалось собрать CLEO+, обновить CLEO 4, OLA, создать инструменты, десятки тысяч строк кода, работающих на основе уникальной структуры, и даже файл .asi для помощи в системе кэширования/пулинга и т. д. Невозможно сделать что-то подобное на мобильных устройствах или в GTA Trilogy.</p>
+                
+                <p>Этот мод создавался в течение 2 лет при поддержке моего Patreon. Он существует только благодаря вашим спонсорам. Спасибо вам; и спасибо им тоже!</p>
+                
+                <p>Это модификация для ПК, но файлы карты (.ipl) можно установить на мобильные устройства/Android или консоли (требуется настройка ограничений IPL). Для ПК требуется только Essentials Pack и Open Limit Adjuster.</p>
+            </div>
+
+            <!-- Кнопка скачивания -->
+            <div class="button-container">
+                <a href="https://sharemods.com/pckglssl72g3/SA_-_Urbanize_12-25_Final_1.zip.html" target="_blank" rel="noopener noreferrer" class="download-btn urbanize-dl-btn">
+                    <i class="fas fa-download"></i> Скачать Urbanize 12-25 Final
                 </a>
             </div>
 
         </div>
     </main>
 
-    <button id="scroll-btn">⬆</button>
+    <footer>
+        <p>&copy; 2026 GTA: San Andreas Portal. Все права на игру принадлежат Rockstar Games.</p>
+    </footer>
 
-    <script>
-        function updateTime() {
-            const now = new Date();
-            const pad = n => String(n).padStart(2, '0');
-            document.getElementById('datetime').textContent = 
-                `${pad(now.getDate())}.${pad(now.getMonth()+1)}.${now.getFullYear()} ` +
-                `${pad(now.getHours())}:${pad(now.getMinutes())}:${pad(now.getSeconds())}`;
-        }
-        setInterval(updateTime, 1000);
-        updateTime();
-    </script>
+    <button id="scroll-btn" aria-label="Вернуться наверх">
+        <i class="fas fa-chevron-up"></i>
+    </button>
 
+    <script src="script.js"></script>
 </body>
 </html>
