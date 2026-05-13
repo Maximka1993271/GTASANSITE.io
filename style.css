@@ -31,6 +31,43 @@ html, body {
     line-height: 1.5;
 }
 
+/* --- АКТИВНАЯ ССЫЛКА В МЕНЮ --- */
+nav ul li a.active {
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--primary-color);
+    background: rgba(255, 215, 0, 0.1);
+}
+
+/* --- СТИЛИ ДЛЯ КАРТОЧЕК СКАЧИВАНИЯ --- */
+.download-card {
+    background: var(--bg-card);
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    border: 1px solid rgba(255, 215, 0, 0.2);
+    transition: var(--transition);
+}
+
+.download-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary-color);
+}
+
+.download-card.highlight {
+    border-color: var(--primary-color);
+    background: rgba(255, 215, 0, 0.1);
+}
+
+.download-card h3 {
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.download-card p {
+    margin-bottom: 15px;
+    color: var(--text-light);
+}
+
 /* --- СЕТКА СРАВНЕНИЯ (КАРТИНКИ В СТОЛБИК) --- */
 
 .comparison-grid {
@@ -320,8 +357,7 @@ nav ul li a, .dropbtn {
 .urbanize-dl-btn, 
 .download-btn-orange, 
 .mod-list li a,
-.proper-shaders-info a,
-button[style*="background-color: #ff9933"] {
+.proper-shaders-info a {
     display: inline-block !important;
     background: linear-gradient(180deg, #ff8c00 0%, #ff4500 100%) !important;
     color: white !important;
@@ -342,10 +378,20 @@ button[style*="background-color: #ff9933"] {
 .download-btn:hover, 
 .urbanize-dl-btn:hover, 
 .download-btn-orange:hover, 
-.mod-list li a:hover {
+.mod-list li a:hover,
+.proper-shaders-info a:hover {
     transform: scale(1.05) !important;
     box-shadow: 0 0 25px rgba(255, 69, 0, 0.6) !important;
     filter: brightness(1.1) !important;
+}
+
+/* Стили для кнопок Google Drive и MEGA */
+.download-btn.gdrive {
+    background: linear-gradient(180deg, #0F9D58 0%, #0b7e48 100%) !important;
+}
+
+.download-btn.mega {
+    background: linear-gradient(180deg, #D90007 0%, #a00005 100%) !important;
 }
 
 /* --- ТАБЛИЦЫ ЧИТОВ --- */
@@ -370,6 +416,16 @@ button[style*="background-color: #ff9933"] {
     font-size: clamp(0.9rem, 3vw, 1.1rem);
 }
 
+.cheat-category h3::after {
+    content: "▼";
+    font-size: 0.8rem;
+    transition: var(--transition);
+}
+
+.cheat-category.active h3::after {
+    transform: rotate(180deg);
+}
+
 .table-wrapper {
     display: none;
     overflow-x: auto;
@@ -383,7 +439,11 @@ button[style*="background-color: #ff9933"] {
 .cheat-category.active .cheats-table { display: table; width: 100%; }
 .cheat-category.active .table-wrapper { display: block; }
 
-.cheats-table { width: 100%; border-collapse: collapse; }
+.cheats-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
 .cheats-table td {
     padding: 12px 8px;
     text-align: left;
@@ -392,7 +452,11 @@ button[style*="background-color: #ff9933"] {
     word-break: break-word;
 }
 
-.cheats-table td:nth-child(2) {
+.cheats-table td:first-child {
+    font-weight: normal;
+}
+
+.cheats-table td:last-child {
     color: var(--accent-color);
     font-weight: bold;
     font-family: 'Courier New', monospace;
@@ -492,10 +556,23 @@ img {
     align-items: center;
     justify-content: center;
     box-shadow: var(--shadow);
+    cursor: pointer;
+    transition: var(--transition);
+    z-index: 999;
+}
+
+#scroll-btn:hover {
+    transform: scale(1.1);
+    background: linear-gradient(135deg, #ff4500, var(--accent-color));
 }
 
 /* PROPER SHADERS */
-.proper-shaders-title { color: var(--primary-color); margin-top: 25px; text-align: center; }
+.proper-shaders-title { 
+    color: var(--primary-color); 
+    margin-top: 25px; 
+    text-align: center; 
+}
+
 .proper-shaders-info {
     text-align: center;
     background: rgba(255, 255, 255, 0.05);
@@ -507,11 +584,27 @@ img {
     width: 100%;
 }
 
-.video-item { width: 100%; margin-top: 20px; text-align: center; }
-.video-item iframe { max-width: 100%; border-radius: 8px; box-shadow: var(--shadow); }
+.video-item { 
+    width: 100%; 
+    margin-top: 20px; 
+    text-align: center; 
+}
 
-.location-list { text-align: center; margin-top: 10px; padding-left: 0; }
-.location-list li { margin-bottom: 6px; }
+.video-item iframe { 
+    max-width: 100%; 
+    border-radius: 8px; 
+    box-shadow: var(--shadow); 
+}
+
+.location-list { 
+    text-align: center; 
+    margin-top: 10px; 
+    padding-left: 0; 
+}
+
+.location-list li { 
+    margin-bottom: 6px; 
+}
 
 /* WIKI TOC */
 .wiki-toc {
@@ -523,10 +616,40 @@ img {
     text-align: left;
     width: 100%;
 }
-.wiki-toc ol { padding-left: 25px; column-count: 2; }
-@media (max-width: 600px) { .wiki-toc ol { column-count: 1; } }
-.wiki-toc a { color: var(--text-light); text-decoration: none; line-height: 1.8; transition: var(--transition); }
-.wiki-toc a:hover { color: var(--primary-color); padding-left: 5px; }
+
+.wiki-toc ol { 
+    padding-left: 25px; 
+    column-count: 2; 
+}
+
+@media (max-width: 600px) { 
+    .wiki-toc ol { column-count: 1; } 
+}
+
+.wiki-toc a { 
+    color: var(--text-light); 
+    text-decoration: none; 
+    line-height: 1.8; 
+    transition: var(--transition); 
+}
+
+.wiki-toc a:hover { 
+    color: var(--primary-color); 
+    padding-left: 5px; 
+}
+
+/* --- СТИЛИ ДЛЯ FIGURE И FIGCAPTION --- */
+figure {
+    margin: 20px 0;
+    text-align: center;
+}
+
+figcaption {
+    margin-top: 10px;
+    font-size: 0.9rem;
+    color: #aaa;
+    font-style: italic;
+}
 
 /* Сетка для карточек CLEO */
 .cleo-grid {
@@ -609,4 +732,37 @@ img {
     .cleo-grid {
         grid-template-columns: 1fr;
     }
+}
+
+/* --- СТИЛИ ДЛЯ ОПИСАНИЯ ИГРЫ --- */
+.description-text {
+    text-align: left;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.description-text p {
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+/* --- СТИЛИ ДЛЯ СЕКЦИИ ЗАГРУЗОК --- */
+.download-section {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.hero-section h2 {
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.main-art {
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
 }
