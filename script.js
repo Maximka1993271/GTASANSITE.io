@@ -13,7 +13,7 @@
             this.initCheatAccordeon();
             this.initSmoothAnchors();
             this.initImageZoom();
-            this.initFaqAccordion(); // Добавлена инициализация FAQ аккордеона
+            this.initFaqAccordion();
         },
 
         cacheElements() {
@@ -22,7 +22,7 @@
                 scrollBtn: document.getElementById('scroll-btn'),
                 navLinks: document.querySelectorAll('nav ul li a'),
                 cheatHeaders: document.querySelectorAll('.cheat-category h3'),
-                faqCards: document.querySelectorAll('.faq-card'), // Добавлено для FAQ
+                faqCards: document.querySelectorAll('.faq-card'),
             };
         },
 
@@ -69,9 +69,24 @@
         },
 
         initCheatAccordeon() {
+            // Аккордеон для страницы читов - все категории
+            const cheatCategories = document.querySelectorAll('.cheat-category');
+            
+            // Если нет категорий с классом active, открываем первую по умолчанию
+            let hasActive = false;
+            cheatCategories.forEach(cat => {
+                if (cat.classList.contains('active')) hasActive = true;
+            });
+            
+            if (!hasActive && cheatCategories.length > 0) {
+                cheatCategories[0].classList.add('active');
+            }
+            
+            // Добавляем обработчики на все заголовки
             this.elements.cheatHeaders.forEach(header => {
-                header.addEventListener('click', () => {
-                    const parent = header.parentElement;
+                header.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const parent = header.closest('.cheat-category');
                     if (parent) {
                         parent.classList.toggle('active');
                     }
@@ -80,7 +95,6 @@
         },
 
         initFaqAccordion() {
-            // Аккордеон для FAQ страницы
             this.elements.faqCards.forEach(card => {
                 const question = card.querySelector('.faq-question');
                 if (question) {
@@ -92,7 +106,7 @@
         },
 
         initSmoothAnchors() {
-            document.querySelectorAll('.wiki-toc a[href^="#"]').forEach(anchor => {
+            document.querySelectorAll('.wiki-toc a[href^="#"], .cheat-category h3 a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function(e) {
                     e.preventDefault();
                     const targetId = this.getAttribute('href');
