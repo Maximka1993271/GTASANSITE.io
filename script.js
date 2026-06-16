@@ -12,7 +12,8 @@
             this.highlightActiveLink();
             this.initCheatAccordeon();
             this.initSmoothAnchors();
-            this.initImageZoom(); 
+            this.initImageZoom();
+            this.initFaqAccordion(); // Добавлена инициализация FAQ аккордеона
         },
 
         cacheElements() {
@@ -21,6 +22,7 @@
                 scrollBtn: document.getElementById('scroll-btn'),
                 navLinks: document.querySelectorAll('nav ul li a'),
                 cheatHeaders: document.querySelectorAll('.cheat-category h3'),
+                faqCards: document.querySelectorAll('.faq-card'), // Добавлено для FAQ
             };
         },
 
@@ -43,13 +45,12 @@
             const btn = this.elements.scrollBtn;
             if (!btn) return;
             
-            // Функция для обновления видимости кнопки
             const toggleVisibility = () => {
                 btn.style.display = (window.scrollY > 300) ? "flex" : "none";
             };
             
             window.addEventListener('scroll', toggleVisibility);
-            toggleVisibility(); // Вызов для начального состояния
+            toggleVisibility();
             
             btn.onclick = () => {
                 window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -78,6 +79,18 @@
             });
         },
 
+        initFaqAccordion() {
+            // Аккордеон для FAQ страницы
+            this.elements.faqCards.forEach(card => {
+                const question = card.querySelector('.faq-question');
+                if (question) {
+                    question.addEventListener('click', () => {
+                        card.classList.toggle('active');
+                    });
+                }
+            });
+        },
+
         initSmoothAnchors() {
             document.querySelectorAll('.wiki-toc a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function(e) {
@@ -95,23 +108,19 @@
         },
 
         initImageZoom() {
-            // Используем делегирование: вешаем событие на весь document
             document.addEventListener('click', (e) => {
-                // Проверяем, что кликнули по картинке внутри сетки сравнения
                 const img = e.target.closest('.comparison-grid img');
                 if (img) {
                     this.openModal(img.src);
                 }
             });
 
-            // Добавляем стиль для курсора
             const style = document.createElement('style');
             style.textContent = '.comparison-grid img { cursor: zoom-in !important; transition: transform 0.2s; } .comparison-grid img:hover { transform: scale(1.02); }';
             document.head.appendChild(style);
         },
 
         openModal(src) {
-            // Проверяем, нет ли уже открытого модального окна
             if (document.querySelector('.gta-modal')) return;
             
             const modal = document.createElement('div');
@@ -134,7 +143,6 @@
                 animation: gtaModalZoomIn 0.2s ease;
             `;
 
-            // Добавляем анимации, если их еще нет
             if (!document.querySelector('#gta-modal-styles')) {
                 const animStyles = document.createElement('style');
                 animStyles.id = 'gta-modal-styles';
@@ -147,15 +155,13 @@
 
             modal.appendChild(fullImg);
             document.body.appendChild(modal);
-            document.body.style.overflow = 'hidden'; // Блокируем прокрутку страницы
+            document.body.style.overflow = 'hidden';
 
-            // Закрытие по клику
             modal.onclick = () => {
                 modal.remove();
                 document.body.style.overflow = '';
             };
             
-            // Закрытие по клавише Escape
             const onKeyDown = (e) => {
                 if (e.key === 'Escape') {
                     modal.remove();
@@ -167,7 +173,6 @@
         }
     };
 
-    // Запуск приложения после загрузки DOM
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', () => GTA_APP.init());
     } else {

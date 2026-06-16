@@ -9,18 +9,17 @@
     <meta property="og:image" content="https://media-rockstargames-com.akamaized.net/mfe6/prod/__common/img/bbcbd2a2bb65ddad76e831c91c17b421.jpg">
     <title>FAQ & Guide — GTA San Andreas</title>
 
-    <!-- Иконки -->
     <link rel="icon" href="images/favicon.ico" type="image/x-icon">
     <link rel="icon" type="image/png" sizes="32x32" href="images/favicon.png">
     <link rel="apple-touch-icon" href="images/favicon.png">
 
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <header>
-        <h1>Часто задаваемые вопросы и руководство</h1>
+        <h1>FAQ & Руководство</h1>
         <nav>
             <ul>
                 <li><a href="index.html">Главная</a></li>
@@ -30,9 +29,9 @@
                 <li><a href="Cheats.html">Читы</a></li>
                 <li><a href="Priority.html">Приоритеты</a></li>
                 <li><a href="install.html">Установка</a></li>
-                <li><a href="FAQ.html">FAQ</a></li>
+                <li><a href="FAQ.html" class="active">FAQ</a></li>
                 <li class="dropdown">
-                    <button class="dropbtn">Радио ▾</button>
+                    <button class="dropbtn">Радио <i class="fas fa-caret-down"></i></button>
                     <div class="dropdown-content">
                         <a href="https://gtaradio.net/ru/4" target="_blank" rel="noopener noreferrer">GTA IV Radio</a>
                         <a href="https://gtaradio.net/ru/vcs" target="_blank" rel="noopener noreferrer">GTA Vice City Stories Radio</a>
@@ -48,61 +47,118 @@
     </header>
 
     <main class="container">
-        <section class="faq-section">
-            <h2>Руководство для новичков</h2>
-            <div class="guide-content">
-                <p>Если вы новичок в модификации GTA: San Andreas, начните с установки базовых плагинов, таких как ModLoader и ASI Loader. Они позволяют добавлять моды без замены оригинальных файлов игры. Рекомендуется использовать Essentials Pack для стабильности на новых ОС.</p>
-                <p>После установки ModLoader, настройте приоритеты в файле modloader.ini, чтобы избежать конфликтов. Подробности в разделе <a href="Priority.html">Приоритеты</a>.</p>
-            </div>
+        <div class="faq-hero">
+            <h2><i class="fas fa-question-circle"></i> Часто задаваемые вопросы</h2>
+            <p>Ответы на самые популярные вопросы по модификации GTA: San Andreas</p>
+        </div>
 
-            <h2>Часто задаваемые вопросы</h2>
-            <div class="faq-list">
-                <div class="faq-item">
+        <div class="guide-content">
+            <h3 style="color: var(--primary-color); margin-bottom: 15px;"><i class="fas fa-graduation-cap"></i> Руководство для новичков</h3>
+            <p>Если вы новичок в модификации <strong>GTA: San Andreas</strong>, начните с установки базовых плагинов, таких как <strong>ModLoader</strong> и <strong>ASI Loader</strong>. Они позволяют добавлять моды без замены оригинальных файлов игры. Рекомендуется использовать <strong>Essentials Pack</strong> для стабильности на новых ОС.</p>
+            <p>После установки ModLoader, настройте приоритеты в файле <code>modloader.ini</code>, чтобы избежать конфликтов. Подробности в разделе <a href="Priority.html">Приоритеты</a>.</p>
+        </div>
+
+        <div class="faq-section-title">
+            <h2><i class="fas fa-comments"></i> Популярные вопросы</h2>
+        </div>
+
+        <div class="faq-grid">
+            <div class="faq-card">
+                <div class="faq-question">
+                    <i class="fas fa-download"></i>
                     <h3>Как установить RoSA Project?</h3>
-                    <p>Скачайте архив с RoSA Project Evolved и распакуйте его в папку modloader. Установите приоритет 30 для правильной загрузки (см. <a href="Priority.html">Приоритеты</a>).</p>
+                    <i class="fas fa-chevron-down faq-toggle"></i>
                 </div>
+                <div class="faq-answer">
+                    <p>Скачайте архив с <strong>RoSA Project Evolved</strong> и распакуйте его в папку <code>modloader</code>. Установите приоритет <strong>30</strong> для правильной загрузки (см. раздел <a href="Priority.html">Приоритеты</a>). После этого запустите игру и наслаждайтесь обновлёнными текстурами!</p>
+                </div>
+            </div>
 
-                <div class="faq-item">
+            <div class="faq-card">
+                <div class="faq-question">
+                    <i class="fas fa-cube"></i>
                     <h3>Что такое Essentials+?</h3>
-                    <p>Essentials+ — это набор базовых исправлений и улучшений. Для установки модов вам необходимо создать папку <code>_ESSENTIALS+</code> внутри директории <code>modloader</code> и перенести туда основные файлы: <strong>FramerateVigilante</strong>, <strong>GraphicsTweaker</strong>, <strong>RepairGTA</strong>, <strong>SilentPatch</strong>, <strong>Widescreen Fix</strong>. Это обеспечит стабильную работу игры и правильный приоритет загрузки без замены системных архивов.</p>
+                    <i class="fas fa-chevron-down faq-toggle"></i>
                 </div>
+                <div class="faq-answer">
+                    <p><strong>Essentials+</strong> — это набор базовых исправлений и улучшений. Для установки модов вам необходимо создать папку <code>_ESSENTIALS+</code> внутри директории <code>modloader</code> и перенести туда основные файлы: <strong>FramerateVigilante</strong>, <strong>GraphicsTweaker</strong>, <strong>RepairGTA</strong>, <strong>SilentPatch</strong>, <strong>Widescreen Fix</strong>. Это обеспечит стабильную работу игры и правильный приоритет загрузки без замены системных архивов.</p>
+                </div>
+            </div>
 
-                <div class="faq-item">
+            <div class="faq-card">
+                <div class="faq-question">
+                    <i class="fas fa-exclamation-triangle"></i>
                     <h3>Игра вылетает при запуске, что делать?</h3>
-                    <p>Проверьте, установлены ли все необходимые библиотеки (ASI Loader). Если установлен Essentials Pack, посмотрите файл лога вылета. Также убедитесь, что у вас не конфликтуют крупные графические моды (проверьте вкладку <a href="Priority.html">Приоритеты</a>).</p>
+                    <i class="fas fa-chevron-down faq-toggle"></i>
                 </div>
+                <div class="faq-answer">
+                    <p>Проверьте, установлены ли все необходимые библиотеки (<strong>ASI Loader</strong>). Если установлен Essentials Pack, посмотрите файл лога вылета. Также убедитесь, что у вас не конфликтуют крупные графические моды (проверьте вкладку <a href="Priority.html">Приоритеты</a>). Попробуйте временно отключить некоторые моды для выявления конфликта.</p>
+                </div>
+            </div>
 
-                <div class="faq-item">
+            <div class="faq-card">
+                <div class="faq-question">
+                    <i class="fas fa-save"></i>
                     <h3>Можно ли использовать сохранения из обычной версии?</h3>
-                    <p>Да, но если вы установили глобальные моды, меняющие карту (например, некоторые компоненты Urbanize), старые сохранения могут работать некорректно или вызывать вылеты.</p>
+                    <i class="fas fa-chevron-down faq-toggle"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Да, но если вы установили глобальные моды, меняющие карту (например, некоторые компоненты <strong>Urbanize</strong>), старые сохранения могут работать некорректно или вызывать вылеты. Рекомендуется начать новую игру после установки крупных модов, изменяющих карту или основные текстуры.</p>
                 </div>
             </div>
 
-            <div class="download-section">
-                <h2>Нужна помощь?</h2>
-                <p>Если вы не нашли ответ на свой вопрос, изучите пошаговую инструкцию в разделе установки.</p>
-                <div class="button-container">
-                    <a href="install.html" class="download-btn">Перейти к установке</a>
+            <div class="faq-card">
+                <div class="faq-question">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <h3>Как повысить производительность с модами?</h3>
+                    <i class="fas fa-chevron-down faq-toggle"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Попробуйте отключить ресурсоёмкие эффекты в настройках модов. Установите <strong>FramerateVigilante</strong> для стабилизации FPS. Также убедитесь, что у вас установлены последние драйверы на видеокарту. Для слабых ПК рекомендуется использовать низкие настройки графики в <strong>Proper Shaders</strong>.</p>
                 </div>
             </div>
-        </section>
+
+            <div class="faq-card">
+                <div class="faq-question">
+                    <i class="fas fa-paint-bucket"></i>
+                    <h3>Proper Shaders vs ENB — что лучше?</h3>
+                    <i class="fas fa-chevron-down faq-toggle"></i>
+                </div>
+                <div class="faq-answer">
+                    <p><strong>Proper Shaders</strong> — это нативный мод, созданный специально для GTA SA с использованием отложенного рендеринга. Он более стабилен, лучше оптимизирован и совместим с другими модами. ENB серии часто вызывают конфликты и падение FPS. Proper Shaders — выбор для тех, кто ценит стабильность и производительность.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="faq-stats">
+            <div class="stat-card">
+                <i class="fas fa-database"></i>
+                <div class="stat-number">6+</div>
+                <div class="stat-label">Модов в сборке</div>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-download"></i>
+                <div class="stat-number">100K+</div>
+                <div class="stat-label">Всего загрузок</div>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-check-circle"></i>
+                <div class="stat-number">98%</div>
+                <div class="stat-label">Совместимость</div>
+            </div>
+        </div>
+
+        <div class="faq-help">
+            <h3><i class="fas fa-headset"></i> Нужна помощь?</h3>
+            <p>Если вы не нашли ответ на свой вопрос, изучите пошаговую инструкцию в разделе установки.</p>
+            <div class="button-container">
+                <a href="install.html" class="download-btn">Перейти к установке</a>
+            </div>
+        </div>
     </main>
 
     <button id="scroll-btn" aria-label="Наверх">⬆</button>
 
     <script src="script.js"></script>
-
-    <script>
-        // Обновление времени — единый формат для всего сайта
-        function updateTime() {
-            const now = new Date();
-            const pad = n => String(n).padStart(2, '0');
-            document.getElementById('datetime').textContent =
-                `${pad(now.getDate())}.${pad(now.getMonth() + 1)}.${now.getFullYear()} ` +
-                `${pad(now.getHours())}:${pad(now.getMinutes())}:${pad(now.getSeconds())}`;
-        }
-        setInterval(updateTime, 1000);
-        updateTime();
-    </script>
 </body>
 </html>

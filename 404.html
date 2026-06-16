@@ -13,6 +13,7 @@
 
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <header>
@@ -28,7 +29,7 @@
                 <li><a href="install.html">Установка</a></li>
                 <li><a href="FAQ.html">FAQ</a></li>
                 <li class="dropdown">
-                    <button class="dropbtn">Радио ▾</button>
+                    <button class="dropbtn">Радио <i class="fas fa-caret-down"></i></button>
                     <div class="dropdown-content">
                         <a href="https://gtaradio.net/ru/4" target="_blank" rel="noopener noreferrer">GTA IV Radio</a>
                         <a href="https://gtaradio.net/ru/vcs" target="_blank" rel="noopener noreferrer">GTA Vice City Stories Radio</a>
@@ -62,19 +63,6 @@
     </main>
 
     <button id="scroll-btn" aria-label="Прокрутить наверх">⬆</button>
-
-    <script>
-        // Обновление времени — единый формат для всего сайта
-        function updateTime() {
-            const now = new Date();
-            const pad = n => String(n).padStart(2, '0');
-            document.getElementById('datetime').textContent =
-                `${pad(now.getDate())}.${pad(now.getMonth() + 1)}.${now.getFullYear()} ` +
-                `${pad(now.getHours())}:${pad(now.getMinutes())}:${pad(now.getSeconds())}`;
-        }
-        setInterval(updateTime, 1000);
-        updateTime();
-    </script>
 
     <script src="script.js"></script>
 </body>

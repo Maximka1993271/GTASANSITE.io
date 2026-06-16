@@ -26,10 +26,10 @@
                 <li><a href="mods.html">Список модов</a></li>
                 <li><a href="Cheats.html">Читы</a></li>
                 <li><a href="Priority.html">Приоритеты</a></li>
-                <li><a href="install.html">Установка</a></li>
+                <li><a href="install.html" class="active">Установка</a></li>
                 <li><a href="FAQ.html">FAQ</a></li>
                 <li class="dropdown">
-                    <button class="dropbtn">Радио ▾</button>
+                    <button class="dropbtn">Радио <i class="fas fa-caret-down"></i></button>
                     <div class="dropdown-content">
                         <a href="https://gtaradio.net/ru/4" target="_blank" rel="noopener noreferrer">GTA IV Radio</a>
                         <a href="https://gtaradio.net/ru/vcs" target="_blank" rel="noopener noreferrer">GTA Vice City Stories Radio</a>
@@ -91,18 +91,5 @@
     <button id="scroll-btn" aria-label="Наверх">⬆</button>
 
     <script src="script.js"></script>
-
-    <script>
-        // Обновление времени — единый формат для всего сайта
-        function updateTime() {
-            const now = new Date();
-            const pad = n => String(n).padStart(2, '0');
-            document.getElementById('datetime').textContent =
-                `${pad(now.getDate())}.${pad(now.getMonth() + 1)}.${now.getFullYear()} ` +
-                `${pad(now.getHours())}:${pad(now.getMinutes())}:${pad(now.getSeconds())}`;
-        }
-        setInterval(updateTime, 1000);
-        updateTime();
-    </script>
 </body>
 </html>
