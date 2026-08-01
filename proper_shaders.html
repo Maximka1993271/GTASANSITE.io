@@ -56,10 +56,14 @@
             <h2 class="proper-shaders-title">[SA] Proper Shaders (HD графика для GTA SA)</h2>
             
             <!-- СНАЧАЛА БЛОК С ВЕРСИЯМИ -->
-            <div class="version-info" style="background: rgba(255, 255, 255, 0.05); padding: 15px; border-radius: 10px; margin-bottom: 15px; border-left: 4px solid #ffcc00;">
-                <p style="margin: 0; font-size: 1.1rem;"><strong>Обновлено 01.07.26</strong></p>
-                <p style="margin: 5px 0 0 0;">Новая версия: выпущена в июле (26.07) для альфа-тестеров! А версия, выпущенная месяц назад, теперь доступна для бета-тестеров, и версия, выпущенная два месяца назад, была доступна для всех.<br>Скоро я сниму новое видео.</p>
-            </div>
+			<div class="version-info" style="background: rgba(255, 255, 255, 0.05); padding: 15px; border-radius: 10px; margin-bottom: 15px; border-left: 4px solid #ffcc00;">
+				<p style="margin: 0; font-size: 1.1rem;"><strong>Обновлено 01.07.26</strong></p>
+				<p style="margin: 5px 0 0 0;">
+					Новая версия: август (08-26) выпущена для альфа-тестеров! А версия, выпущенная месяц назад, теперь доступна для бета-тестеров, и версия, выпущенная два месяца назад, была доступна для всех.<br>
+					<strong>Это самое важное обновление для этого мода:</strong> оптимизировано 60% времени ЦП для рендеринга мира; облака теперь в 3 раза светлее и более резкие; симуляция HDR (тональная карта, эффект свечения, LUT) теперь в 3 раза светлее; новое собственное решение для SSGI и объемного тумана с лучами света; фильтры VHS, GTA:CW и северного сияния; антиклиппинг для вида от первого лица; анимированное свечение на предметах; временное SMAA; полностью переработан шейдер транспортных средств с PBR-материалами; добавлен профилировщик времени ЦП/ГП для каждого эффекта и шага и т.д.<br>
+					Скоро я сниму новое видео.
+				</p>
+			</div>
             
             <!-- ПОТОМ ОПИСАНИЕ ПОД НИМ -->
             <div class="proper-shaders-info">
@@ -90,8 +94,9 @@
                 <!-- Три картинки в столбец -->
                 <div class="promo-image column-images">
                     <img src="https://www.mixmods.com.br/wp-content/uploads/2026/05/gta-sa-mod-proper-shaders-hd-graphics-realistic-remaster-remake-shadows-lights-a8-500x209.jpg" alt="Preview 1">
-                    <img src="https://www.mixmods.com.br/wp-content/uploads/2026/05/gta-sa-mod-proper-shaders-hd-graphics-realistic-remaster-remake-shadows-lights-a1-500x209.jpg" alt="Preview 2">
-                    <img src="https://www.mixmods.com.br/wp-content/uploads/2026/05/gta-sa-mod-proper-shaders-hd-graphics-realistic-remaster-remake-clouds-water-2-500x209.jpg" alt="Clouds and water">
+					<img src="https://www.mixmods.com.br/wp-content/uploads/2026/05/gta-sa-mod-proper-shaders-hd-graphics-realistic-remaster-remake-shadows-lights-a1-500x209.jpg" alt="Preview 2">
+					<img src="https://www.mixmods.com.br/wp-content/uploads/2026/05/gta-sa-mod-proper-shaders-hd-graphics-realistic-remaster-remake-clouds-water-2-500x209.jpg" alt="Clouds and water">
+					<img src="https://www.mixmods.com.br/wp-content/uploads/2026/07/gta-sa-mod-proper-shaders-hd-graphics-realistic-remaster-remake-fog-water-clouds-500x209.jpg" alt="Fog, water and clouds">
                 </div>
 
                 <div class="content-center">
@@ -147,77 +152,114 @@
                         <img src="https://www.mixmods.com.br/wp-content/uploads/2026/05/gta-sa-mod-proper-shaders-hd-graphics-realistic-remaster-remake-clouds-water-1-500x209.jpg" alt="Clouds and water detail">
                     </div>
                 </div>
+				
+				<!-- НОВЫЙ РАЗДЕЛ: Объемный туман; Непрямое освещение -->
+				<div class="feature-section">
+					<h4 style="text-align: center; color: #ffcc00; font-size: 1.5em;">Объемный туман; Непрямое освещение</h4>
+					<p class="description-block">Уникальное, беспрецедентное решение для объемного тумана с эффектом «божественных лучей» и SSGI (Screen-Space Global Illumination) для непрямого освещения. Впервые в одиночной игре GTA SA появились настоящие «божественные лучи» (а не симулированные, как в ENB), а наше решение SSGI оптимизировано, при этом затенение окружающей среды частично основано на GTAO (Ground Truth Ambient Occlusion).</p>
+					<div class="promo-image">
+						<img src="https://www.mixmods.com.br/wp-content/uploads/2026/07/gta-sa-mod-proper-shaders-hd-graphics-realistic-remaster-remake-ssgi-global-indirect-lighting-gtao-500x209.jpg" alt="Volumetric fog and indirect lighting">
+					</div>
+				</div>
 
-                <!-- Блок прогресса -->
-                <div class="progress-container">
+	
+				<!-- Блок прогресса -->
+					<div class="progress-container">
+						<div class="progress-column">
+							<h5>Текущий прогресс</h5>
+							<ul class="progress-list">
+								<li>Техника отложенного рендеринга (как в современных играх)</li>
+								<li>Попиксельное освещение (сотни оптимизированных динамических источников света)</li>
+								<li>Объемные световые лучи</li>
+								<li>Динамические 4 каскадных попиксельных тени (PCSS от NVIDIA)</li>
+								<li>Техника мягкой теневой маски с гауссовым размытием</li>
+								<li>Глобальное освещение в экранном пространстве с адаптивной оптикой</li>
+								<li>Объемные облака</li>
+								<li>Объемный туман по высоте с эффектом солнечных лучей</li>
+								<li>Поверхность воды</li>
+								<li>Щелочные растворы для воды</li>
+								<li>Подводный</li>
+								<li>Окклюзия окружающей среды (SSAO, HBAO, собственный SSGI с элементами GTAO)</li>
+								<li>Имитация HDR с тональным отображением (ACES или Timoty)</li>
+								<li>ЛУТ</li>
+								<li>Саморазоблачение</li>
+								<li>Цвести</li>
+								<li>Солнечные лучи</li>
+								<li>SMAA с височной</li>
+								<li>Адаптивная резкость контраста AMD</li>
+								<li>Адаптивная глубина резкости</li>
+								<li>Простой шейдер неба с дизерингом</li>
+								<li>PBR-шейдер неба с эффектом смешивания неба</li>
+								<li>Туман нового горизонта</li>
+								<li>Улучшенная борьба с Z-атаками</li>
+								<li>Мягкие частицы</li>
+								<li>Мипмаппинг игрока (автоматический)</li>
+								<li>Шейдеры, подсвеченные направленным светом</li>
+								<li>Стохастическое процедурное текстурирование</li>
+								<li>Глобальные отражения в реальном времени</li>
+								<li>Мировые осадки на поверхности Земли</li>
+								<li>Шейдеры для транспортных средств (PBR, линза Френеля, эффект дождя)</li>
+								<li>Анимированный шейдер ветра</li>
+								<li>Анимированный пикап сияет</li>
+								<li>сглаживание от первого лица</li>
+								<li>Дополнительные художественные работы (VHS, контуры GTA:CW, северное сияние)</li>
+								<li>Поддержка неограниченного количества файлов TXDP (родительских файлов TXD) в файлах .ide, что помогает этому (шейдерным картам) и другим модификациям текстур (пока отключено).</li>
+								<li>Все более 11 тысяч игровых текстур уже настроены с соответствующими значениями шероховатости, стохастического эффекта и отбрасывания теней.</li>
+							</ul>
+						</div>
+					</div>
                     <div class="progress-column">
-                        <h5>Текущий прогресс</h5>
-                        <ul class="progress-list">
-                            <li>Техника отложенного рендеринга (как в современных играх)</li>
-                            <li>Попиксельное освещение (сотни оптимизированных динамических источников света)</li>
-                            <li>Объемные световые лучи</li>
-                            <li>Динамические 4 каскадных попиксельных тени (PCSS от NVIDIA)</li>
-                            <li>Техника мягкой теневой маски с гауссовым размытием</li>
-                            <li>Объемные облака</li>
-                            <li>Поверхность воды</li>
-                            <li>Щелочные растворы для воды</li>
-                            <li>Подводный</li>
-                            <li>Окклюзия окружающей среды (SSAO, HBAO)</li>
-                            <li>Имитация HDR с тональным отображением (ACES или Timoty)</li>
-                            <li>ЛУТ</li>
-                            <li>Саморазоблачение</li>
-                            <li>Цвести</li>
-                            <li>Солнечные лучи</li>
-                            <li>СМАА</li>
-                            <li>Адаптивная резкость контраста AMD</li>
-                            <li>Адаптивная глубина резкости</li>
-                            <li>Простой шейдер неба с дизерингом</li>
-                            <li>PBR-шейдер неба с эффектом смешивания неба</li>
-                            <li>Туман нового горизонта</li>
-                            <li>Улучшенная борьба с Z-атаками</li>
-                            <li>Мягкие частицы</li>
-                            <li>Мипмаппинг игрока (автоматический)</li>
-                            <li>Шейдеры, подсвеченные направленным светом</li>
-                            <li>Стохастическое процедурное текстурирование</li>
-                            <li>Анимированный шейдер ветра</li>
-                            <li>Мировые осадки на поверхности Земли</li>
-                            <li>Поддержка неограниченного количества файлов TXDP (родительских файлов TXD) в файлах .ide, что помогает этому (шейдерным картам) и другим модификациям текстур (пока отключено).</li>
-                            <li>Все более 11 тысяч игровых текстур уже настроены с правильными значениями шероховатости, стохастического эффекта и отбрасывания теней.</li>
-                        </ul>
-                    </div>
+					<h5>В ходе выполнения</h5>
+					<ul class="progress-list">
+						<li>Карты шейдеров (карта нормалей, карта шероховатости, карта металличности, карта высот, карта окружающего затенения)</li>
+						<li>Затенение в стиле целлулоид/аниме</li>
+						<li>Система создания экземпляров травы на графическом процессоре</li>
+						<li>Проектор наклеек (заменяет стандартную систему наклеек, от ЦП к ГП)</li>
+						<li>Отражения в экранном пространстве (SSR)</li>
+						<li>Тени в экранном пространстве (Screen Space Shadows)</li>
+						<li>Динамическая смена погоды с плавным переходом</li>
+						<li>Улучшенная система частиц с поддержкой физики</li>
+						<li>Поддержка PBR-материалов для объектов и транспорта</li>
+						<li>Система динамических декалей (следы, повреждения, пятна)</li>
+						<li>Улучшенный рендеринг листвы с учётом ветра</li>
+						<li>Блум с адаптивной экспозицией</li>
+						<li>Динамическое затемнение неба на основе погоды</li>
+						<li>Расширенная система тумана с учётом высоты</li>
+						<li>Сглаживание на основе DLSS/FSR (в разработке)</li>
+					</ul>
+				</div>
                     <div class="progress-column">
-                        <h5>В ходе выполнения</h5>
-                        <ul class="progress-list">
-                            <li>Карты шейдеров (карта нормалей, карта шероховатости и т. д.).</li>
-                            <li>Затенение в стиле целлулоид/аниме.</li>
-                            <li>Система создания экземпляров травы на графическом процессоре.</li>
-                            <li>Проектор наклеек (заменяет стандартную систему наклеек, от ЦП к ГП)</li>
-                            <li>Отражения в экранном пространстве</li>
-                            <li>Тени в экранном пространстве</li>
-                        </ul>
-                    </div>
-                    <div class="progress-column">
-                        <h5>Запланировано</h5>
-                        <ul class="progress-list">
-                            <li>Блики от объектива</li>
-                            <li>Объемный туман по высоте</li>
-                            <li>Глобальное освещение экранного пространства</li>
-                            <li>Дождевое покрытие для транспортных средств</li>
-                            <li>Параллаксное окклюзионное картирование</li>
-                            <li>Зеркальные анизотропные волосы</li>
-                            <li>Рассеяние под поверхностью</li>
-                            <li>Сложные повреждения автомобильной краски и грязи</li>
-                            <li>Временное сглаживание</li>
-                            <li>Улучшить шейдер ветра/растительности</li>
-                            <li>шейдер карт рельефа</li>
-                        </ul>
-                    </div>
-                </div>
-
+					<h5>Запланировано</h5>
+					<ul class="progress-list">
+						<li>Блики от объектива</li>
+						<li>Параллаксное окклюзионное картирование</li>
+						<li>Зеркальные анизотропные волосы</li>
+						<li>Рассеяние под поверхностью</li>
+						<li>Улучшить шейдер ветра/растительности</li>
+						<li>шейдер карт рельефа</li>
+					</ul>
+				</div>
                 <!-- Картинка после раздела Запланировано -->
                 <div class="promo-image">
                     <img src="https://www.mixmods.com.br/wp-content/uploads/2026/05/gta-sa-mod-proper-shaders-hd-graphics-realistic-remaster-remake-clouds-night-lights-3-1-500x209.jpg" alt="Clouds night lights">
                 </div>
+				
+				<!-- НОВЫЙ РАЗДЕЛ: Версия 08-26 -->
+				<div class="feature-section">
+					<h4 style="text-align: center; color: #ffcc00; font-size: 1.5em;">Версия 08-26</h4>
+					<p class="description-block">Новая альфа-версия с улучшенным объемным туманом, оптимизацией рендеринга и исправлением множества ошибок.</p>
+					<div class="promo-image">
+						<img src="https://www.mixmods.com.br/wp-content/uploads/2026/07/gta-sa-mod-proper-shaders-hd-graphics-realistic-remaster-remake-volumetric-fog-500x209.jpg" alt="Volumetric fog 08-26">
+					</div>
+				</div>
+
+				<!-- Версия 08-26 по центру -->
+				<div style="text-align: center; margin: 30px 0;">
+					<h4 style="color: #ffcc00; font-size: 1.5em;">Версия 08-26</h4>
+					<div class="promo-image" style="display: flex; justify-content: center;">
+						<img src="https://www.mixmods.com.br/wp-content/uploads/2026/07/gta-sa-mod-proper-shaders-hd-graphics-realistic-remaster-remake-clouds-fog-500x209.jpg" alt="Clouds fog 08-26">
+					</div>
+				</div>
 
                 <div class="content-center">
                     <h4>Сравнения:</h4>
@@ -230,6 +272,7 @@
                         <img src="https://www.mixmods.com.br/wp-content/uploads/2026/05/gta-sa-mod-proper-shaders-hd-graphics-realistic-remaster-remake-shadows-lights-1b-pn-500x209.jpg">
                         <img src="https://www.mixmods.com.br/wp-content/uploads/2026/05/gta-sa-mod-proper-shaders-hd-graphics-realistic-remaster-remake-shadows-lights-1c-nb-500x209.jpg">
                         <img src="https://www.mixmods.com.br/wp-content/uploads/2026/05/gta-sa-mod-proper-shaders-hd-graphics-realistic-remaster-remake-shadows-lights-1d-na-500x209.jpg">
+						<img src="https://www.mixmods.com.br/wp-content/uploads/2026/06/gta-sa-mod-proper-shaders-hd-graphics-realistic-remaster-remake-rain-puddles-wet-chuva-500x205.jpg">
                     </div>
                 </div>
 
@@ -241,10 +284,21 @@
                     <img src="https://www.mixmods.com.br/wp-content/uploads/2026/05/gta-sa-mod-proper-shaders-hd-graphics-realistic-remaster-remake-shadows-lights-a9-500x209.jpg" alt="Stability 1">
                     <img src="https://www.mixmods.com.br/wp-content/uploads/2026/05/gta-sa-mod-proper-shaders-hd-graphics-realistic-remaster-remake-shadows-lights-a7-500x209.jpg" alt="Stability 2">
                     <img src="https://www.mixmods.com.br/wp-content/uploads/2026/05/gta-sa-mod-proper-shaders-hd-graphics-realistic-remaster-remake-clouds-water-3-1-500x209.jpg" alt="Clouds water final">
+					
+					<!-- Версия 08-26 по центру -->
+					<div style="text-align: center; margin: 30px 0; width: 100%;">
+						<h4 style="color: #ffcc00; font-size: 1.5em;">Версия 08-26</h4>
+						<img src="https://www.mixmods.com.br/wp-content/uploads/2026/07/gta-sa-mod-proper-shaders-hd-graphics-realistic-remaster-remake-san-fierro-fog-clouds-500x209.jpg" alt="San Fierro fog clouds 08-26" style="width: 100%; max-width: 500px; height: auto; border-radius: 10px;">
+					</div>
                 </div>
+				
+				<!-- Текст -->
+				<p class="description-block" style="text-align: center; font-size: 1.1rem; margin-top: 20px;">
+					Это мой новый проект мода с моделью «freemium» (ранний доступ с технической поддержкой, а затем бесплатно). Он находится на ранней стадии разработки, и обновления работают с Soundize без дополнительной платы. Я могу поделиться им бесплатно, если вы создатель контента; свяжитесь со мной.
+				</p>
 
                 <div class="button-container">
-                    <a href="https://sharemods.com/fx3wsvfxmgy0/SA_-_Proper_Shaders_05-26___40_py2t9smd8g__41_.zip.html" target="_blank" rel="noopener noreferrer" class="download-link">
+                    <a href="https://sharemods.com/utyqxnihvaxr/SA_-_Proper_Shaders_06-26___40_pv5s4v1ajrf__41_.zip.html" target="_blank" rel="noopener noreferrer" class="download-link">
                         <button class="download-btn">
                             <i class="fas fa-download"></i> СКАЧАТЬ
                         </button>
