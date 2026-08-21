@@ -69,10 +69,8 @@
         },
 
         initCheatAccordeon() {
-            // Аккордеон для страницы читов - все категории
             const cheatCategories = document.querySelectorAll('.cheat-category');
             
-            // Если нет категорий с классом active, открываем первую по умолчанию
             let hasActive = false;
             cheatCategories.forEach(cat => {
                 if (cat.classList.contains('active')) hasActive = true;
@@ -82,7 +80,6 @@
                 cheatCategories[0].classList.add('active');
             }
             
-            // Добавляем обработчики на все заголовки
             this.elements.cheatHeaders.forEach(header => {
                 header.addEventListener('click', (e) => {
                     e.stopPropagation();
@@ -134,6 +131,7 @@
             document.head.appendChild(style);
         },
 
+        // ИСПРАВЛЕНО: Утечка обработчика keydown
         openModal(src) {
             if (document.querySelector('.gta-modal')) return;
             
@@ -171,18 +169,24 @@
             document.body.appendChild(modal);
             document.body.style.overflow = 'hidden';
 
-            modal.onclick = () => {
+            // Единая функция закрытия для устранения утечки
+            const closeModal = () => {
                 modal.remove();
                 document.body.style.overflow = '';
+                document.removeEventListener('keydown', onKeyDown);
             };
-            
+
+            // Обработчик клавиши Escape
             const onKeyDown = (e) => {
                 if (e.key === 'Escape') {
-                    modal.remove();
-                    document.body.style.overflow = '';
-                    document.removeEventListener('keydown', onKeyDown);
+                    closeModal();
                 }
             };
+
+            // Закрытие по клику на фон
+            modal.onclick = closeModal;
+
+            // Закрытие по Escape
             document.addEventListener('keydown', onKeyDown);
         }
     };

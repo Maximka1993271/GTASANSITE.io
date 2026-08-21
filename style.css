@@ -563,11 +563,11 @@ nav ul li a, .dropbtn {
 .promo-image img { max-width: 100%; height: auto; border-radius: 8px; margin: 15px 0; display: block; margin-left: auto; margin-right: auto; }
 .description-block { margin: 25px 0; line-height: 1.6; font-size: 1.05em; color: #e0e0e0; text-align: center; }
 .feature-section { margin-bottom: 40px; }
-.feature-section h4 { text-align: center; color: #ffcc00; font-size: 1.5em; margin-bottom: 10px; }
+.feature-section h3 { text-align: center; color: #ffcc00; font-size: 1.5em; margin-bottom: 10px; }
 
 .progress-container { display: grid; grid-template-columns: 1fr; gap: 20px; margin: 40px 0; }
 .progress-column { background: rgba(255,255,255,0.05); padding: 20px; border-radius: 10px; border-left: 4px solid #ffcc00; }
-.progress-column h5 { margin-top: 0; color: #fff; border-bottom: 1px solid #444; padding-bottom: 10px; }
+.progress-column h4 { margin-top: 0; color: #fff; border-bottom: 1px solid #444; padding-bottom: 10px; }
 .progress-list { list-style: none; padding: 0; margin: 0; text-align: left; }
 .progress-list li { margin-bottom: 8px; font-size: 0.95em; display: flex; align-items: flex-start; }
 .progress-list li::before { content: "•"; color: #ffcc00; font-weight: bold; margin-right: 10px; }
@@ -674,6 +674,28 @@ nav ul li a, .dropbtn {
 .faq-help h3 { color: var(--primary-color); margin-bottom: 15px; font-size: 1.5rem; }
 .faq-help p { color: #ccc; margin-bottom: 20px; }
 
+/* --- ИНФОРМАЦИЯ О ФАЙЛАХ (ДОБАВЛЕНО) --- */
+.file-info {
+    display: block;
+    text-align: center;
+    padding: 8px 12px;
+    margin-top: 5px;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 6px;
+    border-left: 2px solid rgba(255, 215, 0, 0.3);
+    width: 100%;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.file-info small {
+    font-size: 0.7rem;
+    color: #888;
+    line-height: 1.4;
+    letter-spacing: 0.3px;
+}
+
 /* ОБЩИЕ СТИЛИ */
 img {
     display: block;
@@ -708,7 +730,8 @@ img {
 
 .button-container {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
     width: 100%;
     margin: 20px 0;
 }
