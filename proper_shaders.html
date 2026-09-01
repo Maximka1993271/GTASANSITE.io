@@ -57,30 +57,33 @@
             
             <!-- Блок с версиями -->
             <div class="version-info" style="background: rgba(255, 255, 255, 0.05); padding: 15px; border-radius: 10px; margin-bottom: 15px; border-left: 4px solid #ffcc00;">
-                <p style="margin: 0; font-size: 1.1rem;"><strong>Обновлено 01.07.26</strong></p>
+                <p style="margin: 0; font-size: 1.1rem;"><strong>Обновлено 01.09.26</strong></p>
                 <p style="margin: 5px 0 0 0;">
-                    Новая версия: август (08-26) выпущена для альфа-тестеров! А версия, выпущенная месяц назад, теперь доступна для бета-тестеров, и версия, выпущенная два месяца назад, была доступна для всех.<br>
-                    <strong>Это самое важное обновление для этого мода:</strong> оптимизировано 60% времени ЦП для рендеринга мира; облака теперь в 3 раза светлее и более резкие; симуляция HDR (тональная карта, эффект свечения, LUT) теперь в 3 раза светлее; новое собственное решение для SSGI и объемного тумана с лучами света; фильтры VHS, GTA:CW и северного сияния; антиклиппинг для вида от первого лица; анимированное свечение на предметах; временное SMAA; полностью переработан шейдер транспортных средств с PBR-материалами; добавлен профилировщик времени ЦП/ГП для каждого эффекта и шага и т.д.<br>
-                    Скоро я сниму новое видео.
+                    Новая версия: выпущена для альфа-тестеров в сентябре (26.09)! Версия, выпущенная месяц назад, теперь доступна для бета-тестеров, а версия, выпущенная два месяца назад, была доступна для всех желающих.<br>
+                    Теперь окружающий цвет в игре представляет собой градиент, аналогичный современным движкам, и реализовано «затенение неба» (Skylight), создающее затенение в мировом пространстве по всей сцене на основе видимости неба, подобно второй тени, которая прорезает цвет неба в окружающей среде. Это собственное, настолько продвинутое решение, что оно даже перепроецирует направление освещения по всему миру (сторона автомобиля и CJ в направлении, где небо открыто, будет получать свет неба независимо от солнца). Таким образом, мод теперь имеет глобальное освещение в реальном времени. Области под мостами, окруженные зданиями и деревьями, будут темнее.<br>
+                    Кроме того, вся система освещения была переработана, что уменьшило проблему «пересвечивания» света, но главное, расчет отложенного освещения теперь использует более точные методы, как в современных играх, и использует буфер излучения, полученный из предварительного освещения (ночные сцены в игре теперь действительно освещены, как если бы по всему миру были настоящие источники света). Этот буфер также используется другими внутриигровыми элементами, такими как SSGI, для дальнейшего повышения точности расчетов непрямого освещения.<br>
+                    Кроме того, для обеспечения высокой точности реализована отложенная композиция с использованием HDR (монитор HDR не требуется, эта функция реализована в движке). Это позволяет избежать цветовых полос (градиентов с обрывом в слоях, очень заметных на темных поверхностях). Также доступны опции для включения HDR в PostFX.<br>
+                    Кроме того, была проведена полная проверка стабильности мода, исправлены несколько визуальных ошибок и скорректирован общий внешний вид мода (улучшены визуализация освещения и воды), а также добавлен чрезвычайно подробный API для обеспечения совместимости и расширения с другими модами (другие моды могут создавать источники света на основе системы этого мода и т. д.). Ах да, и я еще не упомянул, что фары автомобиля игрока теперь отбрасывают тени?
                 </p>
-            </div>
-            
-            <!-- Описание -->
-            <div class="proper-shaders-info">
-                <p><strong>Модификация, которая кардинально меняет графику GTA San Andreas (PC).</strong></p>
             </div>
         </section>
 
         <section class="video-section">
             <div class="video-item">
-                <div class="promo-image">
+                <!-- Логотип -->
+                <div class="promo-image" style="text-align: center;">
                     <img src="https://www.mixmods.com.br/wp-content/uploads/2026/05/gta-san-andreas-mod-pc-proper-shaders-logo-1.png" 
                          alt="Proper Shaders Logo" 
-                         loading="lazy">
+                         loading="lazy"
+                         style="max-width: 600px; width: 100%;">
                 </div>
 
+                <!-- Заголовок по центру -->
+                <h2 style="text-align: center; color: #ffcc00; font-size: 1.8rem; margin: 30px 0 20px 0;">Модификация, которая кардинально меняет графику GTA San Andreas (PC).</h2>
+
+                <!-- Видео -->
                 <div class="description-block">
-                    <h3 style="text-align: center;">Посмотрите рекламный ролик:</h3>
+                    <h3 style="text-align: center;">Посмотрите рекламный ролик (старая версия):</h3>
                     
                     <div class="video-container" style="display: flex; justify-content: center;">
                         <iframe src="https://www.youtube.com/embed/UgzOdg73qeU" 
@@ -105,121 +108,148 @@
                     </div>
                 </div>
 
-                <div class="description-block">
-                    <p>Стремясь к стабильности, совместимости и оптимизации, Proper Shaders переиздали GTA SA в HD-качестве, создав по-настоящему играбельную игру, предназначенную не только для скриншотов, но и для игрового процесса.</p>
+                <!-- Текст -->
+                <p class="description-block" style="text-align: center; font-size: 1.1rem; max-width: 800px; margin: 20px auto;">
+                    Стремясь к стабильности, совместимости и оптимизации, Proper Shaders переиздали GTA SA в HD-качестве, создав по-настоящему играбельную игру, предназначенную не только для скриншотов, но и для игрового процесса.
+                </p>
+
+                <!-- 4 картинки -->
+                <div class="promo-image grid-4" style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; max-width: 1000px; margin: 0 auto;">
+                    <img src="https://www.mixmods.com.br/wp-content/uploads/2026/07/gta-sa-mod-proper-shaders-hd-graphics-realistic-remaster-remake-ssgi-global-indirect-lighting-gtao-500x209.jpg" 
+                         alt="Proper Shaders - SSGI" 
+                         loading="lazy">
+                    <img src="https://www.mixmods.com.br/wp-content/uploads/2026/08/gta-sa-mod-proper-shaders-hd-graphics-realistic-remaster-remake-per-pixel-lighting-deferred-500x209.jpg" 
+                         alt="Proper Shaders - попиксельное освещение" 
+                         loading="lazy">
+                    <img src="https://www.mixmods.com.br/wp-content/uploads/2026/07/gta-sa-mod-proper-shaders-hd-graphics-realistic-remaster-remake-san-fierro-fog-clouds-500x209.jpg" 
+                         alt="Proper Shaders - San Fierro" 
+                         loading="lazy">
+                    <img src="https://www.mixmods.com.br/wp-content/uploads/2026/08/gta-sa-mod-proper-shaders-hd-graphics-realistic-remaster-remake-500x209.jpg" 
+                         alt="Proper Shaders - скриншот" 
+                         loading="lazy">
                 </div>
 
-                <!-- Три картинки в столбец -->
-                <div class="promo-image column-images">
-                    <img src="https://www.mixmods.com.br/wp-content/uploads/2026/05/gta-sa-mod-proper-shaders-hd-graphics-realistic-remaster-remake-shadows-lights-a8-500x209.jpg" 
-                         alt="Proper Shaders - тени и освещение в GTA San Andreas" 
-                         loading="lazy">
-                    <img src="https://www.mixmods.com.br/wp-content/uploads/2026/05/gta-sa-mod-proper-shaders-hd-graphics-realistic-remaster-remake-shadows-lights-a1-500x209.jpg" 
-                         alt="Proper Shaders - реалистичное освещение в GTA San Andreas" 
-                         loading="lazy">
-                    <img src="https://www.mixmods.com.br/wp-content/uploads/2026/05/gta-sa-mod-proper-shaders-hd-graphics-realistic-remaster-remake-clouds-water-2-500x209.jpg" 
-                         alt="Proper Shaders - облака и вода в GTA San Andreas" 
-                         loading="lazy">
-                    <img src="https://www.mixmods.com.br/wp-content/uploads/2026/07/gta-sa-mod-proper-shaders-hd-graphics-realistic-remaster-remake-fog-water-clouds-500x209.jpg" 
-                         alt="Proper Shaders - туман, вода и облака в GTA San Andreas" 
-                         loading="lazy">
-                </div>
-
-                <div class="content-center">
-                    <h3>Это не набор предустановок или модпак; это модификация.</h3>
-                    <p class="description-block">Вы больше не видите ссылку для скачивания пресета для ENB / RenderHook / ReShade. Proper Shaders — это собственный мод, созданный мной (Junior_Djjr) с опытом разработки игр с 2015 года и моддинга GTA San Andreas с 2011 года; инициатором и участником проекта выступила Джессика Наталия, а также были использованы некоторые фрагменты кода от SkyGfx (aap), с применением современных, высокотехнологичных шейдеров и решений.</p>
-                </div>
-
-                <div class="feature-section">
-                    <div class="promo-image">
-                        <img src="https://www.mixmods.com.br/wp-content/uploads/2026/05/gta-sa-mod-proper-shaders-hd-graphics-realistic-remaster-remake-shadows-lights-a5-500x209.jpg" 
-                             alt="Proper Shaders - интеграция в игровой процесс GTA San Andreas" 
+                <!-- Это не набор предустановок -->
+                <div class="feature-section" style="margin-top: 40px;">
+                    <h3 style="text-align: center; color: #ffcc00; font-size: 1.5em;">Это не набор предустановок или модпак; это модификация.</h3>
+                    <p class="description-block" style="text-align: center; max-width: 800px; margin: 15px auto;">
+                        Вы больше не видите ссылку для скачивания пресета для ENB / RenderHook / ReShade. Proper Shaders — это собственный мод, созданный мной (Junior_Djjr) с опытом разработки игр с 2015 года и моддинга GTA San Andreas с 2011 года; инициатором и автором функций выступила Джессика Наталия, а некоторые фрагменты взяты из SkyGfx (aap), с использованием современных и высокотехнологичных шейдеров и решений.
+                    </p>
+                    <div class="promo-image" style="text-align: center;">
+                        <img src="https://www.mixmods.com.br/wp-content/uploads/2026/07/gta-sa-mod-proper-shaders-hd-graphics-realistic-remaster-remake-clouds-fog-500x209.jpg" 
+                             alt="Proper Shaders - облака и туман" 
                              loading="lazy">
                     </div>
-                    <h3>Хорошая интеграция в игру.</h3>
-                    <p class="description-block">Идеально настроено для дневного и ночного времени; внешние и внутренние локации; игровой процесс, кат-сцены и т. д. Модификация, созданная для настоящего удовольствия от игры.</p>
                 </div>
 
-                <div class="feature-section">
-                    <div class="promo-image">
+                <!-- Хорошая интеграция -->
+                <div class="feature-section" style="margin-top: 40px;">
+                    <h3 style="text-align: center; color: #ffcc00; font-size: 1.5em;">Хорошая интеграция в игру.</h3>
+                    <p class="description-block" style="text-align: center; max-width: 800px; margin: 15px auto;">
+                        Идеально настроено для дневного и ночного времени; внешние и внутренние локации; игровой процесс, кат-сцены и т. д. Модификация, созданная для настоящего удовольствия от игры.
+                    </p>
+                    <div class="promo-image" style="text-align: center;">
                         <img src="https://www.mixmods.com.br/wp-content/uploads/2026/05/gta-sa-mod-proper-shaders-hd-graphics-realistic-remaster-remake-cutscene-big-smoke-sweet-500x253.jpg" 
-                             alt="Proper Shaders - совместимость с кат-сценами GTA San Andreas" 
+                             alt="Proper Shaders - кат-сцена" 
                              loading="lazy">
                     </div>
-                    <h3>Неинвазивный; совместим с модами.</h3>
-                    <p class="description-block">Сохраняет оригинальное отображение и функциональность игры. Proper Shaders работает, просто расширяя уже существующее отображение игры, вместо того, чтобы пытаться воссоздать все с нуля. Игра остается стабильной на движке RenderWare 3.6 и API DirectX 9.</p>
                 </div>
 
-                <div class="feature-section">
-                    <div class="promo-image">
-                        <img src="https://www.mixmods.com.br/wp-content/uploads/2026/05/gta-sa-mod-proper-shaders-hd-graphics-realistic-remaster-remake-shadows-lights-a6-500x209.jpg" 
-                             alt="Proper Shaders - настройка графики" 
+                <!-- Неинвазивный -->
+                <div class="feature-section" style="margin-top: 40px;">
+                    <h3 style="text-align: center; color: #ffcc00; font-size: 1.5em;">Неинвазивный; совместим с модами.</h3>
+                    <p class="description-block" style="text-align: center; max-width: 800px; margin: 15px auto;">
+                        Сохраняет оригинальное отображение и функциональность игры. Proper Shaders работает, просто расширяя уже существующее отображение игры, вместо того, чтобы пытаться воссоздать все с нуля, и обладает высокой совместимостью с модами, включая SAMP (хотя пока не полностью стабилен). Игра остается стабильной на движке RenderWare 3.6 и API DirectX 9.
+                    </p>
+                    <div class="promo-image" style="text-align: center;">
+                        <img src="https://www.mixmods.com.br/wp-content/uploads/2026/08/gta-sa-mod-proper-shaders-hd-graphics-realistic-remaster-remake-sunset-volumetric-fog-gta-vi-500x209.jpg" 
+                             alt="Proper Shaders - закат" 
                              loading="lazy">
                     </div>
-                    <h3>Настраиваемый</h3>
-                    <p class="description-block">Подобно MixSets, Proper Shaders обладает широкими возможностями настройки, позволяя использовать его для создания реалистичной графики или просто для коррекции и улучшения оригинальной графики игры, заменяя SkyGfx. Другими словами, при желании вы можете использовать его исключительно для улучшения z-fighting, мягких частиц и т.д.</p>
                 </div>
 
-                <div class="feature-section">
-                    <div class="promo-image">
-                        <img src="https://www.mixmods.com.br/wp-content/uploads/2026/05/gta-sa-mod-proper-shaders-hd-graphics-realistic-remaster-remake-shadows-lights-a4-500x209.jpg" 
-                             alt="Proper Shaders - оптимизация производительности" 
+                <!-- Настраиваемый -->
+                <div class="feature-section" style="margin-top: 40px;">
+                    <h3 style="text-align: center; color: #ffcc00; font-size: 1.5em;">Настраиваемый</h3>
+                    <p class="description-block" style="text-align: center; max-width: 800px; margin: 15px auto;">
+                        Подобно MixSets, Proper Shaders обладает широкими возможностями настройки, позволяя использовать его для создания реалистичной графики или просто для коррекции и улучшения оригинальной графики игры, заменяя её или используя её совместно со SkyGfx.
+                    </p>
+                    <div class="promo-image" style="text-align: center;">
+                        <img src="https://www.mixmods.com.br/wp-content/uploads/2026/08/gta-sa-mod-proper-shaders-hd-graphics-realistic-remaster-remake-classic-ps2-skygfx-500x209.jpg" 
+                             alt="Proper Shaders - классический стиль" 
                              loading="lazy">
                     </div>
-                    <h3>Оптимизированный</h3>
-                    <p class="description-block">Модификация практически не повышает минимальные системные требования игры, а рекомендуемые требования (для теней, динамического освещения) невысоки, и на компьютерах среднего и даже низкого уровня не наблюдается никаких задержек. В загрузку входят предустановки «Низкие/Средние/Высокие» и т.д.</p>
                 </div>
 
-                <div class="feature-section">
-                    <div class="promo-image">
-                        <img src="https://www.mixmods.com.br/wp-content/uploads/2026/05/gta-sa-mod-proper-shaders-hd-graphics-realistic-remaster-remake-shadows-lights-a3-500x209.jpg" 
-                             alt="Proper Shaders - отложенная отрисовка" 
+                <!-- Оптимизированный -->
+                <div class="feature-section" style="margin-top: 40px;">
+                    <h3 style="text-align: center; color: #ffcc00; font-size: 1.5em;">Оптимизированный</h3>
+                    <p class="description-block" style="text-align: center; max-width: 800px; margin: 15px auto;">
+                        Модификация практически не повышает минимальные системные требования игры, а рекомендуемые параметры (для теней, динамического освещения) невысоки, и на компьютерах среднего или относительно слабого уровня задержек не наблюдается. В загрузку входят предустановки «Низкие/Средние/Высокие» и т.д.<br>
+                        Модификация была и продолжает оптимизироваться, включая удаление ресурсоемких игровых процессов для более эффективного использования видеокарты.<br>
+                        Для сравнения, графика работает примерно на 100 FPS на RTX 3060.
+                    </p>
+                    <div class="promo-image" style="text-align: center;">
+                        <img src="https://www.mixmods.com.br/wp-content/uploads/2026/08/gta-sa-mod-proper-shaders-hd-graphics-realistic-remaster-remake-per-pixel-car-headlight-shadows-500x281.jpg" 
+                             alt="Proper Shaders - тени от фар" 
                              loading="lazy">
                     </div>
-                    <h3>Отложенная отрисовка завершена.</h3>
-                    <p class="description-block">Это первый в мире мод, который действительно переводит рендеринг GTA San Andreas на отложенную технику. Вкратце, он обеспечивает масштабируемую оптимизацию продвинутых шейдерных техник, таких как плавные тени и динамическое попиксельное освещение.</p>
                 </div>
 
-                <div class="feature-section">
-                    <div class="promo-image">
-                        <img src="https://www.mixmods.com.br/wp-content/uploads/2026/05/gta-sa-mod-proper-shaders-hd-graphics-realistic-remaster-remake-lights-deferred-gbuffer-500x209.jpg" 
-                             alt="Proper Shaders - динамические источники света" 
+                <!-- Отложенная отрисовка -->
+                <div class="feature-section" style="margin-top: 40px;">
+                    <h3 style="text-align: center; color: #ffcc00; font-size: 1.5em;">Отложенная отрисовка завершена.</h3>
+                    <p class="description-block" style="text-align: center; max-width: 800px; margin: 15px auto;">
+                        Это первый в мире мод, который действительно переводит рендеринг GTA San Andreas на отложенную технику (используемую в большинстве современных игр). Вкратце, он обеспечивает масштабируемую оптимизацию продвинутых шейдерных техник, таких как плавные тени и динамическое попиксельное освещение, уменьшение избыточной отрисовки и более стабильную частоту кадров.
+                    </p>
+                    <div class="promo-image" style="text-align: center;">
+                        <img src="https://www.mixmods.com.br/wp-content/uploads/2026/08/gta-sa-mod-proper-shaders-hd-graphics-realistic-remaster-remake-deferred-rendering-gbuffer-per-pixel-500x209.jpg" 
+                             alt="Proper Shaders - отложенный рендеринг" 
                              loading="lazy">
                     </div>
-                    <h3>Динамические попиксельные и объемные источники света</h3>
-                    <p class="description-block">Благодаря полностью отложенному рендерингу, Proper Shaders отображает сотни динамических источников света практически без влияния на частоту кадров, которые действительно освещают окружающую среду.</p>
                 </div>
-                
-                <div class="promo-image">
-                    <img src="https://www.mixmods.com.br/wp-content/uploads/2026/05/gta-sa-mod-proper-shaders-hd-graphics-realistic-remaster-remake-shadows-lights-a2-500x209.jpg" 
-                         alt="Proper Shaders - демонстрация графики" 
-                         loading="lazy">
+
+                <!-- Динамические источники света -->
+                <div class="feature-section" style="margin-top: 40px;">
+                    <h3 style="text-align: center; color: #ffcc00; font-size: 1.5em;">Динамические попиксельные и объемные источники света</h3>
+                    <p class="description-block" style="text-align: center; max-width: 800px; margin: 15px auto;">
+                        Благодаря полностью отложенному рендерингу, Proper Shaders отображает сотни динамических, реалистичных источников света практически без влияния на частоту кадров; источники света, которые действительно освещают окружающую среду (стены и т. д.), как в современных играх.
+                    </p>
+                    <div class="promo-image" style="text-align: center;">
+                        <img src="https://www.mixmods.com.br/wp-content/uploads/2026/05/gta-sa-mod-proper-shaders-hd-graphics-realistic-remaster-remake-shadows-lights-a2-500x209.jpg" 
+                             alt="Proper Shaders - динамическое освещение" 
+                             loading="lazy">
+                    </div>
                 </div>
 
                 <!-- Большие облака; вода -->
-                <div class="feature-section">
+                <div class="feature-section" style="margin-top: 40px;">
                     <h3 style="text-align: center; color: #ffcc00; font-size: 1.5em;">Большие облака; вода</h3>
-                    <p class="description-block">Включает слегка модифицированную версию Cloudworks (автор Брайан Ту) для создания реалистичных облаков. В связи с некоммерческой лицензией, она включена не только в ранний доступ, но и в публичный доступ.</p>
-                    <div class="promo-image">
-                        <img src="https://www.mixmods.com.br/wp-content/uploads/2026/05/gta-sa-mod-proper-shaders-hd-graphics-realistic-remaster-remake-clouds-water-1-500x209.jpg" 
-                             alt="Proper Shaders - облака и вода детализация" 
-                             loading="lazy">
-                    </div>
-                </div>
-                
-                <!-- Объемный туман; Непрямое освещение -->
-                <div class="feature-section">
-                    <h3 style="text-align: center; color: #ffcc00; font-size: 1.5em;">Объемный туман; Непрямое освещение</h3>
-                    <p class="description-block">Уникальное, беспрецедентное решение для объемного тумана с эффектом «божественных лучей» и SSGI (Screen-Space Global Illumination) для непрямого освещения. Впервые в одиночной игре GTA SA появились настоящие «божественные лучи» (а не симулированные, как в ENB), а наше решение SSGI оптимизировано, при этом затенение окружающей среды частично основано на GTAO (Ground Truth Ambient Occlusion).</p>
-                    <div class="promo-image">
-                        <img src="https://www.mixmods.com.br/wp-content/uploads/2026/07/gta-sa-mod-proper-shaders-hd-graphics-realistic-remaster-remake-ssgi-global-indirect-lighting-gtao-500x209.jpg" 
-                             alt="Proper Shaders - объемный туман и непрямое освещение SSGI" 
+                    <p class="description-block" style="text-align: center; max-width: 800px; margin: 15px auto;">
+                        Включает Cloudworks (разработанный Брайаном Ту) для создания реалистичных облаков. Оптимизировано для работы в 3 раза легче, чем оригинальная реализация, с большей четкостью изображения за счет использования «временных» решений.
+                    </p>
+                    <div class="promo-image" style="text-align: center;">
+                        <img src="https://www.mixmods.com.br/wp-content/uploads/2026/07/gta-sa-mod-proper-shaders-hd-graphics-realistic-remaster-remake-fog-water-clouds-500x209.jpg" 
+                             alt="Proper Shaders - облака и вода" 
                              loading="lazy">
                     </div>
                 </div>
 
-                <!-- Блок прогресса -->
-                <div class="progress-container">
+                <!-- Объемный туман; Непрямое освещение -->
+                <div class="feature-section" style="margin-top: 40px;">
+                    <h3 style="text-align: center; color: #ffcc00; font-size: 1.5em;">Объемный туман; Непрямое освещение</h3>
+                    <p class="description-block" style="text-align: center; max-width: 800px; margin: 15px auto;">
+                        Уникальное, беспрецедентное решение для объемного тумана с эффектом «божественных лучей» и SSGI (Screen-Space Global Illumination) для непрямого освещения. Впервые в одиночной игре GTA SA появились настоящие «божественные лучи» (а не симулированные, как в ENB), а наше решение SSGI оптимизировано, при этом затенение окружающей среды частично основано на GTAO (Ground Truth Ambient Occlusion).
+                    </p>
+                    <div class="promo-image" style="text-align: center;">
+                        <img src="https://www.mixmods.com.br/wp-content/uploads/2026/08/gta-sa-mod-proper-shaders-hd-graphics-realistic-remaster-remake-skylight-sky-occlusion-ambient-occlusion-ao-2-500x209.jpg" 
+                             alt="Proper Shaders - Skylight и AO" 
+                             loading="lazy">
+                    </div>
+                </div>
+
+                <!-- Блок прогресса (ОБНОВЛЕН по плану) -->
+                <div class="progress-container" style="margin-top: 40px;">
                     <div class="progress-column">
                         <h4>Текущий прогресс</h4>
                         <ul class="progress-list">
@@ -234,7 +264,7 @@
                             <li>Поверхность воды</li>
                             <li>Щелочные растворы для воды</li>
                             <li>Подводный</li>
-                            <li>Окклюзия окружающей среды (SSAO, HBAO, собственный SSGI с элементами GTAO)</li>
+                            <li>Окружающая окклюзия (SSAO, HBAO, собственный SSGI)</li>
                             <li>Имитация HDR с тональным отображением (ACES или Timoty)</li>
                             <li>ЛУТ</li>
                             <li>Саморазоблачение</li>
@@ -253,7 +283,7 @@
                             <li>Стохастическое процедурное текстурирование</li>
                             <li>Глобальные отражения в реальном времени</li>
                             <li>Мировые осадки на поверхности Земли</li>
-                            <li>Шейдеры для транспортных средств (PBR, линза Френеля, эффект дождя)</li>
+                            <li>Шейдеры для транспортных средств (PBR, эффект Френеля, эффект дождя)</li>
                             <li>Анимированный шейдер ветра</li>
                             <li>Анимированный пикап сияет</li>
                             <li>сглаживание от первого лица</li>
@@ -265,21 +295,12 @@
                     <div class="progress-column">
                         <h4>В ходе выполнения</h4>
                         <ul class="progress-list">
-                            <li>Карты шейдеров (карта нормалей, карта шероховатости, карта металличности, карта высот, карта окружающего затенения)</li>
+                            <li>Карты шейдеров (карта нормалей, карта шероховатости и т. д.)</li>
                             <li>Затенение в стиле целлулоид/аниме</li>
                             <li>Система создания экземпляров травы на графическом процессоре</li>
                             <li>Проектор наклеек (заменяет стандартную систему наклеек, от ЦП к ГП)</li>
-                            <li>Отражения в экранном пространстве (SSR)</li>
-                            <li>Тени в экранном пространстве (Screen Space Shadows)</li>
-                            <li>Динамическая смена погоды с плавным переходом</li>
-                            <li>Улучшенная система частиц с поддержкой физики</li>
-                            <li>Поддержка PBR-материалов для объектов и транспорта</li>
-                            <li>Система динамических декалей (следы, повреждения, пятна)</li>
-                            <li>Улучшенный рендеринг листвы с учётом ветра</li>
-                            <li>Блум с адаптивной экспозицией</li>
-                            <li>Динамическое затемнение неба на основе погоды</li>
-                            <li>Расширенная система тумана с учётом высоты</li>
-                            <li>Сглаживание на основе DLSS/FSR (в разработке)</li>
+                            <li>Отражения в экранном пространстве</li>
+                            <li>Тени в экранном пространстве</li>
                         </ul>
                     </div>
                     <div class="progress-column">
@@ -295,67 +316,52 @@
                     </div>
                 </div>
 
-                <!-- Картинка после раздела Запланировано -->
-                <div class="promo-image">
-                    <img src="https://www.mixmods.com.br/wp-content/uploads/2026/05/gta-sa-mod-proper-shaders-hd-graphics-realistic-remaster-remake-clouds-night-lights-3-1-500x209.jpg" 
-                         alt="Proper Shaders - ночные облака и огни" 
+                <!-- Картинка после прогресса -->
+                <div class="promo-image" style="text-align: center; margin-top: 30px;">
+                    <img src="https://www.mixmods.com.br/wp-content/uploads/2026/07/gta-sa-mod-proper-shaders-hd-graphics-realistic-remaster-remake-volumetric-fog-500x209.jpg" 
+                         alt="Proper Shaders - объемный туман" 
                          loading="lazy">
                 </div>
-                
-                <!-- Версия 08-26 -->
-                <div class="feature-section">
-                    <h3 style="text-align: center; color: #ffcc00; font-size: 1.5em;">Версия 08-26</h3>
-                    <div class="promo-image">
-                        <img src="https://www.mixmods.com.br/wp-content/uploads/2026/07/gta-sa-mod-proper-shaders-hd-graphics-realistic-remaster-remake-volumetric-fog-500x209.jpg" 
-                             alt="Proper Shaders - объемный туман версия 08-26" 
+
+                <!-- Сравнения -->
+                <div class="content-center" style="margin-top: 40px;">
+                    <h3 style="text-align: center; color: #ffcc00; font-size: 1.8rem;">Сравнения:</h3>
+                    <div class="comparison-grid" style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; max-width: 1000px; margin: 20px auto;">
+                        <img src="https://www.mixmods.com.br/wp-content/uploads/2026/05/gta-sa-mod-proper-shaders-hd-graphics-realistic-remaster-remake-shadows-lights-0a-vd-500x209.jpg" 
+                             alt="Сравнение 1" 
+                             loading="lazy">
+                        <img src="https://www.mixmods.com.br/wp-content/uploads/2026/05/gta-sa-mod-proper-shaders-hd-graphics-realistic-remaster-remake-shadows-lights-0b-pd-500x209.jpg" 
+                             alt="Сравнение 2" 
+                             loading="lazy">
+                        <img src="https://www.mixmods.com.br/wp-content/uploads/2026/05/gta-sa-mod-proper-shaders-hd-graphics-realistic-remaster-remake-shadows-lights-0c-db-500x209.jpg" 
+                             alt="Сравнение 3" 
+                             loading="lazy">
+                        <img src="https://www.mixmods.com.br/wp-content/uploads/2026/05/gta-sa-mod-proper-shaders-hd-graphics-realistic-remaster-remake-shadows-lights-0d-ad-500x209.jpg" 
+                             alt="Сравнение 4" 
+                             loading="lazy">
+                        <img src="https://www.mixmods.com.br/wp-content/uploads/2026/05/gta-sa-mod-proper-shaders-hd-graphics-realistic-remaster-remake-shadows-lights-1a-vn-500x209.jpg" 
+                             alt="Сравнение 5" 
+                             loading="lazy">
+                        <img src="https://www.mixmods.com.br/wp-content/uploads/2026/05/gta-sa-mod-proper-shaders-hd-graphics-realistic-remaster-remake-shadows-lights-1b-pn-500x209.jpg" 
+                             alt="Сравнение 6" 
+                             loading="lazy">
+                        <img src="https://www.mixmods.com.br/wp-content/uploads/2026/05/gta-sa-mod-proper-shaders-hd-graphics-realistic-remaster-remake-shadows-lights-1c-nb-500x209.jpg" 
+                             alt="Сравнение 7" 
+                             loading="lazy">
+                        <img src="https://www.mixmods.com.br/wp-content/uploads/2026/05/gta-sa-mod-proper-shaders-hd-graphics-realistic-remaster-remake-shadows-lights-1d-na-500x209.jpg" 
+                             alt="Сравнение 8" 
+                             loading="lazy">
+                        <img src="https://www.mixmods.com.br/wp-content/uploads/2026/06/gta-sa-mod-proper-shaders-hd-graphics-realistic-remaster-remake-rain-puddles-wet-chuva-500x205.jpg" 
+                             alt="Сравнение 9 - дождь" 
                              loading="lazy">
                     </div>
                 </div>
 
-                <div class="content-center">
-                    <h3>Сравнения:</h3>
-                    <div class="comparison-grid">
-                        <img src="https://www.mixmods.com.br/wp-content/uploads/2026/05/gta-sa-mod-proper-shaders-hd-graphics-realistic-remaster-remake-shadows-lights-0a-vd-500x209.jpg" 
-                             alt="Proper Shaders - сравнение графики 1" 
-                             loading="lazy">
-                        <img src="https://www.mixmods.com.br/wp-content/uploads/2026/05/gta-sa-mod-proper-shaders-hd-graphics-realistic-remaster-remake-shadows-lights-0b-pd-500x209.jpg" 
-                             alt="Proper Shaders - сравнение графики 2" 
-                             loading="lazy">
-                        <img src="https://www.mixmods.com.br/wp-content/uploads/2026/05/gta-sa-mod-proper-shaders-hd-graphics-realistic-remaster-remake-shadows-lights-0c-db-500x209.jpg" 
-                             alt="Proper Shaders - сравнение графики 3" 
-                             loading="lazy">
-                        <img src="https://www.mixmods.com.br/wp-content/uploads/2026/05/gta-sa-mod-proper-shaders-hd-graphics-realistic-remaster-remake-shadows-lights-0d-ad-500x209.jpg" 
-                             alt="Proper Shaders - сравнение графики 4" 
-                             loading="lazy">
-                        <img src="https://www.mixmods.com.br/wp-content/uploads/2026/05/gta-sa-mod-proper-shaders-hd-graphics-realistic-remaster-remake-shadows-lights-1a-vn-500x209.jpg" 
-                             alt="Proper Shaders - сравнение графики 5" 
-                             loading="lazy">
-                        <img src="https://www.mixmods.com.br/wp-content/uploads/2026/05/gta-sa-mod-proper-shaders-hd-graphics-realistic-remaster-remake-shadows-lights-1b-pn-500x209.jpg" 
-                             alt="Proper Shaders - сравнение графики 6" 
-                             loading="lazy">
-                        <img src="https://www.mixmods.com.br/wp-content/uploads/2026/05/gta-sa-mod-proper-shaders-hd-graphics-realistic-remaster-remake-shadows-lights-1c-nb-500x209.jpg" 
-                             alt="Proper Shaders - сравнение графики 7" 
-                             loading="lazy">
-                        <img src="https://www.mixmods.com.br/wp-content/uploads/2026/05/gta-sa-mod-proper-shaders-hd-graphics-realistic-remaster-remake-shadows-lights-1d-na-500x209.jpg" 
-                             alt="Proper Shaders - сравнение графики 8" 
-                             loading="lazy">
-                        <img src="https://www.mixmods.com.br/wp-content/uploads/2026/06/gta-sa-mod-proper-shaders-hd-graphics-realistic-remaster-remake-rain-puddles-wet-chuva-500x205.jpg" 
-                             alt="Proper Shaders - дождь и лужи" 
-                             loading="lazy">
-                    </div>
-
-                    <!-- Версия 08-26 -->
-                    <div style="text-align: center; margin: 40px 0 30px 0;">
-                        <h3 style="color: #ffcc00; font-size: 1.8em; margin-bottom: 20px;">Версия 08-26</h3>
-                        <img src="https://www.mixmods.com.br/wp-content/uploads/2026/07/gta-sa-mod-proper-shaders-hd-graphics-realistic-remaster-remake-clouds-fog-500x209.jpg" 
-                             alt="Proper Shaders - облака и туман версия 08-26" 
-                             loading="lazy">
-                    </div>
-                    
+                <!-- PBR для моддеров -->
+                <div style="text-align: center; margin-top: 40px;">
                     <p style="font-size: 1.2rem; max-width: 800px; margin: 0 auto 25px auto; line-height: 1.6;">
                         Создано моддерами для моддеров: разработано специально для модификаций, включая качественную конвертацию HD-материалов автомобилей в формат PBR (шероховатость и металличность):
                     </p>
-                    
                     <div style="display: flex; flex-direction: column; align-items: center; gap: 15px;">
                         <img src="https://www.mixmods.com.br/wp-content/uploads/2026/08/gta-sa-mod-proper-shaders-vehicle-surface-shader-material-pbr-roughness-metallic-500x396.jpg" 
                              alt="Proper Shaders - PBR материалы для автомобилей" 
@@ -368,38 +374,29 @@
                     </div>
                 </div>
 
-                <!-- Чего ожидать? -->
-                <p class="description-block">Чего ожидать? В настоящее время «публичная» версия (апрель) работает нормально, но не очень стабильно, в то время как «бета» (май) и «альфа» (июнь) версии более стабильны и выглядят лучше, чем старые, особенно благодаря отложенному рендерингу. Но поскольку мод всё ещё находится на ранней стадии разработки, не стоит ожидать 100% стабильности. В любом случае, я постоянно исправляю и улучшаю последние версии, делая их всё более стабильными и совместимыми с другими модами, а вы можете получить поддержку в режиме реального времени в Discord, став спонсором . Если вы заметили проблему в старой версии, она, вероятно, уже исправлена (или будет исправлена) в новой.</p>
-                
-                <!-- Три новые картинки -->
-                <div class="promo-image column-images">
-                    <img src="https://www.mixmods.com.br/wp-content/uploads/2026/05/gta-sa-mod-proper-shaders-hd-graphics-realistic-remaster-remake-shadows-lights-a9-500x209.jpg" 
-                         alt="Proper Shaders - стабильность 1" 
-                         loading="lazy">
-                    <img src="https://www.mixmods.com.br/wp-content/uploads/2026/05/gta-sa-mod-proper-shaders-hd-graphics-realistic-remaster-remake-shadows-lights-a7-500x209.jpg" 
-                         alt="Proper Shaders - стабильность 2" 
-                         loading="lazy">
-                    <img src="https://www.mixmods.com.br/wp-content/uploads/2026/05/gta-sa-mod-proper-shaders-hd-graphics-realistic-remaster-remake-clouds-water-3-1-500x209.jpg" 
-                         alt="Proper Shaders - облака и вода финал" 
-                         loading="lazy">
-                    
-                    <!-- Версия 08-26 по центру -->
-                    <div style="text-align: center; margin: 30px 0; width: 100%;">
-                        <h3 style="color: #ffcc00; font-size: 1.5em;">Версия 08-26</h3>
-                        <img src="https://www.mixmods.com.br/wp-content/uploads/2026/07/gta-sa-mod-proper-shaders-hd-graphics-realistic-remaster-remake-san-fierro-fog-clouds-500x209.jpg" 
-                             alt="Proper Shaders - San Fierro туман и облака версия 08-26" 
-                             loading="lazy" 
-                             style="width: 100%; max-width: 500px; height: auto; border-radius: 10px;">
-                    </div>
-                </div>
-                
-                <!-- Текст -->
-                <p class="description-block" style="text-align: center; font-size: 1.1rem; margin-top: 20px;">
-                    Это мой новый проект мода с моделью «freemium» (ранний доступ с технической поддержкой, а затем бесплатно). Он находится на ранней стадии разработки, и обновления работают с Soundize без дополнительной платы. Я могу поделиться им бесплатно, если вы создатель контента; свяжитесь со мной.
+                <!-- Чего ожидать? (ОБНОВЛЕН) -->
+                <p class="description-block" style="text-align: center; max-width: 800px; margin: 30px auto; font-size: 1.1rem;">
+                    Чего ожидать? Мод относительно очень стабилен и полностью играбелен (особенно в новой версии раннего доступа; с августа были внесены отличные оптимизации), даже с учетом новой отложенной отрисовки, но поскольку мод все еще находится в разработке, не ожидайте 100% стабильности. В любом случае, я постоянно исправляю и улучшаю последние версии, делая их все более стабильными и совместимыми с другими модами, а вы можете получить поддержку в режиме реального времени в Discord, став спонсором. Если вы заметили проблему в старой версии, она, вероятно, уже исправлена (или будет исправлена) в новой.
                 </p>
 
-                <div class="button-container">
-                    <a href="https://sharemods.com/utyqxnihvaxr/SA_-_Proper_Shaders_06-26___40_pv5s4v1ajrf__41_.zip.html" 
+                <!-- Две картинки -->
+                <div class="promo-image grid-2" style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; max-width: 1000px; margin: 0 auto;">
+                    <img src="https://www.mixmods.com.br/wp-content/uploads/2026/08/gta-sa-mod-proper-shaders-hd-graphics-realistic-remaster-remake-volumetric-fog-godrays-500x209.jpg" 
+                         alt="Proper Shaders - божественные лучи" 
+                         loading="lazy">
+                    <img src="https://www.mixmods.com.br/wp-content/uploads/2026/08/gta-sa-mod-proper-shaders-hd-graphics-realistic-remaster-remake-shadows-vegetation-nature-500x209.jpg" 
+                         alt="Proper Shaders - тени и растительность" 
+                         loading="lazy">
+                </div>
+
+                <!-- Текст про freemium (ОБНОВЛЕН) -->
+                <p class="description-block" style="text-align: center; font-size: 1.1rem; margin-top: 30px; max-width: 800px; margin-left: auto; margin-right: auto;">
+                    Это мой новый проект мода с моделью «freemium» (ранний доступ с технической поддержкой, а затем бесплатно). Он находится на ранней стадии разработки, и обновления работают с Soundize без дополнительной платы. Я могу поделиться им бесплатно, если вы создатель контента с более чем 10 000 подписчиков; свяжитесь со мной.
+                </p>
+
+                <!-- Кнопка скачивания -->
+                <div class="button-container" style="text-align: center; margin-top: 30px;">
+                    <a href="https://sharemods.com/7bqlzhg6m5vt/SA_-_Proper_Shaders_07-26___40_pv5w9vtw3__41_.zip.html" 
                        target="_blank" 
                        rel="noopener noreferrer" 
                        class="download-link">
@@ -407,9 +404,8 @@
                             <i class="fas fa-download"></i> СКАЧАТЬ
                         </button>
                     </a>
-                    <!-- ДОБАВЛЕНО: Информация о файле -->
                     <div class="file-info">
-                        <small>Версия: 06-26 | Источник: ShareMods | Проверено: 21.08.2026</small>
+                        <small>Версия: 07-26 | Источник: ShareMods | Проверено: 01.09.26</small>
                     </div>
                 </div>
             </div>
