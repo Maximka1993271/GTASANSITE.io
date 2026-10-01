@@ -67,7 +67,7 @@ nav ul li a.active {
     color: var(--text-light);
 }
 
-/* --- СЕТКА СРАВНЕНИЯ --- */
+/* --- СЕТКА СРАВНЕНИЯ (ИЗМЕНЕНО: В СТОЛБЕЦ) --- */
 .comparison-grid {
     display: flex;
     flex-direction: column;
@@ -91,6 +91,26 @@ nav ul li a.active {
     transform: scale(1.02);
     border-color: var(--primary-color);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+}
+
+/* --- ОБЩИЙ КЛАСС ДЛЯ ИЗОБРАЖЕНИЙ В СТОЛБЕЦ --- */
+.image-column {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 15px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    grid-template-columns: none !important;
+    grid-template-rows: none !important;
+}
+
+.image-column img {
+    width: 100% !important;
+    max-width: 850px !important;
+    height: auto !important;
+    margin: 0 auto !important;
+    display: block !important;
 }
 
 /* --- СТИЛИ ДЛЯ СТРАНИЦЫ 404 --- */
